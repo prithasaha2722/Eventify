@@ -1,5 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import pymongo
+
+connectionString = "mongodb+srv://IEM:IT@examinationportal.7tsx0kt.mongodb.net/?retryWrites=true&w=majority"
+client = pymongo.MongoClient(connectionString)
+db = client['Eventify']
+collection = db['Eventlabs']
 
 app = Flask(__name__)
 db = SQLAlchemy()
@@ -40,7 +46,7 @@ with app.app_context():
 
 @app.route("/")
 def hello_world():
-
+    return "<p>Hello, World!</p>"
 
 
 if __name__ == "__main__":
