@@ -36,7 +36,9 @@ const Img = () => {
               <motion.button className="shadow-2xl h-[100px] w-[116px] rounded-md flex flex-col items-start justify-center text-xl font-medium p-2 bg-white" whileHover={{top:'-50px'}}>
                 <span className="text-[#000000] font-thin">For</span><span className="w-full">Organiser</span><span className="text-[0.5rem] underline">explore <FontAwesomeIcon icon={faArrowRight}/></span>
               </motion.button>
-              
+              <motion.button onClick={()=> <Navigate to='/eventLabs'/>} className="shadow-2xl h-[100px] w-[116px] rounded-md flex flex-col items-start justify-center text-xl font-medium p-2 bg-white" whileHover={{top: '49%'}}>
+                <span className="text-[#000000] font-thin">For</span><span className="w-full">Participant</span><span className="text-[0.5rem] underline">explore <FontAwesomeIcon icon={faArrowRight}/></span>
+              </motion.button>
             </div>
           </motion.div>
         </motion.div>
