@@ -1,11 +1,5 @@
-from flask import Flask
+from flask import Flask, render_template, redirect, request
 from flask_sqlalchemy import SQLAlchemy
-import pymongo
-
-connectionString = "mongodb+srv://IEM:IT@examinationportal.7tsx0kt.mongodb.net/?retryWrites=true&w=majority"
-client = pymongo.MongoClient(connectionString)
-db = client['Eventify']
-collection = db['Eventlabs']
 
 app = Flask(__name__)
 db = SQLAlchemy()
@@ -44,9 +38,24 @@ class ParticipantsCheckIn(db.Model):
 with app.app_context():
     db.create_all()
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+@app.route("/organizer", methods=["GET", "POST"])
+def organizer_data():
+    if request.method=="POST":
+        orgname = request.json['orgname']
+        orgweb = request.json['orgweb']
+        venue = request.json['venue']
+        startdate = request.json['startdate']
+        enddate = request.json['enddate']
+        starttime = request.json['starttime']
+        endtime = request.json['endtime']
+        numberofattendee = request.json['numberofattendee']
+        logo = request.json['logo']
+        signature = request.json['signature']
+        organizer=Organizer(orgname=orgname, orgweb=orgweb, venue=venue, startdate=startdate, enddate=enddate, starttime=starttime, endtime=endtime, numberofattendee=numberofattendee, logo=logo, signature=signature)
+        with app.app_context():
+            db.session.add(organizer)
+            db.session.commit()
+    return render_template('Organizer.html')
 
 
 if __name__ == "__main__":
