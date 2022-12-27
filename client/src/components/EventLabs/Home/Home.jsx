@@ -1,10 +1,12 @@
-import React from 'react'
-import Bg from './Bg'
+import React from "react";
+import Bg from "./Bg";
 
 const Home = () => {
   return (
-    <div><Bg/></div>
-  )
-}
+    <div className="bg-black w-screen h-screen">
+      <Bg />
+    </div>
+  );
+};
 
-export default Home
+export default Home;

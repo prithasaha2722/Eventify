@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Home from "./Home/Home";
 
 const EventLabs = () => {
   return (
-    <div>EventLabs</div>
-  )
-}
+    <div>
+      <Home />
+    </div>
+  );
+};
 
-export default EventLabs
+export default EventLabs;
