@@ -1,5 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import pymongo
+
+connectionString = "mongodb+srv://IEM:IT@examinationportal.7tsx0kt.mongodb.net/?retryWrites=true&w=majority"
+client = pymongo.MongoClient(connectionString)
+db = client['Eventify']
+collection = db['Eventlabs']
 
 app = Flask(__name__)
 db = SQLAlchemy()
