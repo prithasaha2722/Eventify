@@ -4,7 +4,7 @@ import Img from './Img'
 
 const Home = () => {
   return (
-    <div className='overflow-x-hidden scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100'>
+    <div className='overflow-x-hidden scrollbar scrollbar-track-[#0000ff]'>
         <Bg/>
         <Img/>
     </div>

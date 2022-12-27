@@ -3,7 +3,7 @@ import Bg from '../../images/Bg.jpg'
 
 const Img = () => {
   return (
-    <div className='w-screen relative'>
+    <div className=' relative'>
         <img className='w-full h-full' src={Bg} alt='background'/>
     </div>
   )
