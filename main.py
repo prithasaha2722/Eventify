@@ -1,6 +1,7 @@
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import random
+from csvimportfromjson import JSONtoCSV, mailList
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///eventlabs.db"
@@ -21,7 +22,7 @@ class Organizer(db.Model):
     signature = db.Column(db.String)
 
 class ParticipantsCheckIn(db.Model):
-    email = db.Column(db.String, unique=True, nullable=False)
+    email = db.Column(db.String, unique=True, nullable=False, primary_key=True)
     name = db.Column(db.String)
     phone = db.Column(db.Integer, unique=True, nullable=False)
     walletaddress = db.Column(db.String, unique=True, nullable=False)
@@ -75,15 +76,34 @@ def participant_registration():
         registration = ParticipantsRegistration( email=email, name=name, phone=phone, walletaddress=walletaddress, address=address)
         with app.app_context():
             db.session.add(registration)
+            mails= ParticipantsRegistration.query.order_by(ParticipantsRegistration.email).all()
+            mailList(mails)
             db.session.commit()
     return render_template('PartiReg.html')
 
 
 @app.route("/participantsallinone", methods=["GET", "POST"])
-def participant_registration():
+def participant_data_to_csv():
     if request.method == 'POST':
         participant = request.json['participant']
-        
+        JSONtoCSV(participant)
+        print("csv uploaded successfully")
+    return render_template('PartiReg.html')
+
+@app.route("/checkin", methods=["GET", "POST"])
+def checkin():
+    if request.method == 'POST':
+        email = request.json['email']
+        name = request.json['name']
+        phone = request.json['phone']
+        walletaddress = request.json['walletaddress']
+        address = request.json['address']
+        checkIn = ParticipantsCheckIn( email=email, name=name, phone=phone, walletaddress=walletaddress, address=address)
+        with app.app_context():
+            db.session.add(checkIn)
+            db.session.commit()
+    return render_template('CheckIn.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
