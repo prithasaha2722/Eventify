@@ -1,9 +1,10 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, url_for
 from flask_sqlalchemy import SQLAlchemy
+import random
 
 app = Flask(__name__)
-db = SQLAlchemy()
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///eventlabs.db"
+db = SQLAlchemy()
 db.init_app(app)
 
 class Organizer(db.Model):
@@ -19,24 +20,29 @@ class Organizer(db.Model):
     logo = db.Column(db.String)
     signature = db.Column(db.String)
 
-class ParticipantsRegistration(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String, unique=True, nullable=False)
-    name = db.Column(db.String)
-    phone = db.Column(db.Integer, unique=True, nullable=False)
-    walletaddress = db.Column(db.String, unique=True, nullable=False)
-    address= db.Column(db.String, nullable=False)
-
 class ParticipantsCheckIn(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, unique=True, nullable=False)
     name = db.Column(db.String)
     phone = db.Column(db.Integer, unique=True, nullable=False)
     walletaddress = db.Column(db.String, unique=True, nullable=False)
-    address= db.Column(db.String, nullable=False)
+    address = db.Column(db.String, nullable=False)
+
+class ParticipantsRegistration(db.Model):
+    email = db.Column(db.String, unique=True, nullable=False, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    phone = db.Column(db.Integer, unique=True, nullable=False)
+    walletaddress = db.Column(db.String, unique=True, nullable=False)
+    address = db.Column(db.String, nullable=False)
 
 with app.app_context():
     db.create_all()
+    db.session.commit()
+
+
+with app.app_context():
+    db.create_all()
+    db.session.commit()
 
 @app.route("/organizer", methods=["GET", "POST"])
 def organizer_data():
@@ -60,19 +66,17 @@ def organizer_data():
 
 @app.route("/participant", methods=["GET", "POST"])
 def participant_registration():
-    if request.method=="POST":
-        id = request.json['id']
+    if request.method == 'POST':
         email = request.json['email']
         name = request.json['name']
         phone = request.json['phone']
         walletaddress = request.json['walletaddress']
         address = request.json['address']
-        registration = ParticipantsRegistration( id=id, email=email, name=name, phone=phone, walletaddress=walletaddress, address=address)
+        registration = ParticipantsRegistration( email=email, name=name, phone=phone, walletaddress=walletaddress, address=address)
         with app.app_context():
             db.session.add(registration)
             db.session.commit()
     return render_template('PartiReg.html')
-
 
 
 if __name__ == "__main__":
