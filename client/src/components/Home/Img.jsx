@@ -8,10 +8,14 @@ import { useState } from "react";
 
 const Img = () => {
   const [eventLabs , setEventLabs] = useState(false)
+  const [bannerify , setBannerify] = useState(false)
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [0.2, 4]);
   if(eventLabs){
     return <Navigate to='/eventLabs' />
+  }
+  if(bannerify){
+    return <Navigate to='/bannerify' />
   }
   return (
     <div
@@ -38,8 +42,8 @@ const Img = () => {
               draggable={false}
             />
             <div className="w-[300px] h-full flex justify-around items-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-10">
-              <motion.button className="shadow-2xl h-[100px] w-[116px] rounded-md flex flex-col items-start justify-center text-xl font-medium p-2 bg-white" whileHover={{top:'-50px'}}>
-                <span className="text-[#000000] font-thin">For</span><span className="w-full">Organiser</span><span className="text-[0.5rem] underline">explore <FontAwesomeIcon icon={faArrowRight}/></span>
+              <motion.button onClick={()=>setBannerify(true)} className="shadow-2xl h-[100px] w-[116px] rounded-md flex flex-col items-start justify-center text-xl font-medium p-2 bg-white" whileHover={{top:'-50px'}}>
+                <span className="text-[#000000] font-thin">For</span><span className="w-full">Bannerify</span><span className="text-[0.5rem] underline">explore <FontAwesomeIcon icon={faArrowRight}/></span>
               </motion.button>
               <motion.button onClick={()=> setEventLabs(true) } className="shadow-2xl h-[100px] w-[116px] rounded-md flex flex-col items-start justify-center text-xl font-medium p-2 bg-white" whileHover={{top: '49%'}}>
                 <span className="text-[#000000] font-thin">For</span><span className="w-full">EventLabs</span><span className="text-[0.5rem] underline">explore <FontAwesomeIcon icon={faArrowRight}/></span>

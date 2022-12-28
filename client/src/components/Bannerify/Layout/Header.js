@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './Header.module.css'
-import logo from '../../Images/B.png'
+import logo from '../../../images/Bannerify/B.png'
 
 export default function Header() {
   return (

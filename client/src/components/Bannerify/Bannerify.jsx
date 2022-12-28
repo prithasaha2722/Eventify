@@ -3,16 +3,17 @@ import Header from './Layout/Header'
 import Layout from './Layout/Layout'
 import MainPage from './Main/MainPage'
 import Form from './Form/Form'
-const Index = () => {
+
+const Bannerify = () => {
   return (
-    <Fragment>
+    <React.Fragment>
       <Header />
       <Layout>
         <MainPage />
         <Form />
       </Layout>
-    </Fragment>
+    </React.Fragment>
   );
 };
 
-export default Index;
+export default Bannerify;

@@ -1,26 +1,26 @@
 import React, { Fragment } from 'react'
 import classes from './MainPage.module.css'
-import BannerMainSide from '../../Images/BannerMainSide.jpg'
+import BannerMainSide from '../../../images/Bannerify/BannerMainSide.jpg'
 import Functionality from './Functionality'
 import FeatureArea from './FeatureArea'
-import Feature1 from '../../Images/Feature1.jpg'
-import Feature2 from '../../Images/Feature2.jpg'
-import Feature3 from '../../Images/Feature3.jpg'
-import Share from '../../Images/Share.jpg'
-import whatIsBannerify from '../../Images/whatIsBannerify.png'
+import Feature1 from '../../../images/Bannerify/Feature1.jpg'
+import Feature2 from '../../../images/Bannerify/Feature2.jpg'
+import Feature3 from '../../../images/Bannerify/Feature3.jpg'
+import Share from '../../../images/Bannerify/Share.jpg'
+import whatIsBannerify from '../../../images/Bannerify/whatIsBannerify.png'
 import Button from '../UI/Button'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Properties from './Properties'
-import Property1 from '../../Images/01.svg'
-import Property2 from '../../Images/02.svg'
-import Property3 from '../../Images/03.svg'
-import Property4 from '../../Images/04.svg'
-import Property5 from '../../Images/05.svg'
-import Property6 from '../../Images/06.svg'
-import Property7 from '../../Images/07.svg'
-import Property8 from '../../Images/08.svg'
-import properties from '../../Images/properties.png'
+import Property1 from '../../../images/Bannerify/01.svg'
+import Property2 from '../../../images/Bannerify/02.svg'
+import Property3 from '../../../images/Bannerify/03.svg'
+import Property4 from '../../../images/Bannerify/04.svg'
+import Property5 from '../../../images/Bannerify/05.svg'
+import Property6 from '../../../images/Bannerify/06.svg'
+import Property7 from '../../../images/Bannerify/07.svg'
+import Property8 from '../../../images/Bannerify/08.svg'
+import properties from '../../../images/Bannerify/properties.png'
 
 const propertyObj = [
     {
@@ -61,36 +61,36 @@ export default function MainPage() {
 
     return (
         <Fragment>
-            <div className={classes.MainPage}>
-                <div className={classes.bodyArea}>
-                    <div className={classes.preHeader}>Banners</div>
-                    <div className={classes.mainHeader}>Free Banner Maker for Stunning Banners</div>
-                    <div className={classes.subHeaderSection}>
+            <div className='flex items-center mt-10'>
+                <div className='flex flex-col items-start w-1/2 pl-[50px]'>
+                    <div className='text-3xl text-[#949db0]'>Banners</div>
+                    <div className='text-5xl text-[#293745] mb-8 font-extrabold'>Free Banner Maker for Stunning Banners</div>
+                    <div className='flex items-center'>
                         <Button boxShadow={true} />
-                        <div className={classes.subHeader}>It's free and easy to use.</div>
+                        <div className='text-2xl text-[#798297] inline-block translate-y-[-8px] ml-4'>It's free and easy to use.</div>
                     </div>
                 </div>
-                <div className={classes.design}>
-                    <img src={BannerMainSide} alt='BannerMainSide' />
+                <div className='w-3/5'>
+                    <img src={BannerMainSide} className='h-full w-full' alt='BannerMainSide' />
                 </div>
             </div>
-            <div className={classes.details}>
+            <div className='mt-20 w-screen  flex justify-around items-center'>
                 <Functionality text={`Easy-to-use banner maker with drag-and-drop functionality.`} />
                 <Functionality text={`Hundreds of banner templates to choose from.`} />
                 <Functionality text={`Create banners hassle-free and choose the ideal banner size for you.`} />
             </div>
-            <div className={classes.featureArea}>
+            <div className='mb-20'>
                 <FeatureArea image={Feature1} alt={`Feature1`} header={`Beautiful banner templates`} para={`Choose from hundreds of professionally designed templates and customize the images, graphics and fonts to make a banner that matches your brand. Easily resize your banner designs for different platforms and download as high-resolution JPG or PNG files.`} />
                 <FeatureArea image={Feature2} alt={`Feature2`} header={`Build your banner`} para={`Design custom banners using Visme’s easy banner creator and stunning built-in and preset design elements. Get all of your photos, icons and more perfectly placed on the banner canvas until you’ve built the perfect online banner, then download online without watermark.`} orientation={true} />
                 <FeatureArea image={Feature3} alt={`Feature3`} header={`Customize every aspect of your banner with your own graphics and fonts`} para={`Use your brand style guide to customize the fonts and color palette. Add your own graphics, photos and brand information into the online banner maker. Create custom graphics using lines and shapes. Proofread all the text and double check the quality of your images. Get started creating all types of professional banners, from Facebook covers to YouTube banners and more.`} />
                 <FeatureArea image={Share} alt={`Share`} header={`Share Your Banner`} para={`Visme makes it easy for you to share your banner design. Download your finished product from Visme's free banner maker as a high-resolution PNG or JPG image and upload it to your social media page. Once you've done that, you can easily get back into the dashboard, make a copy of the banner and resize it for all of your other social media channels. Adjust the elements to fit the new size, and download again.`} />
             </div>
-            <div className={classes.properties}>
+            <div className='mx-[110px] mb-20'>
                 <div className={classes.propertiesHead}>
-                    <div className={classes.propertiesPreHeader}>QUICK TIPS</div>
-                    <div className={classes.propertiesHeader}>
-                        <div className={classes.propertiesHeaderText}>How to Use the <span>Banner</span> Maker</div>
-                        <div className={classes.propertiesImage}><img src={properties} alt='properties' /></div>
+                    <div className='font-bold text-2xl text-left text-[#009688] mb-5'>QUICK TIPS</div>
+                    <div className='flex items-start justify-between'>
+                        <div className='font-extrabold text-3xl text-left text-[#293745] mb-10'>How to Use the <span>Banner</span> Maker</div>
+                        <div className=''><img className='w-[255px]' src={properties} alt='properties' /></div>
                     </div>
                 </div>
                 <div className={classes.propertiesBody}>
