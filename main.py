@@ -21,7 +21,6 @@ class Organizer(db.Model):
     signature = db.Column(db.String)
 
 class ParticipantsCheckIn(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String, unique=True, nullable=False)
     name = db.Column(db.String)
     phone = db.Column(db.Integer, unique=True, nullable=False)
@@ -47,6 +46,7 @@ with app.app_context():
 @app.route("/organizer", methods=["GET", "POST"])
 def organizer_data():
     if request.method=="POST":
+        id= random.randint(0, 10000)
         orgname = request.json['orgname']
         orgweb = request.json['orgweb']
         venue = request.json['venue']
@@ -57,7 +57,7 @@ def organizer_data():
         numberofattendee = request.json['numberofattendee']
         logo = request.json['logo']
         signature = request.json['signature']
-        organizer=Organizer(orgname=orgname, orgweb=orgweb, venue=venue, startdate=startdate, enddate=enddate, starttime=starttime, endtime=endtime, numberofattendee=numberofattendee, logo=logo, signature=signature)
+        organizer=Organizer(id=id, orgname=orgname, orgweb=orgweb, venue=venue, startdate=startdate, enddate=enddate, starttime=starttime, endtime=endtime, numberofattendee=numberofattendee, logo=logo, signature=signature)
         with app.app_context():
             db.session.add(organizer)
             db.session.commit()
@@ -78,6 +78,12 @@ def participant_registration():
             db.session.commit()
     return render_template('PartiReg.html')
 
+
+@app.route("/participantsallinone", methods=["GET", "POST"])
+def participant_registration():
+    if request.method == 'POST':
+        participant = request.json['participant']
+        
 
 if __name__ == "__main__":
     app.run(debug=True)

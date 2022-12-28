@@ -44,6 +44,28 @@
         const walletaddress = document.getElementById("walletaddress").value;
         const address = document.getElementById("address").value;
 
+        const Response = await fetch("/participantsallinone", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({'participant':{
+                email: email,
+                phone: phone,
+                name: name,
+                walletaddress: walletaddress,
+                address: address,
+            }}),
+        });
+
+        // console.log({'participant':{
+        //         email: email,
+        //         phone: phone,
+        //         name: name,
+        //         walletaddress: walletaddress,
+        //         address: address,
+        //     }})
+        const Data = Response.json();
 
         const Response2 = await fetch("/participant", {
             method: "POST",
