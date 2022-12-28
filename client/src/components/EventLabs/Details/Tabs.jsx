@@ -1,5 +1,5 @@
 import React from "react";
-import Features from "../../../images/Features.png";
+import Registration from "../../../images/Registration.png";
 import Kaustav from "../../../images/Kaustav.png";
 import Soham from "../../../images/Soham.png";
 import Pritha from "../../../images/Pritha.png";
@@ -10,11 +10,9 @@ import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
 const BoxWrapper = (props) => {
   return (
     <div
-      className="w-screen h-screen flex items-center m-auto justify-center"
+      className="w-screen h-screen flex items-center m-auto justify-center bg-white text-black"
       style={{
-        backgroundColor: props.bgcolor,
         flexDirection: props.direction,
-        color: props.textColor,
       }}
     >
       {props.children}
@@ -25,7 +23,7 @@ const BoxWrapper = (props) => {
 const Tabs = () => {
   return (
     <div className="w-screen h-auto relative">
-      <BoxWrapper bgcolor="white" direction="row">
+      <BoxWrapper direction="row">
         <div className="w-[51%] flex flex-col justify-end">
           <h2 className="font-bold text-7xl">
             Breaking down event management software into essentials
@@ -37,11 +35,11 @@ const Tabs = () => {
             necessities in a single console. They often include the following:
           </div>
         </div>
-        <div className="w-[37%]">
-          <img src={Features} alt="Features" className="w-full h-full" />
+        <div className="w-[35%]">
+          <img src={Registration} alt="Registration" className="w-full h-full" />
         </div>
       </BoxWrapper>
-      <BoxWrapper bgcolor="Black" direction="row-reverse" textColor="White">
+      <BoxWrapper direction="row-reverse">
         <div className="flex flex-wrap justify-around w-[90%]">
           <div className="w-1/5 relative p-5 backdrop-blur-md bg-[#3B3E44] rounded-xl">
             <img
