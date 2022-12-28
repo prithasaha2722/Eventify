@@ -23,13 +23,14 @@
       </div>
       <div class="mb-3">
         <label for="walletaddress" class="form-label">Wallet Address</label>
-        <input type="text" name="" minlength="30" id="walletaddress" required />
+        <input type="text" name=""  id="walletaddress" required />
       </div>
       <div class="mb-3">
         <label for="address" class="form-label">Address</label>
         <textarea name="" id="address" rows="3" required ></textarea>
       </div>
     <button id="button2">Submit</button>
+    </div>
 </body>
 <script>
     const button2 = document.getElementById("button2");
@@ -38,11 +39,12 @@
     };
     const sendData = async () => {
         const email = document.getElementById("email").value;
-        const phone = document.getElementById("phone").value;
         const name = document.getElementById("name").value;
+        const phone = document.getElementById("phone").value;
         const walletaddress = document.getElementById("walletaddress").value;
         const address = document.getElementById("address").value;
-        const Response = await fetch("/participant", {
+
+        const Response = await fetch("/participantsallinone", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -55,7 +57,7 @@
                 address: address,
             }}),
         });
-        
+
         // console.log({'participant':{
         //         email: email,
         //         phone: phone,
@@ -65,7 +67,7 @@
         //     }})
         const Data = Response.json();
 
-        const Response2 = await fetch("/participantfiltered", {
+        const Response2 = await fetch("/participant", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -78,7 +80,13 @@
                 address: address,
             }),
         });
-        
+        console.log({
+                email: email,
+                phone: phone,
+                name: name,
+                walletaddress: walletaddress,
+                address: address,
+            })
     };
 </script>
 </html>
