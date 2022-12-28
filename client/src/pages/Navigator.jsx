@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Index from "../components/Bannerify";
 import Details from "../components/EventLabs/Details/Details";
 import EventLabs from "../components/EventLabs/EventLabs";
 import Home from "../components/Home/Home";
@@ -10,6 +11,7 @@ const Navigator = () => {
     <main>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/bannerify" element={<Index/>}/>
         <Route path="/eventLabs" element={<EventLabs />} />
         <Route path="/eventLabs/details" element={<Details />} />
         <Route path="*" element={<Error />} />
