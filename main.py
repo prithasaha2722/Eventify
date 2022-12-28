@@ -58,6 +58,23 @@ def organizer_data():
     return render_template('Organizer.html')
 
 
+@app.route("/participant", methods=["GET", "POST"])
+def participant_registration():
+    if request.method=="POST":
+        id = request.json['id']
+        email = request.json['email']
+        name = request.json['name']
+        phone = request.json['phone']
+        walletaddress = request.json['walletaddress']
+        address = request.json['address']
+        registration = ParticipantsRegistration( id=id, email=email, name=name, phone=phone, walletaddress=walletaddress, address=address)
+        with app.app_context():
+            db.session.add(registration)
+            db.session.commit()
+    return render_template('PartiReg.html')
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 
