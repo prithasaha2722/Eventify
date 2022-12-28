@@ -1,9 +1,8 @@
 import React from "react";
-import Features from "../../../images/Features.png";
-import Kaustav from "../../../images/Kaustav.png";
-import Soham from "../../../images/Soham.png";
-import Pritha from "../../../images/Pritha.png";
-import picbg from "../../../images/picbg.png";
+import Features from "../../../images/Eventlabs/Features.png";
+import Kaustav from "../../../images/Eventlabs/Kaustav.png";
+import Soham from "../../../images/Eventlabs/Soham.png";
+import Pritha from "../../../images/Eventlabs/Pritha.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
 

@@ -4,10 +4,15 @@ import Bg from "../../images/Bg.jpg";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons'
 import { Navigate } from "react-router-dom";
+import { useState } from "react";
 
 const Img = () => {
+  const [eventLabs , setEventLabs] = useState(false)
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [0.2, 4]);
+  if(eventLabs){
+    return <Navigate to='/eventLabs' />
+  }
   return (
     <div
       className=" bg-black relative w-screen overflow-hidden flex items-center justify-center "
@@ -36,8 +41,8 @@ const Img = () => {
               <motion.button className="shadow-2xl h-[100px] w-[116px] rounded-md flex flex-col items-start justify-center text-xl font-medium p-2 bg-white" whileHover={{top:'-50px'}}>
                 <span className="text-[#000000] font-thin">For</span><span className="w-full">Organiser</span><span className="text-[0.5rem] underline">explore <FontAwesomeIcon icon={faArrowRight}/></span>
               </motion.button>
-              <motion.button onClick={()=> <Navigate to='/eventLabs'/>} className="shadow-2xl h-[100px] w-[116px] rounded-md flex flex-col items-start justify-center text-xl font-medium p-2 bg-white" whileHover={{top: '49%'}}>
-                <span className="text-[#000000] font-thin">For</span><span className="w-full">Participant</span><span className="text-[0.5rem] underline">explore <FontAwesomeIcon icon={faArrowRight}/></span>
+              <motion.button onClick={()=> setEventLabs(true) } className="shadow-2xl h-[100px] w-[116px] rounded-md flex flex-col items-start justify-center text-xl font-medium p-2 bg-white" whileHover={{top: '49%'}}>
+                <span className="text-[#000000] font-thin">For</span><span className="w-full">EventLabs</span><span className="text-[0.5rem] underline">explore <FontAwesomeIcon icon={faArrowRight}/></span>
               </motion.button>
             </div>
           </motion.div>
