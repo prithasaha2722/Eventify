@@ -2,7 +2,7 @@ import React from "react";
 import Bg from "./Bg";
 import Tabs from "./Tabs";
 
-const Home = () => {
+const Details = () => {
   return (
     <div className="bg-black w-screen h-screen overflow-x-hidden">
       <Bg />
@@ -11,4 +11,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Details;

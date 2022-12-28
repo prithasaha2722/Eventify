@@ -1,5 +1,5 @@
 import React from 'react'
-import image from '../../../images/Eventlabs.png'
+import image from '../../../images/Details.png'
 import Logo from '../../../images/Logo.png'
 
 const Bg = () => {
