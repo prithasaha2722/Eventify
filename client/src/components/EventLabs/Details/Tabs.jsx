@@ -59,7 +59,7 @@ const Tabs = () => {
           </div>
           <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#ED5580]">Send Tickets</button>
         </div>
-        <div className="w-[14%] mr-[100px]">
+        <div className="w-[14%] mr-[300px]">
           <img src={tickets} alt="tickets" className="w-full h-full" />
         </div>
       </BoxWrapper>
@@ -93,7 +93,7 @@ const Tabs = () => {
           </div>
           <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#F36A8D]">Send Certificates</button>
         </div>
-        <div className="w-[14%] mr-[100px]">
+        <div className="w-[14%] mr-[300px]">
           <img src={certificate} alt="certificate" className="w-full h-full" />
         </div>
       </BoxWrapper>
