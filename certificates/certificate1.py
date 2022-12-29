@@ -40,7 +40,7 @@ if __name__ == "__main__":
     #date = "28.12.2022"
     #venue = "Taal Kutir Convention"
     field = "Robotics"
-    gender = "her"
+    gender = "his/her"
     desig = "Principal"
     design = "Student Head"
     n1 = "Mitra Basu"
