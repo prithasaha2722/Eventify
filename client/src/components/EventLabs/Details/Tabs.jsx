@@ -8,7 +8,9 @@ import Soham from "../../../images/Eventlabs/Soham.png";
 import Pritha from "../../../images/Eventlabs/Pritha.png";
 import picbg from "../../../images/Eventlabs/picbg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faXmark} from '@fortawesome/free-solid-svg-icons'
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
+import {motion} from 'framer-motion'
 
 const BoxWrapper = (props) => {
   return (
@@ -23,6 +25,27 @@ const BoxWrapper = (props) => {
     >
       {props.children}
     </div>
+  );
+};
+
+const QModal = (props) => {
+  
+  return (
+      <div className={classes.modalBackground} onClick={closeModal}>
+          <motion.div
+              initial={{ x: open ? "35vw" : "0vw" }}
+              onClick={(e) => e.stopPropagation()}
+              animate={{ x: open ? "0vw" : "35vw" }}
+              transition={{ duration: 0.7 }}
+              className={classes.modal}
+              id="mainModal"
+          >
+              <div className={classes.closeModal}>
+                  <FontAwesomeIcon icon={faXmark} onClick={closeModal} />
+              </div>
+              {props.children}
+          </motion.div>
+      </div>
   );
 };
 
@@ -59,7 +82,7 @@ const Tabs = () => {
           </div>
           <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#ED5580]">Send Tickets</button>
         </div>
-        <div className="w-[14%] mr-[100px]">
+        <div className="w-[14%] mr-[300px]">
           <img src={tickets} alt="tickets" className="w-full h-full" />
         </div>
       </BoxWrapper>
@@ -92,8 +115,11 @@ const Tabs = () => {
             necessities in a single console. They often include the following:
           </div>
           <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#F36A8D]">Send Certificates</button>
+          <QModal>
+            ABCD
+          </QModal>
         </div>
-        <div className="w-[14%] mr-[100px]">
+        <div className="w-[14%] mr-[300px]">
           <img src={certificate} alt="certificate" className="w-full h-full" />
         </div>
       </BoxWrapper>
