@@ -49,13 +49,13 @@
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify({'participant':{
+            body: JSON.stringify({'participant':[{
                 email: email,
                 phone: phone,
                 name: name,
                 walletaddress: walletaddress,
                 address: address,
-            }}),
+            }]}),
         });
 
         // console.log({'participant':{
