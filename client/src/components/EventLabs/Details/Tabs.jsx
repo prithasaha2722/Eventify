@@ -29,33 +29,6 @@ const BoxWrapper = (props) => {
   );
 };
 
-const QModal = (props) => {
-  const dispatch = useDispatch();
-  const open = useSelector((state) => state.modal.certificateModal);
-  const closeModal = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    dispatch(modalActions.props.func());
-  };
-  return (
-    <div className='h-screen w-screen absolute flex items-center justify-center z-20  bottom-0 left-0 bg-[#00000050]' onClick={closeModal}>
-      <motion.div
-        initial={{ x: open ? "35vw" : "0vw" }}
-        onClick={(e) => e.stopPropagation()}
-        animate={{ x: open ? "0vw" : "35vw" }}
-        transition={{ duration: 0.7 }}
-        className='w-[35vw] h-[60vh] bg-white pl-5 z-40 overflow-x-hidden overflow-y-auto rounded-md'
-        id="mainModal"
-      >
-        <div className='sticky text-4xl mt-5 mb-3 text-[#3c4852]'>
-          <FontAwesomeIcon icon={faXmark} onClick={closeModal} />
-        </div>
-        {props.children}
-      </motion.div>
-    </div>
-  );
-};
-
 const Tabs = () => {
   const dispatch = useDispatch();
   const openCert = useSelector((state) => state.modal.certificateModal);
@@ -82,7 +55,6 @@ const Tabs = () => {
           <button onClick={openRegister} className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#00A8A8]">
             Register Your Event
           </button>
-          {openReg && <QModal func="closeregisterModal">ABCD</QModal>}
         </div>
         <div className="w-[23%]">
           <img
@@ -145,7 +117,6 @@ const Tabs = () => {
           <button onClick={openCertify} className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#F36A8D]">
             Send Certificates
           </button>
-          {openCert && <QModal func={'closecertiModal'}>ABCD</QModal>}
         </div>
         <div className="w-[14%] mr-[300px]">
           <img src={certificate} alt="certificate" className="w-full h-full" />
