@@ -16,7 +16,7 @@ import { modalActions } from "../../../Store";
 const BoxWrapper = (props) => {
   return (
     <div
-      className="w-screen h-screen flex items-center m-auto justify-center text-black"
+      className="w-screen h-screen flex items-center m-auto justify-center relative text-black"
       style={{
         flexDirection: props.direction,
         backgroundColor: props.bgcolor ? props.bgcolor : "white",
@@ -35,10 +35,10 @@ const QModal = (props) => {
   const closeModal = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(modalActions.closecertiModal());
+    dispatch(modalActions.props.func());
   };
   return (
-    <div className='h-screen w-screen absolute flex items-center justify-center z-20  top-0 left-0 bg-[#00000050]' onClick={closeModal}>
+    <div className='h-screen w-screen absolute flex items-center justify-center z-20  bottom-0 left-0 bg-[#00000050]' onClick={closeModal}>
       <motion.div
         initial={{ x: open ? "35vw" : "0vw" }}
         onClick={(e) => e.stopPropagation()}
@@ -58,9 +58,16 @@ const QModal = (props) => {
 
 const Tabs = () => {
   const dispatch = useDispatch();
-  const open = useSelector((state) => state.modal.certificateModal);
+  const openCert = useSelector((state) => state.modal.certificateModal);
+  const openReg = useSelector((state) => state.modal.registerModal);
+  const openCertify = () => {
+    dispatch(modalActions.opencertiModal())
+  }
+  const openRegister = () => {
+    dispatch(modalActions.openregisterModal())
+  }
   return (
-    <div className="w-screen h-auto relative">
+    <div className="w-screen h-fit relative" style={{overflowY: openCert || openReg ? 'hidden' : ''}}>
       <BoxWrapper direction="row">
         <div className="w-[51%] flex flex-col justify-end">
           <h2 className="font-bold text-7xl">
@@ -72,9 +79,10 @@ const Tabs = () => {
             solutions that can house them along with other event management
             necessities in a single console. They often include the following:
           </div>
-          <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#00A8A8]">
+          <button onClick={openRegister} className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#00A8A8]">
             Register Your Event
           </button>
+          {openReg && <QModal func="closeregisterModal">ABCD</QModal>}
         </div>
         <div className="w-[23%]">
           <img
@@ -117,6 +125,7 @@ const Tabs = () => {
           <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#79994C]">
             Send Check In Mail
           </button>
+          
         </div>
         <div className="w-[14%] mr-[100px]">
           <img src={checkIn} alt="checkIn" className="w-full h-full" />
@@ -133,10 +142,10 @@ const Tabs = () => {
             solutions that can house them along with other event management
             necessities in a single console. They often include the following:
           </div>
-          <button onClick={()=>dispatch(modalActions.opencertiModal())} className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#F36A8D]">
+          <button onClick={openCertify} className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#F36A8D]">
             Send Certificates
           </button>
-          {open && <QModal>ABCD</QModal>}
+          {openCert && <QModal func={'closecertiModal'}>ABCD</QModal>}
         </div>
         <div className="w-[14%] mr-[300px]">
           <img src={certificate} alt="certificate" className="w-full h-full" />
