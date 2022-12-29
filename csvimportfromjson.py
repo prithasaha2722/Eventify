@@ -3,9 +3,13 @@ import csv
 import sqlite3
 
 def JSONtoCSV(anythinginJson):
-    obj= pd.read_json(anythinginJson, orient='records')
-    obj.index+=1
-    obj.to_csv("participantList.csv")
+    participants= anythinginJson['participant']
+    with open('csvimportfromjson.py', 'a') as f:
+        fieldnames=participants[0].keys()
+        writer= csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for attendee in participants:
+            writer.writerow(attendee)
 
 def emailListGenerator():
     connection= sqlite3.connect("instance/eventlabs.db")
