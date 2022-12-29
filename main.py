@@ -62,7 +62,6 @@ def organizer_data():
         with app.app_context():
             db.session.add(organizer)
             db.session.commit()
-        emailListGenerator()
     return render_template('Organizer.html')
 
 
@@ -96,13 +95,6 @@ def participant_registration():
             db.session.commit()
     return render_template('PartiReg.html')
 
-
-@app.route("/participantsallinone", methods=["GET", "POST"])
-def participant_data_to_csv():
-    if request.method == 'POST':
-        participant = request.json['participant']
-        print("csv uploaded successfully")
-    return render_template('PartiReg.html')
 
 @app.route("/checkin", methods=["GET", "POST"])
 def checkin():
