@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h2 style="text-align: center">Form</h2>
     <div>
       <div class="mb-3">
@@ -15,7 +15,7 @@
       </div>
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input type="text" name="" id="name"  />
+        <input type="text" name="" id="name" />
       </div>
       <div class="mb-3">
         <label for="phone" class="form-label">Phone</label>
@@ -23,70 +23,116 @@
       </div>
       <div class="mb-3">
         <label for="walletaddress" class="form-label">Wallet Address</label>
-        <input type="text" name=""  id="walletaddress" required />
+        <input type="text" name="" id="walletaddress" required />
       </div>
       <div class="mb-3">
         <label for="address" class="form-label">Address</label>
-        <textarea name="" id="address" rows="3" required ></textarea>
+        <textarea name="" id="address" rows="3" required></textarea>
       </div>
-    <button id="button2">Submit</button>
+      <div class="mb-3">
+        <label for="Q1" class="form-label">Q1</label>
+        <input type="text" name="" id="Q1" />
+      </div>
+      <div class="mb-3">
+        <label for="Q2" class="form-label">Q2</label>
+        <input type="text" name="" id="Q2" />
+      </div>
+      <div class="mb-3">
+        <label for="Q3" class="form-label">Q3</label>
+        <input type="text" name="" id="Q3" />
+      </div>
+      <div class="mb-3">
+        <label for="Q4" class="form-label">Q4</label>
+        <input type="text" name="" id="Q4" />
+      </div>
+      <div class="mb-3">
+        <label for="Q5" class="form-label">Q5</label>
+        <input type="text" name="" id="Q5" />
+      </div>
+      <div class="mb-3">
+        <label for="Q6" class="form-label">Q6</label>
+        <input type="text" name="" id="Q6" />
+      </div>
+      <div class="mb-3">
+        <label for="Q7" class="form-label">Q7</label>
+        <input type="text" name="" id="Q7" />
+      </div>
+      <div class="mb-3">
+        <label for="Q8" class="form-label">Q8</label>
+        <input type="text" name="" id="Q8" />
+      </div>
+      <div class="mb-3">
+        <label for="Q9" class="form-label">Q9</label>
+        <input type="text" name="" id="Q9" />
+      </div>
+      <div class="mb-3">
+        <label for="Q10" class="form-label">Q10</label>
+        <input type="text" name="" id="Q10" />
+      <button id="button2">Submit</button>
     </div>
-</body>
-<script>
+  </body>
+  <script>
     const button2 = document.getElementById("button2");
     button2.onclick = function () {
-        sendData();
+      sendData();
     };
     const sendData = async () => {
-        const email = document.getElementById("email").value;
-        const name = document.getElementById("name").value;
-        const phone = document.getElementById("phone").value;
-        const walletaddress = document.getElementById("walletaddress").value;
-        const address = document.getElementById("address").value;
+      const email = document.getElementById("email").value;
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const walletaddress = document.getElementById("walletaddress").value;
+      const address = document.getElementById("address").value;
+      const Q1 = document.getElementById("Q1").value;
+      const Q2 = document.getElementById("Q2").value;
+      const Q3 = document.getElementById("Q3").value;
+      const Q4 = document.getElementById("Q4").value;
+      const Q5 = document.getElementById("Q5").value;
+      const Q6 = document.getElementById("Q6").value;
+      const Q7 = document.getElementById("Q7").value;
+      const Q8 = document.getElementById("Q8").value;
+      const Q9 = document.getElementById("Q9").value;
+      const Q10 = document.getElementById("Q10").value;
 
-        const Response = await fetch("/participantsallinone", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({'participant':[{
-                email: email,
-                phone: phone,
-                name: name,
-                walletaddress: walletaddress,
-                address: address,
-            }]}),
-        });
-
-        // console.log({'participant':{
-        //         email: email,
-        //         phone: phone,
-        //         name: name,
-        //         walletaddress: walletaddress,
-        //         address: address,
-        //     }})
-        const Data = Response.json();
-
-        const Response2 = await fetch("/participant", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({
-                email: email,
-                phone: phone,
-                name: name,
-                walletaddress: walletaddress,
-                address: address,
-            }),
-        });
-        console.log({
-                email: email,
-                phone: phone,
-                name: name,
-                walletaddress: walletaddress,
-                address: address,
-            })
+      const Response2 = await fetch("/participant", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          phone: phone,
+          name: name,
+          walletaddress: walletaddress,
+          address: address,
+          Q1: Q1,
+          Q2: Q2,
+          Q3: Q3,
+          Q4: Q4,
+          Q5: Q5,
+          Q6: Q6,
+          Q7: Q7,
+          Q8: Q8,
+          Q9: Q9,
+          Q10: Q10,
+        }),
+      });
+      console.log({
+        email: email,
+        phone: phone,
+        name: name,
+        walletaddress: walletaddress,
+        address: address,
+        Q1: Q1,
+        Q2: Q2,
+        Q3: Q3,
+        Q4: Q4,
+        Q5: Q5,
+        Q6: Q6,
+        Q7: Q7,
+        Q8: Q8,
+        Q9: Q9,
+        Q10: Q10,
+      });
     };
-</script>
+  </script>
 </html>
