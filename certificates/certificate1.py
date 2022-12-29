@@ -5,7 +5,7 @@ FONT_COLOR = "#000000"
 t1 = Image.open('cert/cert1.png')
 WIDTH, HEIGHT = t1.size
 #def make_certificates(name,event,date,venue):
-def make_certificates(name,gender,field,desig,design,n1,n2):
+def make_certificates1(name,gender,field,desig,design,n1,n2):
     image_source = Image.open('cert/cert1.png')
     draw = ImageDraw.Draw(image_source)
     name_width, name_height = draw.textsize(name)
@@ -47,5 +47,5 @@ if __name__ == "__main__":
     n2 = "P. K. Dan"
     for name in names:
         #make_certificates(name,event,date,venue)
-        make_certificates(name,gender,field,desig,design,n1,n2)
+        make_certificates1(name,gender,field,desig,design,n1,n2)
     print(len(names), "certificates done.")
