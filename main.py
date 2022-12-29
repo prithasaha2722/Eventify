@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import random
 import csv
+from certificates import certificate1, certificate2, certificate3
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///eventlabs.db"
@@ -94,6 +95,17 @@ def participant_registration():
             db.session.add(registration)
             db.session.commit()
     return render_template('PartiReg.html')
+
+@app.route("/certificates", methods=["GET", "POST"])
+def certificate_gen():
+    if request.method == 'POST':
+        option_for_certificates=request.json['selected']
+        if(option_for_certificates=="1"):
+            certificate1.make_certificates1()
+        elif(option_for_certificates=="2"):
+            certificate2.make_certificates2()
+        elif(option_for_certificates=="3"):
+            certificate3.make_certificates3()
 
 
 @app.route("/checkin", methods=["GET", "POST"])
