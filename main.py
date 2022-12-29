@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import random
-from csvimportfromjson import JSONtoCSV, mailList
+from csvimportfromjson import JSONtoCSV, emailListGenerator
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///eventlabs.db"
@@ -62,6 +62,7 @@ def organizer_data():
         with app.app_context():
             db.session.add(organizer)
             db.session.commit()
+        emailListGenerator()
     return render_template('Organizer.html')
 
 
@@ -76,8 +77,6 @@ def participant_registration():
         registration = ParticipantsRegistration( email=email, name=name, phone=phone, walletaddress=walletaddress, address=address)
         with app.app_context():
             db.session.add(registration)
-            mails= ParticipantsRegistration.query.order_by(ParticipantsRegistration.email).all()
-            mailList(mails)
             db.session.commit()
     return render_template('PartiReg.html')
 
