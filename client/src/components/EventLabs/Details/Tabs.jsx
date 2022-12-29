@@ -8,19 +8,20 @@ import Soham from "../../../images/Eventlabs/Soham.png";
 import Pritha from "../../../images/Eventlabs/Pritha.png";
 import picbg from "../../../images/Eventlabs/picbg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faXmark} from '@fortawesome/free-solid-svg-icons'
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
-import {motion} from 'framer-motion'
-
+import { motion } from "framer-motion";
+import {useDispatch, useSelector} from 'react-redux'
+import { modalActions } from "../../../Store";
 const BoxWrapper = (props) => {
   return (
     <div
       className="w-screen h-screen flex items-center m-auto justify-center text-black"
       style={{
         flexDirection: props.direction,
-        backgroundColor: props.bgcolor ? props.bgcolor : 'white',
-        height : props.height ?  props.height : 'auto',
-        padding: props.height ? 'auto' : '15vh 0px 15vh 0px'
+        backgroundColor: props.bgcolor ? props.bgcolor : "white",
+        height: props.height ? props.height : "auto",
+        padding: props.height ? "auto" : "15vh 0px 15vh 0px",
       }}
     >
       {props.children}
@@ -29,27 +30,35 @@ const BoxWrapper = (props) => {
 };
 
 const QModal = (props) => {
-  
+  const dispatch = useDispatch();
+  const open = useSelector((state) => state.modal.certificateModal);
+  const closeModal = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(modalActions.closecertiModal());
+  };
   return (
-      <div className={classes.modalBackground} onClick={closeModal}>
-          <motion.div
-              initial={{ x: open ? "35vw" : "0vw" }}
-              onClick={(e) => e.stopPropagation()}
-              animate={{ x: open ? "0vw" : "35vw" }}
-              transition={{ duration: 0.7 }}
-              className={classes.modal}
-              id="mainModal"
-          >
-              <div className={classes.closeModal}>
-                  <FontAwesomeIcon icon={faXmark} onClick={closeModal} />
-              </div>
-              {props.children}
-          </motion.div>
-      </div>
+    <div className='h-screen w-screen absolute flex items-center justify-center z-20  top-0 left-0 bg-[#00000050]' onClick={closeModal}>
+      <motion.div
+        initial={{ x: open ? "35vw" : "0vw" }}
+        onClick={(e) => e.stopPropagation()}
+        animate={{ x: open ? "0vw" : "35vw" }}
+        transition={{ duration: 0.7 }}
+        className='w-[35vw] h-[60vh] bg-white pl-5 z-40 overflow-x-hidden overflow-y-auto rounded-md'
+        id="mainModal"
+      >
+        <div className='sticky text-4xl mt-5 mb-3 text-[#3c4852]'>
+          <FontAwesomeIcon icon={faXmark} onClick={closeModal} />
+        </div>
+        {props.children}
+      </motion.div>
+    </div>
   );
 };
 
 const Tabs = () => {
+  const dispatch = useDispatch();
+  const open = useSelector((state) => state.modal.certificateModal);
   return (
     <div className="w-screen h-auto relative">
       <BoxWrapper direction="row">
@@ -63,10 +72,16 @@ const Tabs = () => {
             solutions that can house them along with other event management
             necessities in a single console. They often include the following:
           </div>
-          <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#00A8A8]">Register Your Event</button>
+          <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#00A8A8]">
+            Register Your Event
+          </button>
         </div>
         <div className="w-[23%]">
-          <img src={Registration} alt="Registration" className="w-full h-full" />
+          <img
+            src={Registration}
+            alt="Registration"
+            className="w-full h-full"
+          />
         </div>
       </BoxWrapper>
       <BoxWrapper direction="row-reverse">
@@ -80,7 +95,9 @@ const Tabs = () => {
             solutions that can house them along with other event management
             necessities in a single console. They often include the following:
           </div>
-          <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#ED5580]">Send Tickets</button>
+          <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#ED5580]">
+            Send Tickets
+          </button>
         </div>
         <div className="w-[14%] mr-[300px]">
           <img src={tickets} alt="tickets" className="w-full h-full" />
@@ -97,7 +114,9 @@ const Tabs = () => {
             solutions that can house them along with other event management
             necessities in a single console. They often include the following:
           </div>
-          <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#79994C]">Send Check In Mail</button>
+          <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#79994C]">
+            Send Check In Mail
+          </button>
         </div>
         <div className="w-[14%] mr-[100px]">
           <img src={checkIn} alt="checkIn" className="w-full h-full" />
@@ -114,10 +133,10 @@ const Tabs = () => {
             solutions that can house them along with other event management
             necessities in a single console. They often include the following:
           </div>
-          <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#F36A8D]">Send Certificates</button>
-          <QModal>
-            ABCD
-          </QModal>
+          <button onClick={()=>dispatch(modalActions.opencertiModal())} className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#F36A8D]">
+            Send Certificates
+          </button>
+          {open && <QModal>ABCD</QModal>}
         </div>
         <div className="w-[14%] mr-[300px]">
           <img src={certificate} alt="certificate" className="w-full h-full" />
