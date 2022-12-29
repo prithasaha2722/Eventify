@@ -26,7 +26,7 @@ def make_tickets3(name,event,date,org,venue,email,phone,time):
 if __name__ == "__main__":
     names = ["Soham Chakraborty", "Kaustav Giri", "Pritha Saha","Ujjaini Ray"]
     event = "Metathon"
-    date = "28.12.2022"
+    date = "29.12.2022"
     venue = "Taal Kutir Convention"
     org = "Student Developers Student Clubs"
     phone = "9800910906"
