@@ -4,7 +4,7 @@ from PIL import Image,ImageDraw,ImageFont
 FONT_COLOR = "#000000"
 t1 = Image.open('cert/cert2.png')
 WIDTH, HEIGHT = t1.size
-def make_certificates(name,event,date,venue,desig,design,n1,n2):
+def make_certificates2(name,event,date,venue,desig,design,n1,n2):
     image_source = Image.open('cert/cert2.png')
     draw = ImageDraw.Draw(image_source)
     name_width, name_height = draw.textsize(name)
@@ -39,5 +39,5 @@ if __name__ == "__main__":
     n1 = "Mitra Basu"
     n2 = "P. K. Dan"
     for name in names:
-        make_certificates(name,event,date,venue,desig,design,n1,n2)
+        make_certificates2(name,event,date,venue,desig,design,n1,n2)
     print(len(names), "certificates done.")
