@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import random
-from csvimportfromjson import JSONtoCSV, emailListGenerator
+from csvimportfromjson import emailListGenerator
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///eventlabs.db"
@@ -85,7 +85,6 @@ def participant_registration():
 def participant_data_to_csv():
     if request.method == 'POST':
         participant = request.json['participant']
-        JSONtoCSV(participant)
         print("csv uploaded successfully")
     return render_template('PartiReg.html')
 
