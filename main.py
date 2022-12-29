@@ -101,7 +101,7 @@ def certificate_gen():
     if request.method == 'POST':
         option_for_certificates=request.json['selected']
         if(option_for_certificates=="1"):
-            certificate1.make_certificates1()
+            certificate1.make_certificates1(parameters)
         elif(option_for_certificates=="2"):
             certificate2.make_certificates2()
         elif(option_for_certificates=="3"):
