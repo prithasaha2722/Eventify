@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import random
-from csvimportfromjson import emailListGenerator
+import csv
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///eventlabs.db"
@@ -62,7 +62,6 @@ def organizer_data():
         with app.app_context():
             db.session.add(organizer)
             db.session.commit()
-        emailListGenerator()
     return render_template('Organizer.html')
 
 
@@ -74,19 +73,28 @@ def participant_registration():
         phone = request.json['phone']
         walletaddress = request.json['walletaddress']
         address = request.json['address']
+        Q1=request.json['Q1']
+        Q2 = request.json['Q2']
+        Q3 = request.json['Q3']
+        Q4 = request.json['Q4']
+        Q5 = request.json['Q5']
+        Q6 = request.json['Q6']
+        Q7 = request.json['Q7']
+        Q8 = request.json['Q8']
+        Q9 = request.json['Q9']
+        Q10 = request.json['Q10']
+        with open('participantList.csv', 'a', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([email, name])
+        with open('participantList.csv', 'a', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([email, name, phone, walletaddress, address, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10])
         registration = ParticipantsRegistration( email=email, name=name, phone=phone, walletaddress=walletaddress, address=address)
         with app.app_context():
             db.session.add(registration)
             db.session.commit()
     return render_template('PartiReg.html')
 
-
-@app.route("/participantsallinone", methods=["GET", "POST"])
-def participant_data_to_csv():
-    if request.method == 'POST':
-        participant = request.json['participant']
-        print("csv uploaded successfully")
-    return render_template('PartiReg.html')
 
 @app.route("/checkin", methods=["GET", "POST"])
 def checkin():
