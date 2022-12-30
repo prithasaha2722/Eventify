@@ -1,18 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Registration from "../../../images/Eventlabs/Registration1.png";
 import tickets from "../../../images/Eventlabs/tickets.png";
 import checkIn from "../../../images/Eventlabs/checkIn.png";
 import certificate from "../../../images/Eventlabs/certificate.png";
-import Kaustav from "../../../images/Eventlabs/Kaustav.png";
-import Soham from "../../../images/Eventlabs/Soham.png";
-import Pritha from "../../../images/Eventlabs/Pritha.png";
-import picbg from "../../../images/Eventlabs/picbg.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
-import { motion } from "framer-motion";
-import {useDispatch, useSelector} from 'react-redux'
-import { modalActions } from "../../../Store";
+import { Navigate } from "react-router-dom";
 const BoxWrapper = (props) => {
   return (
     <div
@@ -30,99 +21,118 @@ const BoxWrapper = (props) => {
 };
 
 const Tabs = () => {
-  const dispatch = useDispatch();
-  const openCert = useSelector((state) => state.modal.certificateModal);
-  const openReg = useSelector((state) => state.modal.registerModal);
-  const openCertify = () => {
-    dispatch(modalActions.opencertiModal())
-  }
-  const openRegister = () => {
-    dispatch(modalActions.openregisterModal())
-  }
-  return (
-    <div className="w-screen h-fit relative" style={{overflowY: openCert || openReg ? 'hidden' : ''}}>
-      <BoxWrapper direction="row">
-        <div className="w-[51%] flex flex-col justify-end">
-          <h2 className="font-bold text-7xl">
-            Breaking down event management software into essentials
-          </h2>
-          <div className="text-3xl mt-10 w-3/4">
-            Often, ticketing and registration software are mistaken for event
-            management software. However, modern EMS tools are holistic
-            solutions that can house them along with other event management
-            necessities in a single console. They often include the following:
+  const [register, setRegister] = useState(false);
+  const [tick, setTickets] = useState(false);
+  const [checkin, setCheckIn] = useState(false);
+  const [certi, setCerti] = useState(false);
+  if (register) {
+    return <Navigate to="/eventLabs/registerEvent" />;
+  } else if (tick) {
+    return <Navigate to="/eventLabs/ticketsTemplate" />;
+  } else if (checkin) {
+    return <Navigate to="/eventLabs/registerEvent" />;
+  } else if (certi) {
+    return <Navigate to="/eventLabs/certificateTemplate" />;
+  } else {
+    return (
+      <div className="w-screen h-fit relative">
+        <BoxWrapper direction="row">
+          <div className="w-[51%] flex flex-col justify-end">
+            <h2 className="font-bold text-7xl">
+              Breaking down event management software into essentials
+            </h2>
+            <div className="text-3xl mt-10 w-3/4">
+              Often, ticketing and registration software are mistaken for event
+              management software. However, modern EMS tools are holistic
+              solutions that can house them along with other event management
+              necessities in a single console. They often include the following:
+            </div>
+            <button
+              onClick={() => setRegister(true)}
+              className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#00A8A8]"
+            >
+              Register Your Event
+            </button>
           </div>
-          <button onClick={openRegister} className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#00A8A8]">
-            Register Your Event
-          </button>
-        </div>
-        <div className="w-[23%]">
-          <img
-            src={Registration}
-            alt="Registration"
-            className="w-full h-full"
-          />
-        </div>
-      </BoxWrapper>
-      <BoxWrapper direction="row-reverse">
-        <div className="w-[51%] flex flex-col justify-end">
-          <h2 className="font-bold text-7xl">
-            Breaking down event management software into essentials
-          </h2>
-          <div className="text-3xl mt-10 w-3/4">
-            Often, ticketing and registration software are mistaken for event
-            management software. However, modern EMS tools are holistic
-            solutions that can house them along with other event management
-            necessities in a single console. They often include the following:
+          <div className="w-[23%]">
+            <img
+              src={Registration}
+              alt="Registration"
+              className="w-full h-full"
+            />
           </div>
-          <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#ED5580]">
-            Send Tickets
-          </button>
-        </div>
-        <div className="w-[14%] mr-[300px]">
-          <img src={tickets} alt="tickets" className="w-full h-full" />
-        </div>
-      </BoxWrapper>
-      <BoxWrapper direction="row">
-        <div className="w-[51%] flex flex-col justify-end">
-          <h2 className="font-bold text-7xl">
-            Breaking down event management software into essentials
-          </h2>
-          <div className="text-3xl mt-10 w-3/4">
-            Often, ticketing and registration software are mistaken for event
-            management software. However, modern EMS tools are holistic
-            solutions that can house them along with other event management
-            necessities in a single console. They often include the following:
+        </BoxWrapper>
+        <BoxWrapper direction="row-reverse">
+          <div className="w-[51%] flex flex-col justify-end">
+            <h2 className="font-bold text-7xl">
+              Breaking down event management software into essentials
+            </h2>
+            <div className="text-3xl mt-10 w-3/4">
+              Often, ticketing and registration software are mistaken for event
+              management software. However, modern EMS tools are holistic
+              solutions that can house them along with other event management
+              necessities in a single console. They often include the following:
+            </div>
+            <button
+              onClick={() => setTickets(true)}
+              className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#ED5580]"
+            >
+              Send Tickets
+            </button>
           </div>
-          <button className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#79994C]">
-            Send Check In Mail
-          </button>
-          
-        </div>
-        <div className="w-[14%] mr-[100px]">
-          <img src={checkIn} alt="checkIn" className="w-full h-full" />
-        </div>
-      </BoxWrapper>
-      <BoxWrapper direction="row-reverse">
-        <div className="w-[51%] flex flex-col justify-end">
-          <h2 className="font-bold text-7xl">
-            Breaking down event management software into essentials
-          </h2>
-          <div className="text-3xl mt-10 w-3/4">
-            Often, ticketing and registration software are mistaken for event
-            management software. However, modern EMS tools are holistic
-            solutions that can house them along with other event management
-            necessities in a single console. They often include the following:
+          <div className="w-[14%] mr-[300px]">
+            <img src={tickets} alt="tickets" className="w-full h-full" />
           </div>
-          <button onClick={openCertify} className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#F36A8D]">
-            Send Certificates
-          </button>
-        </div>
-        <div className="w-[14%] mr-[300px]">
-          <img src={certificate} alt="certificate" className="w-full h-full" />
-        </div>
-      </BoxWrapper>
-      {/* <BoxWrapper height='100vh' direction="row-reverse" bgcolor="black">
+        </BoxWrapper>
+        <BoxWrapper direction="row">
+          <div className="w-[51%] flex flex-col justify-end">
+            <h2 className="font-bold text-7xl">
+              Breaking down event management software into essentials
+            </h2>
+            <div className="text-3xl mt-10 w-3/4">
+              Often, ticketing and registration software are mistaken for event
+              management software. However, modern EMS tools are holistic
+              solutions that can house them along with other event management
+              necessities in a single console. They often include the following:
+            </div>
+            <button
+              onClick={() => setCheckIn(true)}
+              className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#79994C]"
+            >
+              Send Check In Mail
+            </button>
+          </div>
+          <div className="w-[14%] mr-[100px]">
+            <img src={checkIn} alt="checkIn" className="w-full h-full" />
+          </div>
+        </BoxWrapper>
+        <BoxWrapper direction="row-reverse">
+          <div className="w-[51%] flex flex-col justify-end">
+            <h2 className="font-bold text-7xl">
+              Breaking down event management software into essentials
+            </h2>
+            <div className="text-3xl mt-10 w-3/4">
+              Often, ticketing and registration software are mistaken for event
+              management software. However, modern EMS tools are holistic
+              solutions that can house them along with other event management
+              necessities in a single console. They often include the following:
+            </div>
+            <button
+              onClick={() => setCerti(true)}
+              className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#F36A8D]"
+            >
+              Send Certificates
+            </button>
+          </div>
+          <div className="w-[14%] mr-[300px]">
+            <img
+              src={certificate}
+              alt="certificate"
+              className="w-full h-full"
+            />
+          </div>
+        </BoxWrapper>
+        {/* <BoxWrapper height='100vh' direction="row-reverse" bgcolor="black">
         <div className="flex flex-wrap justify-around w-[90%] text-right">
           <div className="w-1/5 relative p-5 backdrop-blur-md bg-[#3B3E44] rounded-xl">
             <img
@@ -203,12 +213,15 @@ const Tabs = () => {
           </div>
         </div>
       </BoxWrapper> */}
-      <div className="absolute bottom-0 w-full flex items-center bg-black p-4 justify-center text-4xl">
-        <div className="text-white text-4xl">Developed By</div>
-        <div className="text-[#ff0000] ml-4 font-medium">KoffeewithKoders</div>
+        <div className="absolute bottom-0 w-full flex items-center bg-black p-4 justify-center text-4xl">
+          <div className="text-white text-4xl">Developed By</div>
+          <div className="text-[#ff0000] ml-4 font-medium">
+            KoffeewithKoders
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Tabs;

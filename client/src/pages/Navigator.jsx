@@ -16,7 +16,6 @@ const Navigator = () => {
     <main className="overflow-x-hidden">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/bannerify" element={<Bannerify/>}/>
         <Route path="/eventLabs" element={<EventLabs />} />
         <Route path="/eventLabs/details" element={<Details />} />
         <Route path="/eventLabs/certificateTemplate" element={<CertificateTemplate />} />
