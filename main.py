@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import random
 import csv
 from certificates import certificate1, certificate2, certificate3, cert
-
+from mailing import  registration_mail, certificate_mail, ticket_mail, checkin_mail
 
 eventdetails=[]
 #eventdetails = [eventid, eventname, orgname, orgweb, venue, startdate, enddate, logo, signature]
@@ -162,6 +162,31 @@ def checkin():
     return render_template('CheckIn.html')
 
 ######--------------------------------Main backend Operation Ends-----------------------------------------------------------------------------------------------------------------------------------------------####
+
+#####----------------------------------Mail Sending Operations---------------------------------------------------------------------------------------------------------------------------------------------------######
+
+@app.route("/registrationmail", methods=["GET", "POST"])
+def registrationmail():
+    if request.method == 'POST':
+        registration_mail()
+
+@app.route("/ticketmail", methods=["GET", "POST"])
+def ticketmail():
+    if request.method == 'POST':
+        ticket_mail()
+
+@app.route("/checkinmail", methods=["GET", "POST"])
+def checkinmail():
+    if request.method == 'POST':
+        checkin_mail()
+
+@app.route("/certificatemail", methods=["GET", "POST"])
+def certificatemail():
+    if request.method == 'POST':
+        certificate_mail()
+
+
+#####----------------------------------Mail Sending Operations---------------------------------------------------------------------------------------------------------------------------------------------------######
 
 
 if __name__ == "__main__":
