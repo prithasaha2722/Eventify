@@ -4,6 +4,8 @@ import random
 import csv
 from certificates import certificate1, certificate2, certificate3, cert
 from mailing import  registration_mail, certificate_mail, ticket_mail, checkin_mail
+from tickets import ticket1,ticket2,ticket3
+
 
 eventdetails=[]
 #eventdetails = [eventid, eventname, orgname, orgweb, venue, startdate, enddate, logo, signature]
@@ -125,7 +127,7 @@ def participant_registration():
 @app.route("/certificates", methods=["GET", "POST"])
 def certificate_gen():
     if request.method == 'POST':
-        with open('participantList.csv', 'r') as csvfile:
+        with open('FinalAttendee.csv', 'r') as csvfile:
             rows = []
             csvreader = csv.reader(csvfile)
             for row in csvreader:
@@ -140,6 +142,26 @@ def certificate_gen():
                     certificate2.make_certificates2(name,eventname,"date","venue","desig","design","n1","n2")
                 elif(option_for_certificates=="3"):
                     certificate3.make_certificates3(name,eventname,"date","org","desig","design","n1","n2")
+
+@app.route("/tickets", methods=["GET", "POST"])
+def ticket_gen():
+    if request.method == 'POST':
+        with open('participantList.csv', 'r') as csvfile:
+            rows = []
+            csvreader = csv.reader(csvfile)
+            for row in csvreader:
+                rows.append(row)
+            for rowlist in rows:
+                name=rowlist[3]
+                eventname= rowlist[1]
+                email=rowlist[2]
+                option_for_ticket=request.json['selected']
+                if(option_for_ticket=="1"):
+                    ticket1.make_tickets1(name,eventname,eventdetails[5],eventdetails[2],eventdetails[4],email,"9999888876","17:00")
+                elif(option_for_ticket=="2"):
+                    ticket2.make_tickets2(name,eventname,eventdetails[5],eventdetails[2],eventdetails[4],email,"9999888876","17:00")
+                elif(option_for_ticket=="3"):
+                    ticket3.make_tickets3(name,eventname,eventdetails[5],eventdetails[2],eventdetails[4],email,"9999888876","17:00")
 
 
 @app.route("/checkin", methods=["GET", "POST"])
