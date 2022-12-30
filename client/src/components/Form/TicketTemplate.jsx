@@ -1,7 +1,7 @@
 import React from "react";
-import cert1 from "../../images/cert/cert1.png";
-import cert2 from "../../images/cert/cert2.png";
-import cert3 from "../../images/cert/cert3.png";
+import cert1 from "../../images/tckts/tic1.png";
+import cert2 from "../../images/tckts/tic2.png";
+import cert3 from "../../images/tckts/tic3.png";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Navigate } from 'react-router-dom'
@@ -26,7 +26,7 @@ const Option = (props) => {
     );
 };
 
-const Radio = () => {
+const TicketTemplate = () => {
     const [navigate, setNavigate] = useState(false)
     if (navigate) {
         return <Navigate to='/eventLabs/details' />
@@ -45,4 +45,4 @@ const Radio = () => {
     );
 };
 
-export default Radio;
+export default TicketTemplate;
