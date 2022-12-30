@@ -7,7 +7,7 @@
     <title>Document</title>
   </head>
   <body>
-    <h2>Certificates</h2>
+    <h2>Templates</h2>
     <label for="1">1</label>
     <input type="radio" value="1" name="certificate" id="1" />
     <label for="2">2</label>
@@ -42,7 +42,7 @@
         else if (value4.checked){
             selected = value4.value
         }
-        const Response2 = await fetch("/certificates", {
+        const Response2 = await fetch("/templates", {
             method: "POST",
             headers: {
               "content-type": "application/json",

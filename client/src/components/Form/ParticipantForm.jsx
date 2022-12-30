@@ -47,7 +47,7 @@ const ParticipantForm = () => {
       <div className="w-1/3">
         <img src={Logo} className="w-full h-full" alt="eventLabs" />
       </div>
-      <div className="w-1/2 h-screen flex flex-col overflow-y-auto">
+      <div className="w-1/2 h-screen flex flex-col overflow-y-auto scrollbar-none">
         <div className="flex flex-col p-10 my-6 bg-transparent items-center  rounded-3xl">
           <h1 className="text-5xl font-bold text-center mb-6">Event Name</h1>
           <h1 className="text-3xl font-medium text-center mb-6">
