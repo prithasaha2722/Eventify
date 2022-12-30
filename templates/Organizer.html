@@ -14,6 +14,10 @@
         <input type="text" name="" id="orgname" required />
       </div>
       <div class="mb-3">
+        <label for="eventname" class="form-label">Event Name</label>
+        <input type="text" name="" id="eventname" required />
+      </div>
+      <div class="mb-3">
         <label for="orgweb" class="form-label">Organisation website</label>
         <input type="text" name="" id="orgweb"  />
       </div>
@@ -45,11 +49,11 @@
       </div>
       <div class="mb-3">
         <label for="logo" class="form-label">Organisation Logo</label>
-        <input class="form-control" type="file" id="logo" />
+        <input class="form-control" type="text" id="logo" />
       </div>
       <div class="mb-3">
         <label for="signature" class="form-label">Authorizer Signature</label>
-        <input class="form-control" type="file" id="signature" />
+        <input class="form-control" type="text" id="signature" />
       </div>
     </div>
     <button id="button2">Submit</button>
@@ -61,6 +65,7 @@
     };
     const sendData = async () => {
         const orgname = document.getElementById("orgname").value;
+        const eventname = document.getElementById("eventname").value;
         const orgweb = document.getElementById("orgweb").value;
         const venue = document.getElementById("venue").value;
         const startdate = document.getElementById("startdate").value;
@@ -75,8 +80,23 @@
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify({'organiser':{
+            body: JSON.stringify({
                 orgname: orgname,
+                eventname: eventname,
+                orgweb: orgweb,
+                venue: venue,
+                startdate: startdate,
+                starttime: starttime,
+                enddate: enddate,
+                endtime: endtime,
+                numberofattendee: numberofattendee,
+                logo: logo,
+                signature: signature
+            }),
+        });
+        console.log({'organiser':{
+                orgname: orgname,
+                eventname: eventname,
                 orgweb: orgweb,
                 venue: venue,
                 startdate: startdate,
@@ -85,9 +105,7 @@
                 endtime: endtime,
                 logo: logo,
                 signature: signature
-            }}),
-        });
-        const Data = Response.json();
+            }})
     };
 </script>
 </html>
