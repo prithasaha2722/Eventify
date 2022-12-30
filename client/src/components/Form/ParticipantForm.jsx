@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAsterisk } from "@fortawesome/free-solid-svg-icons";
-import Logo from "../../images/Eventlabs/eventLabsLogo.png";
+import Logo from "../../images/Eventlabs/FormLogo.png";
 
 const Question = (props) => {
   return (
