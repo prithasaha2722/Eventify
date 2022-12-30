@@ -26,13 +26,13 @@ const Tabs = () => {
   const [checkin, setCheckIn] = useState(false);
   const [certi, setCerti] = useState(false);
   if (register) {
-    return <Navigate to="/eventLabs/registerEvent" />;
+    return <Navigate to="/registerEvent" />;
   } else if (tick) {
-    return <Navigate to="/eventLabs/ticketsTemplate" />;
+    return <Navigate to="/ticketsTemplate" />;
   } else if (checkin) {
-    return <Navigate to="/eventLabs/registerEvent" />;
+    return <Navigate to="/registerEvent" />;
   } else if (certi) {
-    return <Navigate to="/eventLabs/certificateTemplate" />;
+    return <Navigate to="/certificateTemplate" />;
   } else {
     return (
       <div className="w-screen h-fit relative">

@@ -58,7 +58,7 @@ const Tabs = () => {
             solutions that can house them along with other event management
             necessities in a single console. They often include the following:
           </div>
-          <button className='text-3xl mt-7 bg-red-600 w-fit p-4 rounded-md text-white font-medium'>Get Started</button>
+          <button className='text-3xl mt-7 bg-red-600 w-fit p-4 rounded-md text-white font-medium'>Create Banner</button>
         </div>
         <div className="w-1/2 p-9">
           <img src={Banner} alt="Bannerify" className="w-full h-full" />
