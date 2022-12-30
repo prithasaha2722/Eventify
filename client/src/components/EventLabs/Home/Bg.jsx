@@ -10,7 +10,7 @@ const Bg = () => {
     setNavigate(true)
   }
   if (navigate){
-    return <Navigate to='/eventLabs/details' />
+    return <Navigate to='/details' />
   }
   return (
     <div className='h-screen w-screen px-[100px] bg-black flex items-center justify-between m-auto relative'>

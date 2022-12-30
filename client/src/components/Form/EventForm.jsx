@@ -37,7 +37,7 @@ const Input = (props) => {
 const EventForm = () => {
   return (
     <div className="w-screen h-screen flex flex-wrap items-center justify-around bg-[#000000] text-white overflow-hidden">
-      <div className="w-1/3">
+      <div className="w-1/4">
         <img src={Logo} className="w-full h-full" alt="eventLabs" />
       </div>
       <div className="w-1/2 h-screen flex flex-col overflow-y-auto scrollbar-none">
