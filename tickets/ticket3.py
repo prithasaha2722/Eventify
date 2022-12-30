@@ -1,4 +1,5 @@
 from PIL import Image,ImageDraw,ImageFont
+import pandas as pd
 FONT_COLOR = "#000000"
 temp = Image.open('tckts/tic3.png')
 WIDTH, HEIGHT = temp.size
@@ -34,4 +35,4 @@ if __name__ == "__main__":
     time = "09:30 a.m."
     for name in names:
         make_tickets3(name,event,date,org,venue,email,phone,time)
-    print(len(names), "Tickets done.")
+    print(len(names),"Tickets done.")
