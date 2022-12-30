@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import BannerMainSide from "../../../images/Bannerify/BannerMainSide.jpg";
+import BannerMainSide from "../../../images/Bannerify/BannerMainSide.png";
 import Functionality from "./Functionality";
 import FeatureArea from "./FeatureArea";
 import Feature1 from "../../../images/Bannerify/Feature1.jpg";
