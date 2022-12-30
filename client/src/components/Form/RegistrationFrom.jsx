@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAsterisk } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,19 +11,22 @@ const Question = () => {
   const nameRef = useRef();
   const typeRef = useRef();
   const requiredRef = useRef();
+  const placeholderRef = useRef();
   const dispatch = useDispatch();
   const Add = () => {
     console.log(
       {
         question: nameRef.current.value,
         type: typeRef.current.value,
-        required: requiredRef.current.value
+        required: requiredRef.current.value,
+        placeholder: placeholderRef.current.value
       }
     )
     dispatch(questionActions.add({
       question: nameRef.current.value,
       type: typeRef.current.value,
-      required: requiredRef.current.value
+      required: requiredRef.current.value,
+      placeholder: placeholderRef.current.value
     }))
   }
   return (
@@ -38,6 +41,10 @@ const Question = () => {
         <textarea
           className="w-full border-4 border-black rounded-2xl min-h-[180px] my-5 text-3xl p-3"
           placeholder="Questions you need to ask" ref={nameRef}
+        ></textarea>
+        <textarea
+          className="w-full border-4 border-black rounded-2xl min-h-[180px] my-5 text-3xl p-3"
+          placeholder="Type placeholder for this question" ref={placeholderRef}
         ></textarea>
         </div>
         <div className="flex">
