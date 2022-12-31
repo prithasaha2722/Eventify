@@ -122,6 +122,7 @@ def participant_registration():
         with app.app_context():
             db.session.add(registration)
             db.session.commit()
+        registration_mail(email)
     return render_template('PartiReg.html')
 
 @app.route("/certificates", methods=["GET", "POST"])
@@ -205,11 +206,6 @@ def bannerify():
 ######--------------------------------Main backend Operation Ends-----------------------------------------------------------------------------------------------------------------------------------------------####
 
 #####----------------------------------Mail Sending Operations---------------------------------------------------------------------------------------------------------------------------------------------------######
-
-@app.route("/registrationmail", methods=["GET", "POST"])
-def registrationmail():
-    if request.method == 'POST':
-        registration_mail()
 
 @app.route("/ticketmail", methods=["GET", "POST"])
 def ticketmail():

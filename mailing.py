@@ -6,17 +6,12 @@ import re
 
 ####----------------------------Registration Mail Send----------------------------------------------------------------------------------------------------####
 
-def registration_mail():
+def registration_mail(anymail):
   with open('participantList.csv', 'r') as csvfile:
-    rows = []
-    csvreader = csv.reader(csvfile)
-    for row in csvreader:
-      rows.append(row)
-    for rowlist in rows:
       msg = MIMEMultipart()
       msg['Subject'] = 'Thanks for Registering in our event  '
       msg['From'] = 'eventifyeventmanager@outlook.com'
-      msg['To'] = rowlist[2]
+      msg['To'] = anymail
       body = " -- BODY OF THE EMAIL -- "
 
       msgText = MIMEText('<b>%s</b>' % (body), 'html')
@@ -26,7 +21,7 @@ def registration_mail():
       server.starttls()
       server.login('eventifyeventmanager@outlook.com', 'KGSCPS@2023')
       try:
-        server.sendmail('eventifyeventmanager@outlook.com', rowlist[2], msg.as_string())
+        server.sendmail('eventifyeventmanager@outlook.com', anymail, msg.as_string())
       except:
         print("An error occured.")
       server.quit()
