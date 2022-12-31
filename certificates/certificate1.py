@@ -2,11 +2,11 @@ from PIL import Image,ImageDraw,ImageFont
 #FONT_FILE = ImageFont.truetype("arial.ttf", 50)
 #FONT_FILE_o = ImageFont.truetype("arial.ttf", 30)
 FONT_COLOR = "#000000"
-t1 = Image.open('certificates/cert/cert1.png')
+t1 = Image.open('cert/cert1.png')
 WIDTH, HEIGHT = t1.size
 #def make_certificates(name,event,date,venue):
-def make_certificates1(name,gender,field,desig,design,n1,n2):
-    image_source = Image.open('certificates/cert/cert1.png')
+def make_certificates1(name,gender,field,desig,design,n1,n2,url1,url2):
+    image_source = Image.open('cert/cert1.png')
     draw = ImageDraw.Draw(image_source)
     name_width, name_height = draw.textsize(name)
     draw.text((762,568), name,fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",90))
@@ -32,6 +32,14 @@ def make_certificates1(name,gender,field,desig,design,n1,n2):
     #draw.text((1238,930), venue, fill=FONT_COLOR)
     #image_source.save("./out/" + name +".png")
     #print('Saving Certificate of:', name)
+
+    insert_image1 = Image.open(url1)
+    insert_image2 = Image.open(url2)
+    insert_image1 = insert_image1.resize((180,70))
+    insert_image2 = insert_image2.resize((180,70))
+    image_source.paste(insert_image1, (483,1080))
+    image_source.paste(insert_image2, (1279,1080))
+
     image_source.show()
 
 if __name__ == "__main__":
@@ -45,7 +53,9 @@ if __name__ == "__main__":
     design = "Student Head"
     n1 = "Mitra Basu"
     n2 = "P. K. Dan"
+    url1 = "signs/sig1.png"
+    url2 = "signs/sig2.png"
     for name in names:
         #make_certificates(name,event,date,venue)
-        make_certificates1(name,gender,field,desig,design,n1,n2)
+        make_certificates1(name,gender,field,desig,design,n1,n2,url1,url2)
     print(len(names), "certificates done.")
