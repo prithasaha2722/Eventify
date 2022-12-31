@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAsterisk } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +6,8 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { modalActions, questionActions } from "../../Store/index";
 import { useRef } from "react";
+import { useState } from "react";
+import { useParams } from 'react-router-dom'
 
 const Question = () => {
   const nameRef = useRef();
@@ -28,16 +30,17 @@ const Question = () => {
       required: requiredRef.current.value,
       placeholder: placeholderRef.current.value
     }))
+    dispatch(modalActions.closeregisterModal())
   }
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
       <div className="flex w-4/5 flex-col">
-        <label
+        {/* <label
           htmlFor="Question"
           className="text-4xl font-medium text-left w-full flex items-start"
         >
           <span className="mr-3">Question</span>
-        </label>
+        </label> */}
         <textarea
           className="w-full border-4 border-black rounded-2xl min-h-[180px] my-5 text-3xl p-3"
           placeholder="Questions you need to ask" ref={nameRef}
@@ -130,6 +133,8 @@ const QModal = (props) => {
 };
 
 const RegistrationFrom = () => {
+  const [send, setSend] = useState(false);
+  const { eventId } = useParams();
   const dispatch = useDispatch();
   const open = useSelector((state) => state.modal.registerModal);
   const openModal = (e) => {
@@ -138,9 +143,24 @@ const RegistrationFrom = () => {
     dispatch(modalActions.openregisterModal());
   };
   const QuestionList = useSelector((state) => state.question.questions);
+  const setParticipantform = () => {
+    sendQuestionList();
+  }
+  const sendQuestionList = async () => {
+    const Response = await fetch('/questionStore',{
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({QuestionList: QuestionList})
+    })
+
+    setSend(true)
+  }
   return (
-    <div className="bg-[#F1F1F1] flex flex-col items-center w-screen h-screen overflow-hidden relative">
-      <button className="text-3xl bg-[#265a8f] z-10 m-5 text-white p-4 rounded-xl relative right-5 top-1">
+    <Fragment>
+      <div className="bg-[#F1F1F1] flex flex-col items-center w-screen h-screen overflow-hidden relative">
+      <button className="text-3xl bg-[#265a8f] z-10 m-5 text-white p-4 rounded-xl relative right-5 top-1" onClick={setParticipantform}>
         Set the Registration Form
       </button>
       <div className="flex flex-col items-center justify-center relative  bg-[#F1F1F1] w-2/3 h-[91vh] overflow-y-auto">
@@ -165,6 +185,16 @@ const RegistrationFrom = () => {
         </QModal>
       )}
     </div>
+    {send && 
+    (<QModal>
+      <div className="font-bold text-5xl">Your Shareable Link is:</div>
+      <div>
+        <a href={`/${eventId}/participationForm`} target='_blank'>
+        {`/${eventId}/participationForm`}
+        </a>
+      </div>
+    </QModal>) }
+    </Fragment>
   );
 };
 

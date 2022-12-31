@@ -20,7 +20,7 @@ const Navigator = () => {
         <Route path="/details" element={<Details />} />
         <Route path="/certificateTemplate" element={<CertificateTemplate />} />
         <Route path="/ticketsTemplate" element={<TicketTemplate />} />
-        <Route path="/registrationForm" element={<RegistrationFrom />} />
+        <Route path="/:eventId/registrationForm" element={<RegistrationFrom />} />
         <Route path="/registerEvent" element={<EventForm />} />
         <Route path="/:eventId/participationForm" element={<ParticipantForm />} />
         <Route path="/:eventId/checkin" element={<CheckInForm />} />
