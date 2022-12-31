@@ -27,8 +27,21 @@ const Option = (props) => {
 const TicketTemplate = () => {
     const [navigate, setNavigate] = useState(false)
     const [value, setValue] = useState(null)
+    const [confirmed, setConfirmed] = useState(null)
     const confirmHandler = () =>{
-        setNavigate(true)
+        setConfirmed(value)
+    }
+    const mailHandler = () =>{
+        sendTemplate(confirmed)
+    }
+    const sendTemplate = async (data) =>{
+        const Response = await fetch('/tickets',{
+            method: 'POST',
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({'selected': data})
+        })
     }
     if (navigate) {
         return <Navigate to='/details' />
@@ -44,6 +57,7 @@ const TicketTemplate = () => {
                 <Option image={cert3} selectedValue={value} select={setValue} alt={'cert3'} id={3}/>
             </div>
             <button className="p-4 text-3xl text-white bg-[#08BD80]" onClick={confirmHandler}>Comfirm Template</button>
+            <button className="p-4 text-3xl my-5 text-white bg-[#08BD80]" disabled={confirmed ==  null} onClick={mailHandler}>Send Mail</button>
         </div>
     );
 };
