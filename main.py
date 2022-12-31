@@ -3,9 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 import random
 import csv
 from certificates import certificate1, certificate2, certificate3, cert
-from mailing import  registration_mail, certificate_mail, ticket_mail, checkin_mail
+from mailing import  registration_mail, certificate_mail, ticket_mail, checkin_mail, bannerify_mail
 from tickets import ticket1,ticket2,ticket3
-
+from banners import banner1, banner2, banner3
 
 eventdetails=[]
 #eventdetails = [eventid, eventname, orgname, orgweb, venue, startdate, enddate, logo, signature]
@@ -122,6 +122,7 @@ def participant_registration():
         with app.app_context():
             db.session.add(registration)
             db.session.commit()
+        registration_mail(email)
     return render_template('PartiReg.html')
 
 @app.route("/certificates", methods=["GET", "POST"])
@@ -183,14 +184,28 @@ def checkin():
             db.session.commit()
     return render_template('CheckIn.html')
 
+@app.route("/bannerify", methods=["GET", "POST"])
+def bannerify():
+    if request.method == 'POST':
+        organization_name=request.json['organization_name']
+        event_name=request.json['event_name']
+        organization_email=request.json['organization_email']
+        venue=request.json['venue']
+        date=request.json['date']
+        time= request.json['time']
+        selected= request.json['selected']
+        if selected=="1":
+            banner1.make_banners1(organization_name, event_name, venue, date, time)
+        elif selected=="2":
+            banner2.make_banners2(organization_name, event_name,venue,date,time)
+        elif selected=="3":
+            banner3.make_banners3(organization_name, event_name, venue, date, time)
+        bannerify_mail(organization_email)
+    return render_template('banner.html')
+
 ######--------------------------------Main backend Operation Ends-----------------------------------------------------------------------------------------------------------------------------------------------####
 
 #####----------------------------------Mail Sending Operations---------------------------------------------------------------------------------------------------------------------------------------------------######
-
-@app.route("/registrationmail", methods=["GET", "POST"])
-def registrationmail():
-    if request.method == 'POST':
-        registration_mail()
 
 @app.route("/ticketmail", methods=["GET", "POST"])
 def ticketmail():
