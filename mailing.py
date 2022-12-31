@@ -113,3 +113,21 @@ def certificate_mail():
         print("An error occured.")
       server.quit()
 
+def bannerify_mail(anyemail):
+  msg = MIMEMultipart()
+  msg['Subject'] = 'Thanks for Registering in our event  '
+  msg['From'] = 'eventifyeventmanager@outlook.com'
+  msg['To'] = anyemail
+  body = " -- BODY OF THE EMAIL -- "
+
+  msgText = MIMEText('<b>%s</b>' % (body), 'html')
+  msg.attach(msgText)
+
+  server = smtplib.SMTP('smtp.office365.com', 587)
+  server.starttls()
+  server.login('eventifyeventmanager@outlook.com', 'KGSCPS@2023')
+  try:
+    server.sendmail('eventifyeventmanager@outlook.com', anyemail , msg.as_string())
+  except:
+    print("An error occured.")
+  server.quit()
