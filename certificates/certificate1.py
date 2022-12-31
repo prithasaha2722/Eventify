@@ -35,10 +35,21 @@ def make_certificates1(name,gender,field,desig,design,n1,n2,url1,url2):
 
     insert_image1 = Image.open(url1)
     insert_image2 = Image.open(url2)
-    insert_image1 = insert_image1.resize((180,70))
-    insert_image2 = insert_image2.resize((180,70))
-    image_source.paste(insert_image1, (483,994))
-    image_source.paste(insert_image2, (1299,994))
+
+    width1, height1 = insert_image1.size
+    width2, height2 = insert_image2.size
+    x = width1/height1
+    y = width2/height2
+    if x <= 1.5 and y <= 1.5:
+        insert_image1 = insert_image1.resize((250,75))
+        insert_image2 = insert_image2.resize((250,75))
+        image_source.paste(insert_image1, (453,994))
+        image_source.paste(insert_image2, (1269,994))
+    else:
+        insert_image1 = insert_image1.resize((350,75))
+        insert_image2 = insert_image2.resize((350,75))
+        image_source.paste(insert_image1, (453,994))
+        image_source.paste(insert_image2, (1269,994))
 
     image_source.show()
 
