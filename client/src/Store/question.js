@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initial = {
   questions: [
-    { name: "Question 1", type: "text", required: 'true', placeholder: 'Question1' },
-    { name: "Question 2", type: "text", required: 'true', placeholder: 'Question2' },
-    { name: "Question 3", type: "text", required: 'true', placeholder: 'Question3' },
-    { name: "Question 4", type: "text", required: 'true', placeholder: 'Question4' },
-    { name: "Question 5", type: "text", required: 'true', placeholder: 'Question5' },
+    { name: "Name", type: "text", required: 'true', placeholder: 'Your Name' },
+    { name: "Email", type: "email", required: 'true', placeholder: 'Your Email' },
+    { name: "Phone", type: "text", required: 'true', placeholder: 'Your Phone Number' },
+    { name: "Wallet Address", type: "text", required: 'true', placeholder: 'Your Wallet Address' },
+    { name: "Address", type: "text", required: 'true', placeholder: 'Your Address' },
   ],
 };
 

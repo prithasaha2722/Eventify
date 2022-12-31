@@ -75,6 +75,7 @@
         const numberofattendee = document.getElementById("numberofattendee").value;
         const logo = document.getElementById("logo").value;
         const signature = document.getElementById("signature").value;
+        
         const Response = await fetch("/organizer", {
             method: "POST",
             headers: {

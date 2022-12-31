@@ -3,8 +3,14 @@ import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAsterisk } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../../images/Eventlabs/FormLogo.png";
+import { forwardRef } from "react";
+import { useState } from "react";
 
 const Question = (props) => {
+  const [id, setId] = useState(null);
+  const changeHandler = (e) => {
+    props.setvalue({ ...props.value, id: e.target.value });
+  };
   return (
     <div
       className="flex flex-col p-10 my-6 bg-transparent rounded-3xl"
@@ -19,7 +25,14 @@ const Question = (props) => {
           <FontAwesomeIcon icon={faAsterisk} />
         </span>
       </label>
-      {props.type === "text" && (
+      {props.type === "textArea" ? (
+        <textarea
+          className="border-[#000030] border-b text-3xl p-4 h-fit rounded-xl focus:border-[#00000030] focus:border-b"
+          id={props.id}
+          required={props.required === "true"}
+          placeholder={props.placeholder}
+        />
+      ) : (
         <input
           type="text"
           className="border-[#000000] border-b text-3xl p-4 h-fit rounded-xl focus:border-[#00000030] focus:border-b"
@@ -27,21 +40,62 @@ const Question = (props) => {
           id={props.id}
           required={props.required === "true"}
           placeholder={props.placeholder}
-        />
-      )}
-      {props.type === "textArea" && (
-        <textarea
-          className="border-[#000030] border-b text-3xl p-4 h-fit rounded-xl focus:border-[#00000030] focus:border-b"
-          id={props.id}
-          required={props.required === "true"}
-          placeholder={props.placeholder}
+          onChange={changeHandler}
         />
       )}
     </div>
   );
 };
+
 const ParticipantForm = () => {
   const QuestionList = useSelector((state) => state.question.questions);
+  const [value, setValue] = useState({
+    Q1: "",
+    Q2: "",
+    Q3: "",
+    Q4: "",
+    Q5: "",
+    Q6: "",
+    Q7: "",
+    Q8: "",
+    Q9: "",
+    Q10: "",
+    Q11: "",
+    Q12: "",
+    Q13: "",
+    Q14: "",
+    Q15: "",
+  });
+  const sendParticipateDetails = () => {
+    sendDatails();
+  };
+
+  const sendDatails = async () => {
+    const Response = await fetch("/participant", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name: value.Q1,
+        email: value.Q2,
+        phone: value.Q3,
+        walletaddress: value.Q4,
+        address: value.Q5,
+        Q1: value.Q6,
+        Q2: value.Q7,
+        Q3: value.Q8,
+        Q4: value.Q9,
+        Q5: value.Q10,
+        Q6: value.Q11,
+        Q7: value.Q12,
+        Q8: value.Q13,
+        Q9: value.Q14,
+        Q10: value.Q15,
+      }),
+    });
+  };
+
   return (
     <div className="w-screen h-screen flex flex-wrap items-center justify-around bg-[#000000] text-white overflow-hidden">
       <div className="w-1/4">
@@ -72,9 +126,16 @@ const ParticipantForm = () => {
             type={i.type}
             required={i.required}
             placeholder={i.placeholder}
+            setvalue={setValue}
+            value={value}
           />
         ))}
-        <button className="text-white rounded-xl bg-[#3361C2] my-7 p-5 text-3xl font-medium m-auto">Submit</button>
+        <button
+          onClick={sendParticipateDetails}
+          className="text-white rounded-xl bg-[#3361C2] my-7 p-5 text-3xl font-medium m-auto"
+        >
+          Submit
+        </button>
       </div>
     </div>
   );
