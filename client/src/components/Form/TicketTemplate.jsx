@@ -27,7 +27,12 @@ const Option = (props) => {
 const TicketTemplate = () => {
     const [navigate, setNavigate] = useState(false)
     const [value, setValue] = useState(null)
-    const bannerHandler = () =>{
+    const [confirmed, setConfirmed] = useState(null)
+    const confirmHandler = () =>{
+        setConfirmed(value)
+        sendTemplate(value)
+    }
+    const mailHandler = () =>{
         sendMail();
     }
     const sendTemplate = async (data) =>{
@@ -62,7 +67,8 @@ const TicketTemplate = () => {
                 <Option image={cert2} selectedValue={value} select={setValue} alt={'cert2'} id={2}/>
                 <Option image={cert3} selectedValue={value} select={setValue} alt={'cert3'} id={3}/>
             </div>
-            <button className="p-4 text-3xl my-5 rounded-xl text-white bg-[#1F61E4] disabled:bg-[#00000050]" disabled={value ==  null} onClick={bannerHandler}>Send Mail</button>
+            <button className="p-4 text-3xl rounded-xl text-white bg-[#08BD80]" onClick={confirmHandler}>Comfirm Template</button>
+            <button className="p-4 text-3xl my-5 rounded-xl text-white bg-[#1F61E4] disabled:bg-[#00000050]" disabled={confirmed ==  null} onClick={mailHandler}>Send Mail</button>
         </div>
     );
 };
