@@ -1,5 +1,4 @@
 from PIL import Image,ImageDraw,ImageFont
-import pandas as pd
 FONT_COLOR = "#000000"
 temp = Image.open('ban/ban3.png')
 WIDTH, HEIGHT = temp.size
