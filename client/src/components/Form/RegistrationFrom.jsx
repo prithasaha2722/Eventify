@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { modalActions, questionActions } from "../../Store/index";
 import { useRef } from "react";
 import { useState } from "react";
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from "react-router-dom";
 
 const Question = () => {
   const nameRef = useRef();
@@ -16,22 +16,22 @@ const Question = () => {
   const placeholderRef = useRef();
   const dispatch = useDispatch();
   const Add = () => {
-    console.log(
-      {
-        question: nameRef.current.value,
-        type: typeRef.current.value,
-        required: requiredRef.current.value,
-        placeholder: placeholderRef.current.value
-      }
-    )
-    dispatch(questionActions.add({
+    console.log({
       question: nameRef.current.value,
       type: typeRef.current.value,
       required: requiredRef.current.value,
-      placeholder: placeholderRef.current.value
-    }))
-    dispatch(modalActions.closeregisterModal())
-  }
+      placeholder: placeholderRef.current.value,
+    });
+    dispatch(
+      questionActions.add({
+        question: nameRef.current.value,
+        type: typeRef.current.value,
+        required: requiredRef.current.value,
+        placeholder: placeholderRef.current.value,
+      })
+    );
+    dispatch(modalActions.closeregisterModal());
+  };
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
       <div className="flex w-4/5 flex-col">
@@ -43,29 +43,37 @@ const Question = () => {
         </label> */}
         <textarea
           className="w-full border-4 border-black rounded-2xl min-h-[180px] my-5 text-3xl p-3"
-          placeholder="Questions you need to ask" ref={nameRef}
+          placeholder="Questions you need to ask"
+          ref={nameRef}
         ></textarea>
         <textarea
           className="w-full border-4 border-black rounded-2xl min-h-[180px] my-5 text-3xl p-3"
-          placeholder="Type placeholder for this question" ref={placeholderRef}
+          placeholder="Type placeholder for this question"
+          ref={placeholderRef}
         ></textarea>
-        </div>
-        <div className="flex">
-          <select ref={typeRef} className="border-4 rounded-lg shadow-xl border-[#265a8f] p-4 text-3xl">
-            <option value="text">Text</option>
-            <option value="textArea">Text Area</option>
-          </select>
-          <select ref={requiredRef} className="border-4 rounded-lg mx-3 shadow-xl border-[#265a8f] p-4 text-3xl">
-            <option value={'true'}>
-              Required
-            </option>
-            <option value={'false'}>Not Required</option>
-          </select>
-        </div>
-        <button onClick={Add} className="text-3xl bg-[#265a8f] text-white p-6 rounded-xl w-1/3 my-5 m-auto mb-5">
-          Add
-        </button>
-      
+      </div>
+      <div className="flex">
+        <select
+          ref={typeRef}
+          className="border-4 rounded-lg shadow-xl border-[#265a8f] p-4 text-3xl"
+        >
+          <option value="text">Text</option>
+          <option value="textArea">Text Area</option>
+        </select>
+        <select
+          ref={requiredRef}
+          className="border-4 rounded-lg mx-3 shadow-xl border-[#265a8f] p-4 text-3xl"
+        >
+          <option value={"true"}>Required</option>
+          <option value={"false"}>Not Required</option>
+        </select>
+      </div>
+      <button
+        onClick={Add}
+        className="text-3xl bg-[#265a8f] text-white p-6 rounded-xl w-1/3 my-5 m-auto mb-5"
+      >
+        Add
+      </button>
     </div>
   );
 };
@@ -80,7 +88,11 @@ const ConstantQ = (props) => {
         <span className="mr-4">Q{props.num}</span>
         <span className="mr-3">{props.Question}</span>
         <span className="mr-3 text-xl text-[#ff0000]">
-          {props.required === 'true' ? <FontAwesomeIcon icon={faAsterisk} /> : ""}
+          {props.required === "true" ? (
+            <FontAwesomeIcon icon={faAsterisk} />
+          ) : (
+            ""
+          )}
         </span>
       </label>
       <select
@@ -112,7 +124,7 @@ const QModal = (props) => {
   };
   return (
     <div
-      className="h-screen w-screen bg-[#00000050] flex justify-center items-center z-20 absolute top-0 left-0"
+      className="h-screen w-screen bg-[#00000050] flex justify-center items-center z-20 absolute top-0 left-0 overflow-hidden"
       onClick={closeModal}
     >
       <motion.div
@@ -134,6 +146,7 @@ const QModal = (props) => {
 
 const RegistrationFrom = () => {
   const [send, setSend] = useState(false);
+  const [navigate, setNavigate] = useState(false);
   const { eventId } = useParams();
   const dispatch = useDispatch();
   const open = useSelector((state) => state.modal.registerModal);
@@ -145,55 +158,66 @@ const RegistrationFrom = () => {
   const QuestionList = useSelector((state) => state.question.questions);
   const setParticipantform = () => {
     sendQuestionList();
-  }
+  };
   const sendQuestionList = async () => {
-    const Response = await fetch('/questionStore',{
-      method: 'POST',
+    const Response = await fetch("/questionStore", {
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({QuestionList: QuestionList})
-    })
-
-    setSend(true)
+      body: JSON.stringify({ QuestionList: QuestionList }),
+    });
+    dispatch(modalActions.openregisterModal());
+    setSend(true);
+  };
+  if(navigate){
+    return <Navigate to='/details'/>
   }
   return (
     <Fragment>
       <div className="bg-[#F1F1F1] flex flex-col items-center w-screen h-screen overflow-hidden relative">
-      <button className="text-3xl bg-[#265a8f] z-10 m-5 text-white p-4 rounded-xl relative right-5 top-1" onClick={setParticipantform}>
-        Set the Registration Form
-      </button>
-      <div className="flex flex-col items-center justify-center relative  bg-[#F1F1F1] w-2/3 h-[91vh] overflow-y-auto">
-        {QuestionList.map((i, index) => (
-          <ConstantQ
-            num={index + 1}
-            Question={i.name}
-            type={i.type}
-            required={i.required}
-          />
-        ))}
+        {!send ? (
+          <Fragment>
+            <button
+              className="text-3xl bg-[#265a8f] z-10 m-5 text-white p-4 rounded-xl relative right-5 top-1"
+              onClick={setParticipantform}
+            >
+              Set the Registration Form
+            </button>
+            <div className="flex flex-col items-center justify-center relative  bg-[#F1F1F1] w-2/3 h-[91vh] overflow-y-auto">
+              {QuestionList.map((i, index) => (
+                <ConstantQ
+                  num={index + 1}
+                  Question={i.name}
+                  type={i.type}
+                  required={i.required}
+                />
+              ))}
+            </div>
+            <button
+              onClick={openModal}
+              className="text-3xl bg-[#265a8f] text-white p-6 rounded-xl w-2/3 m-auto mb-5"
+            >
+              Add Question
+            </button>
+            {open && (
+              <QModal>
+                <Question />
+              </QModal>
+            )}
+          </Fragment>
+        ) : (
+          <div className="flex flex-col items-center justify-center h-full w-full">
+            <div className="font-bold text-5xl">Your Shareable Link is:</div>
+            <div className="font-medium text-3xl mt-7">
+              <a href={`/${eventId}/participationForm`} target="_blank">
+                {`/${eventId}/participationForm`}
+              </a>
+            </div>
+            <button onClick={()=> setNavigate(true)} className="p-4 text-3xl my-5 rounded-xl text-white bg-[#1F61E4]">Back to Home</button>
+          </div>
+        )}
       </div>
-      <button
-        onClick={openModal}
-        className="text-3xl bg-[#265a8f] text-white p-6 rounded-xl w-2/3 m-auto mb-5"
-      >
-        Add Question
-      </button>
-      {open && (
-        <QModal>
-          <Question />
-        </QModal>
-      )}
-    </div>
-    {send && 
-    (<QModal>
-      <div className="font-bold text-5xl">Your Shareable Link is:</div>
-      <div>
-        <a href={`/${eventId}/participationForm`} target='_blank'>
-        {`/${eventId}/participationForm`}
-        </a>
-      </div>
-    </QModal>) }
     </Fragment>
   );
 };

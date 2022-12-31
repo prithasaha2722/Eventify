@@ -12,6 +12,8 @@ import FTickets from "../../../images/Eventlabs/FTickets.png";
 import Banner from "../../../images/Bannerify/BannerMainSide.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 const BoxWrapper = (props) => {
   return (
@@ -29,6 +31,10 @@ const BoxWrapper = (props) => {
 };
 
 const Tabs = () => {
+  const [banner, setBanner] = useState(false)
+  if(banner){
+    return <Navigate to='/bannerForm'/>
+  }
   return (
     <div className="w-screen h-auto relative">
       <BoxWrapper bgcolor="white" direction="row">
@@ -58,7 +64,7 @@ const Tabs = () => {
             solutions that can house them along with other event management
             necessities in a single console. They often include the following:
           </div>
-          <button className='text-3xl mt-7 bg-red-600 w-fit p-4 rounded-md text-white font-medium'>Create Banner</button>
+          <button onClick={() => setBanner(true)} className='text-3xl mt-7 bg-red-600 w-fit p-4 rounded-md text-white font-medium'>Create Banner</button>
         </div>
         <div className="w-1/2 p-9">
           <img src={Banner} alt="Bannerify" className="w-full h-full" />

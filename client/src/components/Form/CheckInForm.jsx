@@ -48,7 +48,7 @@ const CheckInForm = () => {
   };
 
   const sendData = async () => {
-    const Response = await fetch("checkin", {
+    const Response = await fetch("/checkin", {
       method: "POST",
       headers: {
         "content-type": "application/json",
