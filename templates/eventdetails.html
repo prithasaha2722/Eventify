@@ -72,7 +72,6 @@
         const starttime = document.getElementById("starttime").value;
         const enddate = document.getElementById("enddate").value;
         const endtime = document.getElementById("endtime").value;
-        const numberofattendee = document.getElementById("numberofattendee").value;
         const logo = document.getElementById("logo").value;
         const signature = document.getElementById("signature").value;
         const cost = document.getElementById("cost").value;
@@ -95,9 +94,13 @@
                 starttime: starttime,
                 enddate: enddate,
                 endtime: endtime,
-                numberofattendee: numberofattendee,
                 logo: logo,
-                signature: signature
+                signature: signature,
+                cost:cost,
+                walletaddress:walletaddress,
+                ticketTemplate:ticketTemplate,
+                certificateTemplate:certificateTemplate,
+                bannerTemplate:bannerTemplate,
             }),
         });
         console.log({'organiser':{
@@ -110,7 +113,12 @@
                 enddate: enddate,
                 endtime: endtime,
                 logo: logo,
-                signature: signature
+                signature: signature,
+                cost:cost,
+                walletaddress:walletaddress,
+                ticketTemplate:ticketTemplate,
+                certificateTemplate:certificateTemplate,
+                bannerTemplate:bannerTemplate,
             }})
     };
 </script>
