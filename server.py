@@ -1,14 +1,6 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-import random
-import csv
-from certificates import certificate1, certificate2, certificate3, cert
-from mailing import  registration_mail, certificate_mail, ticket_mail, checkin_mail, bannerify_mail
-from tickets import ticket1,ticket2,ticket3
-from banners import banner1, banner2, banner3
 
-eventdetails=[]
-#eventdetails = [eventid, eventname, orgname, orgweb, venue, startdate, enddate, logo, signature]
 
 
 
@@ -38,9 +30,9 @@ class EventDetails(db.Model):
     signature = db.Column(db.String, nullable=False)
     cost = db.Column(db.Integer, nullable=False)
     walletaddress = db.Column(db.String, nullable=False)
-    ticketTemplate = db.Column(db.Integer, nullable=False)
-    certificateTemplate= db.Column(db.Integer, nullable=False)
-    bannerTemplate= db.Column(db.Integer, nullable=False)
+    ticketTemplate = db.Column(db.String, nullable=False)
+    certificateTemplate= db.Column(db.String, nullable=False)
+    bannerTemplate= db.Column(db.String, nullable=False)
 
 with app.app_context():
     db.create_all()
@@ -64,8 +56,12 @@ def event_data():
         ticketTemplate = request.json['ticketTemplate']
         certificateTemplate = request.json['certificateTemplate']
         bannerTemplate = request.json['bannerTemplate']
-        organizer=EventDetails(eventname=eventname, orgname=orgname, orgweb=orgweb, venue=venue, startdate=startdate, enddate=enddate, starttime=starttime, endtime=endtime, logo=logo, signature=signature, cost=cost, walletaddress=walletaddress, ticketTemplate=ticketTemplate, certificateTemplate=certificateTemplate, bannerTemplate=bannerTemplate)
+
+        organizer=EventDetails(eventname=eventname, orgname=orgname, orgweb=orgweb, venue=venue, startdate=startdate, enddate=enddate, starttime=starttime, endtime=endtime, logo=logo, signature=signature, cost=int(cost), walletaddress=walletaddress, ticketTemplate=ticketTemplate, certificateTemplate=certificateTemplate, bannerTemplate=bannerTemplate)
         with app.app_context():
             db.session.add(organizer)
             db.session.commit()
     return render_template('eventdetails.html')
+
+if __name__ == "__main__":
+    app.run(debug=True)
