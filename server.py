@@ -96,7 +96,7 @@ def participants():
         with open('participantList.csv', 'a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow([eventid, eventname, email, name, phone, address, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10])
-        registration = Participants(eventid=eventid, eventname=eventname, email=email, name=name, phone=phone, address=address)
+        registration = Participants(eventid=int(eventid), eventname=eventname, email=email, name=name, phone=int(phone), address=address)
         with app.app_context():
             db.session.add(registration)
             db.session.commit()
