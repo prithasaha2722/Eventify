@@ -103,7 +103,7 @@
       const Q9 = document.getElementById("Q9").value;
       const Q10 = document.getElementById("Q10").value;
 
-      const Response2 = await fetch("/participant", {
+      const Response2 = await fetch("/participantDetails", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -111,9 +111,9 @@
         body: JSON.stringify({
           email: email,
           phone: phone,
-          venue,
-          time,
-          date,
+          venue:venue,
+          time: time,
+          date : date,
           name: name,
           address: address,
           Q1: Q1,
