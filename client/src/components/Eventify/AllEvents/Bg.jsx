@@ -17,12 +17,6 @@ const Bg = () => {
       <div className="absolute top-0 left-0 w-[60%] sm:w-[200px] xl:w-[350px]">
         <img className="h-full w-full" src={Logo} alt="Eventify" />
       </div>
-      <button
-        onClick={navigateHandler}
-        className="absolute right-6 top-3 text-lg xl:text-3xl mt-7 bg-red-600 w-fit p-2 xl:p-4 rounded-md text-white font-medium"
-      >
-        Create Your Event
-      </button>
       <span className=" xl:w-[51%] flex  flex-col justify-end mt-[5rem]">
         <h2 className="font-bold w-full text-white text-3xl xl:text-8xl">
           What is event management software?
@@ -41,6 +35,12 @@ const Bg = () => {
         >
           Get Started
         </button> */}
+        <button
+          onClick={navigateHandler}
+          className=" right-6 top-3 text-lg xl:text-3xl mt-7 bg-red-600 w-fit p-2 xl:p-4 rounded-md text-white font-medium"
+        >
+          Create Your Event
+        </button>
       </span>
       <span className="w-full mb-5 xl:w-[37%]">
         <img className="w-full h-full" src={image} alt="EventLabs" />
