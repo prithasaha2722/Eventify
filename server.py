@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-
+import csv
 
 
 
@@ -34,13 +34,12 @@ class EventDetails(db.Model):
     certificateTemplate= db.Column(db.String, nullable=False)
     bannerTemplate= db.Column(db.String, nullable=False)
 
-class ParticipantsDetails(db.Model):
+class Participants(db.Model):
     eventid = db.Column(db.Integer, nullable=False)
     eventname = db.Column(db.String, nullable=False)
     email = db.Column(db.String, unique=True, nullable=False, primary_key=True)
     name = db.Column(db.String, nullable=False)
     phone = db.Column(db.Integer, unique=True, nullable=False)
-    walletaddress = db.Column(db.String, unique=True, nullable=False)
     address = db.Column(db.String, nullable=False)
 
 with app.app_context():
@@ -72,7 +71,36 @@ def event_data():
             db.session.commit()
     return render_template('eventdetails.html')
 
-
+@app.route("/participantdetails", methods=["GET", "POST"])
+def participants():
+    if request.method == 'POST':
+        eventid = request.json['eventid']
+        eventname =request.json['eventname']
+        venue= request.json['venue']
+        time= request.json['time']
+        date=request.json['time']
+        email = request.json['email']
+        name = request.json['name']
+        phone = request.json['phone']
+        address = request.json['address']
+        Q1=request.json['Q1']
+        Q2 = request.json['Q2']
+        Q3 = request.json['Q3']
+        Q4 = request.json['Q4']
+        Q5 = request.json['Q5']
+        Q6 = request.json['Q6']
+        Q7 = request.json['Q7']
+        Q8 = request.json['Q8']
+        Q9 = request.json['Q9']
+        Q10 = request.json['Q10']
+        with open('participantList.csv', 'a', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([eventid, eventname, email, name, phone, address, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10])
+        registration = Participants(eventid=eventid, eventname=eventname, email=email, name=name, phone=phone, address=address)
+        with app.app_context():
+            db.session.add(registration)
+            db.session.commit()
+    return render_template('PartiReg.html')
 
 ####-------------------------------------------Server Execution Code------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------####
 
