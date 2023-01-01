@@ -19,7 +19,7 @@
       </div>
       <div class="mb-3">
         <label for="orgweb" class="form-label">Organisation website</label>
-        <input type="text" name="" id="orgweb"  />
+        <input type="text" name="" id="orgweb" />
       </div>
       <div class="mb-3">
         <label for="venue" class="form-label">Venue</label>
@@ -52,8 +52,49 @@
         <input class="form-control" type="text" id="logo" />
       </div>
       <div class="mb-3">
-        <label for="signature" class="form-label">Authorizer Signature</label>
-        <input class="form-control" type="text" id="signature" />
+        <label for="cost" class="form-label">Ticket Cost</label>
+        <input class="form-control" type="text" id="cost" />
+      </div>
+      <div class="mb-3">
+        <label for="walletaddress" class="form-label">Wallet Address</label>
+        <input class="form-control" type="text" id="walletaddress" />
+      </div>
+      <div class="mb-3">
+        <label for="walletaddress" class="form-label">Wallet Address</label>
+        <input class="form-control" type="text" id="walletaddress" />
+      </div>
+      <h2>Ticket Template</h2>
+      <div>
+        <label for="1">1</label>
+        <input type="radio" value="1" name="ticket" id="T1" />
+        <label for="2">2</label>
+        <input type="radio" value="2" name="ticket" id="T2" />
+        <label for="3">3</label>
+        <input type="radio" value="3" name="ticket" id="T3" />
+      </div>
+      <h2>Certificate Template</h2>
+      <div>
+        <label for="1">1</label>
+        <input type="radio" value="1" name="certificate" id="C1" />
+        <label for="2">2</label>
+        <input type="radio" value="2" name="certificate" id="C2" />
+        <label for="3">3</label>
+        <input type="radio" value="3" name="certificate" id="C3" />
+      </div>
+      <h2>Banner Template</h2>
+      <div>
+        <span>
+          <label for="1" class="form-label">1</label>
+          <input type="radio" value="1" name="Banner" id="B1" required />
+        </span>
+        <span>
+          <label for="2" class="form-label">2</label>
+          <input type="radio" value="2" name="Banner" id="B2" required />
+        </span>
+        <span>
+          <label for="3" class="form-label">3</label>
+          <input type="radio" value="3" name="Banner" id="B3" required />
+        </span>
       </div>
     </div>
     <button id="button2">Submit</button>
@@ -61,65 +102,102 @@
   <script>
     const button2 = document.getElementById("button2");
     button2.onclick = function () {
-        sendData();
+      sendData();
     };
     const sendData = async () => {
-        const orgname = document.getElementById("orgname").value;
-        const eventname = document.getElementById("eventname").value;
-        const orgweb = document.getElementById("orgweb").value;
-        const venue = document.getElementById("venue").value;
-        const startdate = document.getElementById("startdate").value;
-        const starttime = document.getElementById("starttime").value;
-        const enddate = document.getElementById("enddate").value;
-        const endtime = document.getElementById("endtime").value;
-        const logo = document.getElementById("logo").value;
-        const signature = document.getElementById("signature").value;
-        const cost = document.getElementById("cost").value;
-        const walletaddress = document.getElementById("walletaddress").value;
-        const ticketTemplate = document.getElementById("ticketTemplate").value;
-        const certificateTemplate = document.getElementById("certificateTemplate").value;
-        const bannerTemplate = document.getElementById("bannerTemplate").value;
-        
-        const Response = await fetch("/eventdetails", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({
-                orgname: orgname,
-                eventname: eventname,
-                orgweb: orgweb,
-                venue: venue,
-                startdate: startdate,
-                starttime: starttime,
-                enddate: enddate,
-                endtime: endtime,
-                logo: logo,
-                signature: signature,
-                cost:cost,
-                walletaddress:walletaddress,
-                ticketTemplate:ticketTemplate,
-                certificateTemplate:certificateTemplate,
-                bannerTemplate:bannerTemplate,
-            }),
-        });
-        console.log({'organiser':{
-                orgname: orgname,
-                eventname: eventname,
-                orgweb: orgweb,
-                venue: venue,
-                startdate: startdate,
-                starttime: starttime,
-                enddate: enddate,
-                endtime: endtime,
-                logo: logo,
-                signature: signature,
-                cost:cost,
-                walletaddress:walletaddress,
-                ticketTemplate:ticketTemplate,
-                certificateTemplate:certificateTemplate,
-                bannerTemplate:bannerTemplate,
-            }})
+      const orgname = document.getElementById("orgname").value;
+      const eventname = document.getElementById("eventname").value;
+      const orgweb = document.getElementById("orgweb").value;
+      const venue = document.getElementById("venue").value;
+      const startdate = document.getElementById("startdate").value;
+      const starttime = document.getElementById("starttime").value;
+      const enddate = document.getElementById("enddate").value;
+      const endtime = document.getElementById("endtime").value;
+      const logo = document.getElementById("logo").value;
+      const signature = document.getElementById("signature").value;
+      const cost = document.getElementById("cost").value;
+      const walletaddress = document.getElementById("walletaddress").value;
+      const T1 = document.getElementById("T1");
+      const T2 = document.getElementById("T2");
+      const T3 = document.getElementById("T3");
+
+      let Tselected = null;
+      if (T1.checked) {
+        Tselected = T1.value;
+      } else if (T2.checked) {
+        Tselected = T2.value;
+      } else if (T3.checked) {
+        Tselected = T3.value;
+      }
+
+      const C1 = document.getElementById("C1");
+      const C2 = document.getElementById("C2");
+      const C3 = document.getElementById("C3");
+
+      let Cselected = null;
+      if (C1.checked) {
+        Cselected = C1.value;
+      } else if (C2.checked) {
+        Cselected = C2.value;
+      } else if (C3.checked) {
+        Cselected = C3.value;
+      }
+
+      const B1 = document.getElementById("B1");
+      const B2 = document.getElementById("B2");
+      const B3 = document.getElementById("B3");
+
+      let Bselected = null;
+      if (B1.checked) {
+        Bselected = B1.value;
+      } else if (B2.checked) {
+        Bselected = B2.value;
+      } else if (B3.checked) {
+        Bselected = B3.value;
+      }
+
+      const Response = await fetch("/eventdetails", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          orgname: orgname,
+          eventname: eventname,
+          orgweb: orgweb,
+          venue: venue,
+          startdate: startdate,
+          starttime: starttime,
+          enddate: enddate,
+          endtime: endtime,
+          logo: logo,
+          signature: signature,
+          cost: cost,
+          walletaddress: walletaddress,
+          ticketTemplate: Tselected,
+          certificateTemplate: Cselected,
+          bannerTemplate: Bselected,
+        }),
+      });
+      console.log({
+        organiser: {
+          orgname: orgname,
+          eventname: eventname,
+          orgweb: orgweb,
+          venue: venue,
+          startdate: startdate,
+          starttime: starttime,
+          enddate: enddate,
+          endtime: endtime,
+          logo: logo,
+          signature: signature,
+          cost: cost,
+          walletaddress: walletaddress,
+          ticketTemplate: Tselected,
+          certificateTemplate: Cselected,
+          bannerTemplate: Bselected,
+        },
+      });
     };
-</script>
+  </script>
 </html>
