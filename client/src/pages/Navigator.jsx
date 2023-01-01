@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AllEvent from "../components/Eventify/AllEvents/AllEvent";
+import SingleEvent from "../components/Eventify/Event/SingleEvent";
 import Details from "../components/EventLabs/Details/Details";
 import EventLabs from "../components/EventLabs/EventLabs";
 import BanerifyForm from "../components/Form/BannerifyForm";
@@ -28,6 +29,7 @@ const Navigator = () => {
         <Route path="/registerEvent" element={<EventForm />} />
         <Route path="/:eventId/participationForm" element={<ParticipantForm />} />
         <Route path="/:eventId/checkin" element={<CheckInForm />} />
+        <Route path="/:eventId/eventDetails" element={<SingleEvent />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </main>
