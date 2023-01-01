@@ -10,6 +10,14 @@
     <h2 style="text-align: center">Form</h2>
     <div>
       <div class="mb-3">
+        <label for="eventid" class="form-label">event ID</label>
+        <input type="text" name="" id="eventid" required />
+      </div>
+      <div class="mb-3">
+        <label for="eventname" class="form-label">Event Name</label>
+        <input type="text" name="" id="eventname" required />
+      </div>
+      <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="email" name="" id="email" required />
       </div>
@@ -85,6 +93,8 @@
       sendData();
     };
     const sendData = async () => {
+      const eventid = document.getElementById("eventid").value;
+      const eventname = document.getElementById("eventname").value;
       const email = document.getElementById("email").value;
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
@@ -103,12 +113,14 @@
       const Q9 = document.getElementById("Q9").value;
       const Q10 = document.getElementById("Q10").value;
 
-      const Response2 = await fetch("/participantDetails", {
+      const Response2 = await fetch("/participantdetails", {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
         body: JSON.stringify({
+          eventid: eventid,
+          eventname: eventname,
           email: email,
           phone: phone,
           venue:venue,
@@ -129,11 +141,13 @@
         }),
       });
       console.log({
+        eventid: eventid,
+        eventname: eventname,
         email: email,
         phone: phone,
-        venue,
-        time,
-        date,
+        venue:venue,
+        time:time,
+        date:date,
         name: name,
         address: address,
         Q1: Q1,
