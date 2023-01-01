@@ -34,15 +34,18 @@ def make_certificates2(name,event,date,venue,desig,design,n1,n2,url1,url2):
     width2, height2 = insert_image2.size
     x = width1/height1
     y = width2/height2
-    if x <= 1.5 and y <= 1.5:
+    if x <= 3:
         insert_image1 = insert_image1.resize((250,75))
+        image_source.paste(insert_image1, (453,1020))
+    else :
+        insert_image1 = insert_image1.resize((450,75))
+        image_source.paste(insert_image1, (453,1020))
+
+    if y <= 3 :
         insert_image2 = insert_image2.resize((250,75))
-        image_source.paste(insert_image1, (453,1020))
         image_source.paste(insert_image2, (1269,1020))
-    else:
-        insert_image1 = insert_image1.resize((350,75))
-        insert_image2 = insert_image2.resize((350,75))
-        image_source.paste(insert_image1, (453,1020))
+    else :
+        insert_image2 = insert_image2.resize((450,75))
         image_source.paste(insert_image2, (1269,1020))
 
     image_source.show()

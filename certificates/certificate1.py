@@ -17,13 +17,13 @@ def make_certificates1(name,gender,field,desig,design,n1,n2,url1,url2):
     field_width, field_height = draw.textsize(field)
     draw.text((579,837), field, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",45))
     desig_width, desig_height = draw.textsize(desig)
-    draw.text((520,1191), desig, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",40))
+    draw.text((520,1170), desig, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",40))
     design_width, design_height = draw.textsize(design)
-    draw.text((1322,1197), design, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",40))
+    draw.text((1302,1170), design, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",40))
     n1_width, n1_height = draw.textsize(n1)
-    draw.text((488,1079), n1, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",40))
+    draw.text((488,1099), n1, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",40))
     n2_width, n2_height = draw.textsize(n2)
-    draw.text((1301,1081), n2, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",40))
+    draw.text((1301,1099), n2, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",40))
     #event_width, event_height = draw.textsize(event)
     #draw.text((568,938), event, fill=FONT_COLOR)
     #date_width, date_height = draw.textsize(date)
@@ -40,15 +40,18 @@ def make_certificates1(name,gender,field,desig,design,n1,n2,url1,url2):
     width2, height2 = insert_image2.size
     x = width1/height1
     y = width2/height2
-    if x <= 1.5 and y <= 1.5:
+    if x <= 3:
         insert_image1 = insert_image1.resize((250,75))
+        image_source.paste(insert_image1, (453,994))
+    else :
+        insert_image1 = insert_image1.resize((450,75))
+        image_source.paste(insert_image1, (453,994))
+
+    if y <= 3 :
         insert_image2 = insert_image2.resize((250,75))
-        image_source.paste(insert_image1, (453,994))
         image_source.paste(insert_image2, (1269,994))
-    else:
-        insert_image1 = insert_image1.resize((350,75))
-        insert_image2 = insert_image2.resize((350,75))
-        image_source.paste(insert_image1, (453,994))
+    else :
+        insert_image2 = insert_image2.resize((450,75))
         image_source.paste(insert_image2, (1269,994))
 
     image_source.show()
