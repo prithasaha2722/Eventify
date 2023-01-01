@@ -2,21 +2,21 @@ from PIL import Image,ImageDraw,ImageFont
 #FONT_FILE = ImageFont.truetype("arial.ttf", 50)
 #FONT_FILE_o = ImageFont.truetype("arial.ttf", 30)
 FONT_COLOR = "#000000"
-t1 = Image.open('certificates/cert/cert3.png')
+t1 = Image.open('cert/cert3.png')
 WIDTH, HEIGHT = t1.size
-def make_certificates3(name,event,date,org,desig,design,n1,n2):
-    image_source = Image.open('certificates/cert/cert3.png')
+def make_certificates3(name,event,date,org,desig,design,n1,n2,url1,url2,log1,log2):
+    image_source = Image.open('cert/cert3.png')
     draw = ImageDraw.Draw(image_source)
     name_width, name_height = draw.textsize(name)
-    draw.text((813,720), name, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",90))
+    draw.text((813,720), name, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",75))
     event_width, event_height = draw.textsize(event)
-    draw.text((696,919), event, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",30))
+    draw.text((696,913), event, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",30))
     date_width, date_height = draw.textsize(date)
     draw.text((1560,912), date, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",30))
     org_width, org_height = draw.textsize(org)
-    draw.text((1153,916), org, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",30))
+    draw.text((1153,910), org, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",30))
     name_width, name_height = draw.textsize(name)
-    draw.text((1132,871), name, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",30))
+    draw.text((1132,862), name, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",30))
 
     desig_width, desig_height = draw.textsize(desig)
     draw.text((432,1220), desig, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",30))
@@ -28,6 +28,49 @@ def make_certificates3(name,event,date,org,desig,design,n1,n2):
     draw.text((1391,1123), n2, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",30))
     #image_source.save("./out/" + name +".png")
     #print('Saving Certificate of:', name)
+
+    insert_image1 = Image.open(url1)
+    insert_image2 = Image.open(url2)
+
+    width1, height1 = insert_image1.size
+    width2, height2 = insert_image2.size
+    x = width1/height1
+    y = width2/height2
+    if x <= 3 :
+        insert_image1 = insert_image1.resize((250,75))
+        image_source.paste(insert_image1, (400,1040))
+    else:
+        insert_image1 = insert_image1.resize((450,75))
+        image_source.paste(insert_image1, (400,1040))
+        
+    if y <= 3 :
+        insert_image2 = insert_image2.resize((250,75))
+        image_source.paste(insert_image2, (1296,1040))
+    else :
+        insert_image2 = insert_image2.resize((450,75))
+        image_source.paste(insert_image2, (1276,1040))
+
+    logo1 = Image.open(log1)
+    logo2 = Image.open(log2)
+
+    width3, height3 = logo1.size
+    width4, height4 = logo2.size
+    a = width3/height3
+    b = width4/height4
+    if a <= 3:
+        logo1 = logo1.resize((100,100))
+        image_source.paste(logo1, (871,63))
+    else :
+        logo1 = logo1.resize((200,100))
+        image_source.paste(logo1, (871,63))
+
+    if b <= 3 :
+        logo2 = logo2.resize((100,100))
+        image_source.paste(logo2, (1045,63))
+    else :
+        logo2 = logo2.resize((200,100))
+        image_source.paste(logo2, (1045,63))
+
     image_source.show()
 
 if __name__ == "__main__":
@@ -41,6 +84,10 @@ if __name__ == "__main__":
     design = "Student Head"
     n1 = "Mitra Basu"
     n2 = "P. K. Dan"
+    url1 = "signs/sig1.png"
+    url2 = "signs/sig2.png"
+    log1 = "logos/logo1.png"
+    log2 = "logos/logo2.png"
     for name in names:
-        make_certificates3(name,event,date,org,desig,design,n1,n2)
+        make_certificates3(name,event,date,org,desig,design,n1,n2,url1,url2,log1,log2)
     print(len(names), "certificates done.")
