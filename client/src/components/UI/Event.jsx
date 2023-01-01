@@ -22,7 +22,7 @@ const Event = () => {
             </span>
             <span className="w-full p-2 text-center text-xl font-medium">20</span>
           </div>
-          <div className="h-[70%] w-1 bg-[#000000] absolute right-0"></div>
+          <div className="h-[70%] w-1 bg-[#00000040] rounded-xl absolute right-0"></div>
         </div>
         
       </div>
