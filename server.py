@@ -1,14 +1,6 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-import random
-import csv
-from certificates import certificate1, certificate2, certificate3, cert
-from mailing import  registration_mail, certificate_mail, ticket_mail, checkin_mail, bannerify_mail
-from tickets import ticket1,ticket2,ticket3
-from banners import banner1, banner2, banner3
 
-eventdetails=[]
-#eventdetails = [eventid, eventname, orgname, orgweb, venue, startdate, enddate, logo, signature]
 
 
 
@@ -70,3 +62,6 @@ def event_data():
             db.session.add(organizer)
             db.session.commit()
     return render_template('eventdetails.html')
+
+if __name__ == "__main__":
+    app.run(debug=True)
