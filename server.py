@@ -78,3 +78,7 @@ def event_data():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+### eventId, Date (month, date) , event name, venue, small description, banner url, free or paid,  (can be veiwed by anyone unauthorized too.)
+### (after authorization) toke pathabo: wallet Address, name, email,  ami pabo: upper details aar user ta kon kon event e already refistered
