@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2 style="text-align: center">Form</h2>
+    <div>
+      <div class="mb-3">
+        <label for="orgname" class="form-label">Organisation Name</label>
+        <input type="text" name="" id="orgname" required />
+      </div>
+      <div class="mb-3">
+        <label for="eventname" class="form-label">Event Name</label>
+        <input type="text" name="" id="eventname" required />
+      </div>
+      <div class="mb-3">
+        <label for="orgweb" class="form-label">Organisation website</label>
+        <input type="text" name="" id="orgweb"  />
+      </div>
+      <div class="mb-3">
+        <label for="venue" class="form-label">Venue</label>
+        <input type="text" name="" id="venue" required />
+      </div>
+      <div class="mb-3">
+        <label for="startdate" class="form-label">Start Date</label>
+        <input type="date" name="" id="startdate" required />
+      </div>
+      <div class="mb-3">
+        <label for="starttime" class="form-label">Start Time</label>
+        <input type="time" name="" id="starttime" required />
+      </div>
+      <div class="mb-3">
+        <label for="enddate" class="form-label">End Date</label>
+        <input type="date" name="" id="enddate" required />
+      </div>
+      <div class="mb-3">
+        <label for="endtime" class="form-label">endtime</label>
+        <input type="time" name="" id="endtime" required />
+      </div>
+      <div class="mb-3">
+        <label for="numberofattendee" class="form-label"
+          >No. of Atttendee</label
+        >
+        <input type="number" name="" id="numberofattendee" />
+      </div>
+      <div class="mb-3">
+        <label for="logo" class="form-label">Organisation Logo</label>
+        <input class="form-control" type="text" id="logo" />
+      </div>
+      <div class="mb-3">
+        <label for="signature" class="form-label">Authorizer Signature</label>
+        <input class="form-control" type="text" id="signature" />
+      </div>
+    </div>
+    <button id="button2">Submit</button>
+  </body>
+  <script>
+    const button2 = document.getElementById("button2");
+    button2.onclick = function () {
+        sendData();
+    };
+    const sendData = async () => {
+        const orgname = document.getElementById("orgname").value;
+        const eventname = document.getElementById("eventname").value;
+        const orgweb = document.getElementById("orgweb").value;
+        const venue = document.getElementById("venue").value;
+        const startdate = document.getElementById("startdate").value;
+        const starttime = document.getElementById("starttime").value;
+        const enddate = document.getElementById("enddate").value;
+        const endtime = document.getElementById("endtime").value;
+        const numberofattendee = document.getElementById("numberofattendee").value;
+        const logo = document.getElementById("logo").value;
+        const signature = document.getElementById("signature").value;
+        const cost = document.getElementById("cost").value;
+        const walletaddress = document.getElementById("walletaddress").value;
+        const ticketTemplate = document.getElementById("ticketTemplate").value;
+        const certificateTemplate = document.getElementById("certificateTemplate").value;
+        const bannerTemplate = document.getElementById("bannerTemplate").value;
+        
+        const Response = await fetch("/eventdetails", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({
+                orgname: orgname,
+                eventname: eventname,
+                orgweb: orgweb,
+                venue: venue,
+                startdate: startdate,
+                starttime: starttime,
+                enddate: enddate,
+                endtime: endtime,
+                numberofattendee: numberofattendee,
+                logo: logo,
+                signature: signature
+            }),
+        });
+        console.log({'organiser':{
+                orgname: orgname,
+                eventname: eventname,
+                orgweb: orgweb,
+                venue: venue,
+                startdate: startdate,
+                starttime: starttime,
+                enddate: enddate,
+                endtime: endtime,
+                logo: logo,
+                signature: signature
+            }})
+    };
+</script>
+</html>

@@ -47,7 +47,7 @@ with app.app_context():
     db.session.commit()
 
 @app.route("/eventdetails", methods=["GET", "POST"])
-def organizer_data():
+def event_data():
     if request.method=="POST":
         eventname = request.json['eventname']
         orgname = request.json['orgname']
