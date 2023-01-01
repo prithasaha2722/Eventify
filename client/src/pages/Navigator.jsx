@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AllEvent from "../components/Eventify/AllEvents/AllEvent";
 import Details from "../components/EventLabs/Details/Details";
 import EventLabs from "../components/EventLabs/EventLabs";
 import BanerifyForm from "../components/Form/BannerifyForm";
@@ -17,6 +18,7 @@ const Navigator = () => {
     <main className="overflow-x-hidden">
       <Routes>
         <Route path="/Home" element={<Home />} />
+        <Route path='/allevents' element={<AllEvent/>}/>
         <Route path="/" element={<EventLabs />} />
         <Route path="/details" element={<Details />} />
         <Route path="/bannerForm" element={<BanerifyForm />} />
