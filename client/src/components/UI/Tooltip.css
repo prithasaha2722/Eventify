@@ -1,9 +1,9 @@
 /* Custom properties */
 :root {
     --tooltip-text-color: black;
-    --tooltip-background-color:white;
+    --tooltip-background-color:#f8f8f8;
     --tooltip-margin: 30px;
-    --tooltip-arrow-size: 6px;
+    --tooltip-arrow-size: 15px;
   }
   
   /* Wrapping */

@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 import test from "../../images/test.png";
 import polygonlogo from "../../images/polygonlogo.png";
 import { motion } from "framer-motion";
 import Tooltip from "./Tooltip";
 import Content from "./Content";
+import { useState } from "react";
+import { useEffect } from "react";
 
-const Event = () => {
+const Event = (props) => {
+  const divRef = useRef();
+  const [rect, setRect] = useState(null)
+  
+
   return (
     
       <motion.div
-        className="h-[500px] w-1/4 bg-white shadow-xl rounded-b-2xl mx-4 my-8"
+        className="h-[500px] w-1/4 bg-white shadow-xl rounded-b-2xl mx-4 my-8" 
+        ref={divRef} onMouseOver={()=>setRect( window.innerWidth - divRef.current.getBoundingClientRect().right < 510)}
       >
-        <Tooltip content={<Content/>} direction="right">
+        <Tooltip content={<Content/>} direction={rect ? 'left' : 'right'}>
         <div className="h-[60%] flex items-center justify-center w-full relative">
           <img className="h-full w-full" src={test} alt={"test"} />
           <span className="bg-[#ffffff] opacity-80 absolute top-3 px-2 py-1 rounded-xl left-2 z-2 flex items-center justify-around">
