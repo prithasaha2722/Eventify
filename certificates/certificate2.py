@@ -4,7 +4,7 @@ from PIL import Image,ImageDraw,ImageFont
 FONT_COLOR = "#000000"
 t1 = Image.open('cert/cert2.png')
 WIDTH, HEIGHT = t1.size
-def make_certificates2(name,event,date,venue,desig,design,n1,n2,url1,url2):
+def make_certificates2(name,event,date,venue,desig,design,n1,n2,url1,url2,log1,log2):
     image_source = Image.open('cert/cert2.png')
     draw = ImageDraw.Draw(image_source)
     name_width, name_height = draw.textsize(name)
@@ -48,6 +48,27 @@ def make_certificates2(name,event,date,venue,desig,design,n1,n2,url1,url2):
         insert_image2 = insert_image2.resize((450,75))
         image_source.paste(insert_image2, (1269,1020))
 
+    logo1 = Image.open(log1)
+    logo2 = Image.open(log2)
+
+    width3, height3 = logo1.size
+    width4, height4 = logo2.size
+    a = width3/height3
+    b = width4/height4
+    if a <= 3:
+        logo1 = logo1.resize((100,100))
+        image_source.paste(logo1, (871,63))
+    else :
+        logo1 = logo1.resize((200,100))
+        image_source.paste(logo1, (871,63))
+
+    if b <= 3 :
+        logo2 = logo2.resize((100,100))
+        image_source.paste(logo2, (1045,63))
+    else :
+        logo2 = logo2.resize((200,100))
+        image_source.paste(logo2, (1045,63))
+
     image_source.show()
 
 if __name__ == "__main__":
@@ -62,6 +83,8 @@ if __name__ == "__main__":
     n2 = "P. K. Dan"
     url1 = "signs/sig1.png"
     url2 = "signs/sig2.png"
+    log1 = "logos/logo1.png"
+    log2 = "logos/logo2.png"
     for name in names:
-        make_certificates2(name,event,date,venue,desig,design,n1,n2,url1,url2)
+        make_certificates2(name,event,date,venue,desig,design,n1,n2,url1,url2,log1,log2)
     print(len(names), "certificates done.")
