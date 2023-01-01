@@ -34,6 +34,15 @@ class EventDetails(db.Model):
     certificateTemplate= db.Column(db.String, nullable=False)
     bannerTemplate= db.Column(db.String, nullable=False)
 
+class ParticipantsDetails(db.Model):
+    eventid = db.Column(db.Integer, nullable=False)
+    eventname = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, unique=True, nullable=False, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    phone = db.Column(db.Integer, unique=True, nullable=False)
+    walletaddress = db.Column(db.String, unique=True, nullable=False)
+    address = db.Column(db.String, nullable=False)
+
 with app.app_context():
     db.create_all()
     db.session.commit()
@@ -62,6 +71,10 @@ def event_data():
             db.session.add(organizer)
             db.session.commit()
     return render_template('eventdetails.html')
+
+
+
+####-------------------------------------------Server Execution Code------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------####
 
 if __name__ == "__main__":
     app.run(debug=True)
