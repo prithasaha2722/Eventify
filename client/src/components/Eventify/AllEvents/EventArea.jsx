@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react'
 import Event from '../../UI/Event'
 
@@ -9,4 +10,14 @@ const EventArea = () => {
   )
 }
 
+=======
+import React from 'react'
+
+const EventArea = () => {
+  return (
+    <div>EventArea</div>
+  )
+}
+
+>>>>>>> fa787716addd587dafb669e0b0c56d64666d66be
 export default EventArea

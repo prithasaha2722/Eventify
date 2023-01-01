@@ -2,11 +2,11 @@ from PIL import Image,ImageDraw,ImageFont
 #FONT_FILE = ImageFont.truetype("arial.ttf", 50)
 #FONT_FILE_o = ImageFont.truetype("arial.ttf", 30)
 FONT_COLOR = "#000000"
-t1 = Image.open('cert/cert1.png')
+t1 = Image.open('certificates/cert/cert1.png')
 WIDTH, HEIGHT = t1.size
 #def make_certificates(name,event,date,venue):
 def make_certificates1(name,gender,field,desig,design,n1,n2,url1,url2,log1,log2):
-    image_source = Image.open('cert/cert1.png')
+    image_source = Image.open('certificates/cert/cert1.png')
     draw = ImageDraw.Draw(image_source)
     name_width, name_height = draw.textsize(name)
     draw.text((762,570), name,fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",90))
