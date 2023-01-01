@@ -38,9 +38,9 @@ class EventDetails(db.Model):
     signature = db.Column(db.String, nullable=False)
     cost = db.Column(db.Integer, nullable=False)
     walletaddress = db.Column(db.String, nullable=False)
-    ticketTemplate = db.Column(db.Integer, nullable=False)
-    certificateTemplate= db.Column(db.Integer, nullable=False)
-    bannerTemplate= db.Column(db.Integer, nullable=False)
+    ticketTemplate = db.Column(db.String, nullable=False)
+    certificateTemplate= db.Column(db.String, nullable=False)
+    bannerTemplate= db.Column(db.String, nullable=False)
 
 with app.app_context():
     db.create_all()
@@ -64,7 +64,8 @@ def event_data():
         ticketTemplate = request.json['ticketTemplate']
         certificateTemplate = request.json['certificateTemplate']
         bannerTemplate = request.json['bannerTemplate']
-        organizer=EventDetails(eventname=eventname, orgname=orgname, orgweb=orgweb, venue=venue, startdate=startdate, enddate=enddate, starttime=starttime, endtime=endtime, logo=logo, signature=signature, cost=cost, walletaddress=walletaddress, ticketTemplate=ticketTemplate, certificateTemplate=certificateTemplate, bannerTemplate=bannerTemplate)
+
+        organizer=EventDetails(eventname=eventname, orgname=orgname, orgweb=orgweb, venue=venue, startdate=startdate, enddate=enddate, starttime=starttime, endtime=endtime, logo=logo, signature=signature, cost=int(cost), walletaddress=walletaddress, ticketTemplate=ticketTemplate, certificateTemplate=certificateTemplate, bannerTemplate=bannerTemplate)
         with app.app_context():
             db.session.add(organizer)
             db.session.commit()
