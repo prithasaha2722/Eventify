@@ -92,7 +92,7 @@ def organizer_data():
         with app.app_context():
             db.session.add(organizer)
             db.session.commit()
-    return render_template('Organizer.html')
+    return render_template('eventdetails.html')
 
 
 @app.route("/participant", methods=["GET", "POST"])
