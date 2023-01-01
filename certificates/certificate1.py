@@ -5,7 +5,7 @@ FONT_COLOR = "#000000"
 t1 = Image.open('cert/cert1.png')
 WIDTH, HEIGHT = t1.size
 #def make_certificates(name,event,date,venue):
-def make_certificates1(name,gender,field,desig,design,n1,n2,url1,url2):
+def make_certificates1(name,gender,field,desig,design,n1,n2,url1,url2,log1,log2):
     image_source = Image.open('cert/cert1.png')
     draw = ImageDraw.Draw(image_source)
     name_width, name_height = draw.textsize(name)
@@ -35,6 +35,29 @@ def make_certificates1(name,gender,field,desig,design,n1,n2,url1,url2):
 
     insert_image1 = Image.open(url1)
     insert_image2 = Image.open(url2)
+    logo1 = Image.open(log1)
+    logo2 = Image.open(log2)
+
+    width3, height3 = logo1.size
+    width4, height4 = logo2.size
+    a = width3/height3
+    b = width4/height4
+    if a <= 3:
+        logo1 = logo1.resize((100,100))
+        image_source.paste(logo1, (871,63))
+    else :
+        logo1 = logo1.resize((200,100))
+        image_source.paste(logo1, (871,63))
+
+    if b <= 3 :
+        logo2 = logo2.resize((100,100))
+        image_source.paste(logo2, (1045,63))
+    else :
+        logo2 = logo2.resize((200,100))
+        image_source.paste(logo2, (1045,63))
+
+
+
 
     width1, height1 = insert_image1.size
     width2, height2 = insert_image2.size
@@ -69,7 +92,9 @@ if __name__ == "__main__":
     n2 = "P. K. Dan"
     url1 = "signs/sig1.png"
     url2 = "signs/sig2.png"
+    log1 = "logos/logo1.png"
+    log2 = "logos/logo2.png"
     for name in names:
         #make_certificates(name,event,date,venue)
-        make_certificates1(name,gender,field,desig,design,n1,n2,url1,url2)
+        make_certificates1(name,gender,field,desig,design,n1,n2,url1,url2,log1,log2)
     print(len(names), "certificates done.")
