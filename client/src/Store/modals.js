@@ -1,21 +1,15 @@
 import {createSlice} from '@reduxjs/toolkit'
-const initial = { certificateModal: false, registerModal: false };
+const initial = { eventModal: false };
 
 export const modalSlice = createSlice({
   name: 'modalSlice',
   initialState: initial,
   reducers: {
-    opencertiModal(state) {
-      state.certificateModal = true;
+    openEventModal(state){
+      state.eventModal = true
     },
-    closecertiModal(state) {
-      state.certificateModal = false;
-    },
-    openregisterModal(state) {
-      state.registerModal = true;
-    },
-    closeregisterModal(state) {
-      state.registerModal = false;
-    },
+    closeEventModal(state){
+      state.eventModal = false
+    }
   },
 });
