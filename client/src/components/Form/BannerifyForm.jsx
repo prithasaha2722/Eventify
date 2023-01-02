@@ -96,7 +96,7 @@ const BanerifyForm = () => {
     setSend(true);
   };
   return (
-    <div className="w-screen h-screen flex flex-wrap items-center justify-around bg-[#000000] text-white overflow-hidden">
+    <div className="w-screen h-screen flex flex-col xl:flex-row flex-wrap items-center justify-around bg-[#000000] text-white overflow-hidden">
       {!send ? (<Fragment>
       <div className="w-1/4">
         <img src={Logo} className="w-full h-full" alt="eventLabs" />
