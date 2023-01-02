@@ -10,6 +10,14 @@
     <h2 style="text-align: center">Form</h2>
     <div>
       <div class="mb-3">
+        <label for="eventid" class="form-label">event ID</label>
+        <input type="text" name="" id="eventid" required />
+      </div>
+      <div class="mb-3">
+        <label for="eventname" class="form-label">Event Name</label>
+        <input type="text" name="" id="eventname" required />
+      </div>
+      <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="email" name="" id="email" required />
       </div>
@@ -22,8 +30,16 @@
         <input type="text" name="" id="phone" required />
       </div>
       <div class="mb-3">
-        <label for="walletaddress" class="form-label">Wallet Address</label>
-        <input type="text" name="" id="walletaddress" required />
+        <label for="venue" class="form-label">venue</label>
+        <input type="text" name="" id="venue" required />
+      </div>
+      <div class="mb-3">
+        <label for="time" class="form-label">time</label>
+        <input type="time" name="" id="time" required />
+      </div>
+      <div class="mb-3">
+        <label for="date" class="form-label">date</label>
+        <input type="date" name="" id="date" required />
       </div>
       <div class="mb-3">
         <label for="address" class="form-label">Address</label>
@@ -77,10 +93,14 @@
       sendData();
     };
     const sendData = async () => {
+      const eventid = document.getElementById("eventid").value;
+      const eventname = document.getElementById("eventname").value;
       const email = document.getElementById("email").value;
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
-      const walletaddress = document.getElementById("walletaddress").value;
+      const venue = document.getElementById("venue").value;
+      const time = document.getElementById("time").value;
+      const date = document.getElementById("date").value;
       const address = document.getElementById("address").value;
       const Q1 = document.getElementById("Q1").value;
       const Q2 = document.getElementById("Q2").value;
@@ -93,16 +113,20 @@
       const Q9 = document.getElementById("Q9").value;
       const Q10 = document.getElementById("Q10").value;
 
-      const Response2 = await fetch("/participant", {
+      const Response2 = await fetch("/participantdetails", {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
         body: JSON.stringify({
+          eventid: eventid,
+          eventname: eventname,
           email: email,
           phone: phone,
+          venue:venue,
+          time: time,
+          date : date,
           name: name,
-          walletaddress: walletaddress,
           address: address,
           Q1: Q1,
           Q2: Q2,
@@ -117,22 +141,26 @@
         }),
       });
       console.log({
-          email: email,
-          phone: phone,
-          name: name,
-          walletaddress: walletaddress,
-          address: address,
-          Q1: Q1,
-          Q2: Q2,
-          Q3: Q3,
-          Q4: Q4,
-          Q5: Q5,
-          Q6: Q6,
-          Q7: Q7,
-          Q8: Q8,
-          Q9: Q9,
-          Q10: Q10,
-        });
+        eventid: eventid,
+        eventname: eventname,
+        email: email,
+        phone: phone,
+        venue:venue,
+        time:time,
+        date:date,
+        name: name,
+        address: address,
+        Q1: Q1,
+        Q2: Q2,
+        Q3: Q3,
+        Q4: Q4,
+        Q5: Q5,
+        Q6: Q6,
+        Q7: Q7,
+        Q8: Q8,
+        Q9: Q9,
+        Q10: Q10,
+      });
     };
   </script>
 </html>

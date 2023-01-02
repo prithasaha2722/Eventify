@@ -64,7 +64,7 @@ with app.app_context():
 
 ####----------------------------------Main Backend Operation File Starts----------------------------------------------------------------------------------------------------------------------------####
 
-@app.route("/organizer", methods=["GET", "POST"])
+@app.route("/eventdetails", methods=["GET", "POST"])
 def organizer_data():
     if request.method=="POST":
         id= random.randint(0, 10000)
@@ -79,23 +79,23 @@ def organizer_data():
         numberofattendee = request.json['numberofattendee']
         logo = request.json['logo']
         signature = request.json['signature']
-        eventdetails.append(id)
-        eventdetails.append(eventname)
-        eventdetails.append(orgname)
-        eventdetails.append(orgweb)
-        eventdetails.append(venue)
-        eventdetails.append(startdate)
-        eventdetails.append(enddate)
-        eventdetails.append(logo)
-        eventdetails.append(signature)
+        eventdetails[0]=id
+        eventdetails[1]= eventname
+        eventdetails[2]=orgname
+        eventdetails[3]=orgweb
+        eventdetails[4]=venue
+        eventdetails[5]=startdate
+        eventdetails[6]=enddate
+        eventdetails[7]=logo
+        eventdetails[8]= signature
         organizer=Organizer(id=id, eventname=eventname, orgname=orgname, orgweb=orgweb, venue=venue, startdate=startdate, enddate=enddate, starttime=starttime, endtime=endtime, numberofattendee=numberofattendee, logo=logo, signature=signature)
         with app.app_context():
             db.session.add(organizer)
             db.session.commit()
-    return render_template('Organizer.html')
+    return render_template('eventdetails.html')
 
 
-@app.route("/participant", methods=["GET", "POST"])
+@app.route("/participantdetails", methods=["GET", "POST"])
 def participant_registration():
     if request.method == 'POST':
         eventid = eventdetails[0]

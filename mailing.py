@@ -2,7 +2,15 @@ import csv
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import re
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+EMAIL= os.getenv('email')
+PASSWORD= os.getenv('password')
+
+
 
 ####----------------------------Registration Mail Send----------------------------------------------------------------------------------------------------####
 
@@ -10,7 +18,7 @@ def registration_mail(anymail):
   with open('participantList.csv', 'r') as csvfile:
       msg = MIMEMultipart()
       msg['Subject'] = 'Thanks for Registering in our event  '
-      msg['From'] = 'eventifyeventmanager@outlook.com'
+      msg['From'] = EMAIL
       msg['To'] = anymail
       body = " -- BODY OF THE EMAIL -- "
 
@@ -19,9 +27,9 @@ def registration_mail(anymail):
 
       server = smtplib.SMTP('smtp.office365.com', 587)
       server.starttls()
-      server.login('eventifyeventmanager@outlook.com', 'KGSCPS@2023')
+      server.login(EMAIL, PASSWORD)
       try:
-        server.sendmail('eventifyeventmanager@outlook.com', anymail, msg.as_string())
+        server.sendmail(EMAIL, anymail, msg.as_string())
       except:
         print("An error occured.")
       server.quit()
@@ -38,7 +46,7 @@ def ticket_mail():
     for rowlist in rows:
       msg = MIMEMultipart()
       msg['Subject'] = 'Congratulation, You are In  '
-      msg['From'] = 'eventifyeventmanager@outlook.com'
+      msg['From'] = EMAIL
       msg['To'] = rowlist[2]
       body = " -- BODY OF THE EMAIL -- "
 
@@ -47,9 +55,9 @@ def ticket_mail():
 
       server = smtplib.SMTP('smtp.office365.com', 587)
       server.starttls()
-      server.login('eventifyeventmanager@outlook.com', 'KGSCPS@2023')
+      server.login(EMAIL, PASSWORD)
       try:
-        server.sendmail('eventifyeventmanager@outlook.com', rowlist[2], msg.as_string())
+        server.sendmail(EMAIL, rowlist[2], msg.as_string())
       except:
         print("An error occured.")
       server.quit()
@@ -66,7 +74,7 @@ def checkin_mail():
     for rowlist in rows:
       msg = MIMEMultipart()
       msg['Subject'] = 'Confirm your CheckIn for the event'
-      msg['From'] = 'eventifyeventmanager@outlook.com'
+      msg['From'] = EMAIL
       msg['To'] = rowlist[2]
       body = " -- BODY OF THE EMAIL -- "
 
@@ -75,9 +83,9 @@ def checkin_mail():
 
       server = smtplib.SMTP('smtp.office365.com', 587)
       server.starttls()
-      server.login('eventifyeventmanager@outlook.com', 'KGSCPS@2023')
+      server.login(EMAIL, PASSWORD)
       try:
-        server.sendmail('eventifyeventmanager@outlook.com', rowlist[2], msg.as_string())
+        server.sendmail(EMAIL, rowlist[2], msg.as_string())
       except:
         print("An error occured.")
       server.quit()
@@ -92,7 +100,7 @@ def certificate_mail():
     for rowlist in rows:
       msg = MIMEMultipart()
       msg['Subject'] = 'Certificate of Participation '
-      msg['From'] = 'eventifyeventmanager@outlook.com'
+      msg['From'] = EMAIL
       msg['To'] = rowlist[2]
       body = " -- BODY OF THE EMAIL -- "
 
@@ -101,9 +109,9 @@ def certificate_mail():
 
       server = smtplib.SMTP('smtp.office365.com', 587)
       server.starttls()
-      server.login('eventifyeventmanager@outlook.com', 'KGSCPS@2023')
+      server.login(EMAIL, PASSWORD)
       try:
-        server.sendmail('eventifyeventmanager@outlook.com', rowlist[2], msg.as_string())
+        server.sendmail(EMAIL, rowlist[2], msg.as_string())
       except:
         print("An error occured.")
       server.quit()
@@ -111,7 +119,7 @@ def certificate_mail():
 def bannerify_mail(anyemail):
   msg = MIMEMultipart()
   msg['Subject'] = 'Thanks for Registering in our event  '
-  msg['From'] = 'eventifyeventmanager@outlook.com'
+  msg['From'] = EMAIL
   msg['To'] = anyemail
   body = " -- BODY OF THE EMAIL -- "
 
@@ -120,9 +128,9 @@ def bannerify_mail(anyemail):
 
   server = smtplib.SMTP('smtp.office365.com', 587)
   server.starttls()
-  server.login('eventifyeventmanager@outlook.com', 'KGSCPS@2023')
+  server.login(EMAIL, PASSWORD)
   try:
-    server.sendmail('eventifyeventmanager@outlook.com', anyemail , msg.as_string())
+    server.sendmail(EMAIL, anyemail , msg.as_string())
   except:
     print("An error occured.")
   server.quit()
