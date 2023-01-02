@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import text
 import csv
 
 
@@ -101,6 +102,7 @@ def participants():
             db.session.add(registration)
             db.session.commit()
     return render_template('PartiReg.html')
+
 
 ####-------------------------------------------Server Execution Code------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------####
 

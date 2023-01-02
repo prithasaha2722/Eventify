@@ -1,9 +1,9 @@
 from PIL import Image,ImageDraw,ImageFont
 FONT_COLOR = "#000000"
-temp = Image.open('tckts/tic1.png')
+temp = Image.open('tickets/tckts/tic1.png')
 WIDTH, HEIGHT = temp.size
 def make_tickets1(name,event,date,org,venue,email,phone,time):
-    image_source = Image.open('tckts/tic1.png')
+    image_source = Image.open('tickets/tckts/tic1.png')
     draw = ImageDraw.Draw(image_source)
     name_width, name_height = draw.textsize(name)
     draw.text((73,317), name, fill=FONT_COLOR,font=ImageFont.truetype("arial.ttf",20))

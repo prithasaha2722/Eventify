@@ -64,7 +64,7 @@ with app.app_context():
 
 ####----------------------------------Main Backend Operation File Starts----------------------------------------------------------------------------------------------------------------------------####
 
-@app.route("/organizer", methods=["GET", "POST"])
+@app.route("/eventdetails", methods=["GET", "POST"])
 def organizer_data():
     if request.method=="POST":
         id= random.randint(0, 10000)
@@ -95,7 +95,7 @@ def organizer_data():
     return render_template('eventdetails.html')
 
 
-@app.route("/participant", methods=["GET", "POST"])
+@app.route("/participantdetails", methods=["GET", "POST"])
 def participant_registration():
     if request.method == 'POST':
         eventid = eventdetails[0]
