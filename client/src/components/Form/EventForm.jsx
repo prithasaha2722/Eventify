@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAsterisk } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../../images/Eventlabs/FormLogo.png";
@@ -6,6 +6,16 @@ import { useRef } from "react";
 import { forwardRef } from "react";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import ban1 from "../../images/ban/ban1.png";
+import ban2 from "../../images/ban/ban2.png";
+import ban3 from "../../images/ban/ban3.png";
+import tic1 from "../../images/tckts/tic1.png";
+import tic2 from "../../images/tckts/tic2.png";
+import tic3 from "../../images/tckts/tic3.png";
+import cert1 from "../../images/cert/cert1.png";
+import cert2 from "../../images/cert/cert2.png";
+import cert3 from "../../images/cert/cert3.png";
 
 const Input = forwardRef((props, ref) => {
   return (
@@ -51,7 +61,7 @@ const Radio = (props) => {
       whileHover={{
         transform: "scale(1.05)",
       }}
-      className={`w-2/3 my-6 border-8 rounded-xl scale-100 overflow-hidden ${
+      className={`w-3/6 my-6 border-8 rounded-xl scale-100 overflow-hidden ${
         props.selectedValue === props.id
           ? "border-[#2d822d]"
           : "border-transparent"
@@ -66,7 +76,9 @@ const EventForm = () => {
   const [eventId, setEventId] = useState(null);
   const [navigate, setNavigate] = useState(false);
   const [send, setSend] = useState(false);
-  const [value, setValue] = useState(null);
+  const [banvalue, setBanValue] = useState(null);
+  const [ticvalue, setTicValue] = useState(null);
+  const [certvalue, setCertValue] = useState(null);
 
   const orgnameRef = useRef();
   const eventnameRef = useRef();
@@ -98,12 +110,16 @@ const EventForm = () => {
         numberofattendee: numberofattendeeRef.current.value,
         logo: logoRef.current.value,
         signature: signatureRef.current.value,
+        banner: banvalue,
+        ticket: ticvalue,
+        certificate: certvalue
       }),
     });
 
     const data = await Response.json();
     setEventId(data);
     setNavigate(true);
+    setSend(true)
   };
 
   const registeHandler = () => {
@@ -115,8 +131,9 @@ const EventForm = () => {
   }
 
   return (
-    <div className="w-screen h-max 2xl:h-screen flex flex-col 2xl:flex-row flex-wrap items-center justify-around bg-[#000000] text-white 2xl:overflow-hidden scrollbar-none mb-5">
-      <div className=" w-1/2 md:w-1/3 2xl:w-1/4">
+    <Fragment>
+      {!send ? (<div className="w-screen h-max 2xl:h-screen flex flex-col 2xl:flex-row flex-wrap items-center justify-around bg-[#000000] text-white xl:overflow-hidden scrollbar-none mb-5">
+      <div className=" w-3/5 md:w-1/3 2xl:w-1/4">
         <img src={Logo} className="w-full h-full" alt="eventLabs" />
       </div>
       <div className="w-full lg:w-2/3 xl:w-3/5 2xl:w-1/2 h-screen flex flex-col 2xl:overflow-y-auto scrollbar-none">
@@ -185,29 +202,84 @@ const EventForm = () => {
           type={`text`}
           ref={signatureRef}
         />
-        <div className="flex flex-wrap justify-center items-center ">
+        <div className="flex flex-col flex-wrap justify-center items-center ">
+          <hr className="bg-white w-full mb-7" />
           <h2 className="text-4xl">Choose Banner Template</h2>
           <Radio
             image={ban1}
-            selectedValue={value}
-            select={setValue}
+            selectedValue={banvalue}
+            select={setBanValue}
             alt={"banner1"}
             id={1}
           />
           <Radio
             image={ban2}
-            selectedValue={value}
-            select={setValue}
+            selectedValue={banvalue}
+            select={setBanValue}
             alt={"banner2"}
             id={2}
           />
           <Radio
             image={ban3}
-            selectedValue={value}
-            select={setValue}
+            selectedValue={banvalue}
+            select={setBanValue}
             alt={"banner3"}
             id={3}
           />
+        </div>
+        <div className="flex flex-col items-center">
+          <hr className="bg-white w-full mb-7" />
+          <h2 className="text-4xl">Choose Ticket Template</h2>
+          <div className="flex flex-col flex-wrap justify-around items-center w-screen mt-4 h-auto p-12 ">
+            <Radio
+              image={tic1}
+              selectedValue={ticvalue}
+              select={setTicValue}
+              alt={"tic1"}
+              id={1}
+            />
+            <Radio
+              image={tic2}
+              selectedValue={ticvalue}
+              select={setTicValue}
+              alt={"tic2"}
+              id={2}
+            />
+            <Radio
+              image={tic3}
+              selectedValue={ticvalue}
+              select={setTicValue}
+              alt={"tic3"}
+              id={3}
+            />
+          </div>
+        </div>
+        <div className="flex flex-col items-center">
+          <hr className="bg-white w-full mb-7" />
+          <h2 className="text-4xl">Choose Ticket Template</h2>
+          <div className="flex flex-col flex-wrap justify-around items-center w-screen mt-4 h-auto p-12 ">
+            <Radio
+              image={cert1}
+              selectedValue={certvalue}
+              select={setCertValue}
+              alt={"cert1"}
+              id={1}
+            />
+            <Radio
+              image={cert2}
+              selectedValue={certvalue}
+              select={setCertValue}
+              alt={"cert2"}
+              id={2}
+            />
+            <Radio
+              image={cert3}
+              selectedValue={certvalue}
+              select={setCertValue}
+              alt={"cert3"}
+              id={3}
+            />
+          </div>
         </div>
         <button
           onClick={registeHandler}
@@ -216,7 +288,13 @@ const EventForm = () => {
           Submit to Register Event
         </button>
       </div>
-    </div>
+    </div>) : (
+        <div className="flex flex-col justify-center items-center">
+          <div className="text-4xl my-5 font-semibold">The Event is registered</div>
+          <div className="text-4xl my-5 font-semibold">Thank you for choosing us</div>
+        </div>
+      )}
+    </Fragment>
   );
 };
 
