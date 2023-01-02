@@ -40,9 +40,33 @@ const Input = forwardRef((props, ref) => {
   );
 });
 
+const Radio = (props) => {
+  const sendHandler = () => {
+    console.log(props.selectedValue);
+    props.select(props.id);
+  };
+  return (
+    <motion.button
+      onClick={sendHandler}
+      whileHover={{
+        transform: "scale(1.05)",
+      }}
+      className={`w-2/3 my-6 border-8 rounded-xl scale-100 overflow-hidden ${
+        props.selectedValue === props.id
+          ? "border-[#2d822d]"
+          : "border-transparent"
+      }`}
+    >
+      <img src={props.image} className="w-full h-full" alt={props.alt} />
+    </motion.button>
+  );
+};
+
 const EventForm = () => {
   const [eventId, setEventId] = useState(null);
   const [navigate, setNavigate] = useState(false);
+  const [send, setSend] = useState(false);
+  const [value, setValue] = useState(null);
 
   const orgnameRef = useRef();
   const eventnameRef = useRef();
@@ -161,6 +185,30 @@ const EventForm = () => {
           type={`text`}
           ref={signatureRef}
         />
+        <div className="flex flex-wrap justify-center items-center ">
+          <h2 className="text-4xl">Choose Banner Template</h2>
+          <Radio
+            image={ban1}
+            selectedValue={value}
+            select={setValue}
+            alt={"banner1"}
+            id={1}
+          />
+          <Radio
+            image={ban2}
+            selectedValue={value}
+            select={setValue}
+            alt={"banner2"}
+            id={2}
+          />
+          <Radio
+            image={ban3}
+            selectedValue={value}
+            select={setValue}
+            alt={"banner3"}
+            id={3}
+          />
+        </div>
         <button
           onClick={registeHandler}
           className="text-white rounded-xl bg-[#3361C2] my-7 p-2 2xl:p-5 text-lg 2xl:text-3xl font-medium m-auto"
