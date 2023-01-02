@@ -61,7 +61,7 @@ const Radio = (props) => {
       whileHover={{
         transform: "scale(1.05)",
       }}
-      className={`w-3/6 my-6 border-8 rounded-xl scale-100 overflow-hidden ${
+      className={`w-full sm:w-3/6 my-6 border-8 rounded-xl scale-100 overflow-hidden ${
         props.selectedValue === props.id
           ? "border-[#2d822d]"
           : "border-transparent"
@@ -112,14 +112,14 @@ const EventForm = () => {
         signature: signatureRef.current.value,
         banner: banvalue,
         ticket: ticvalue,
-        certificate: certvalue
+        certificate: certvalue,
       }),
     });
 
     const data = await Response.json();
     setEventId(data);
     setNavigate(true);
-    setSend(true)
+    setSend(true);
   };
 
   const registeHandler = () => {
@@ -132,166 +132,175 @@ const EventForm = () => {
 
   return (
     <Fragment>
-      {!send ? (<div className="w-screen h-max 2xl:h-screen flex flex-col 2xl:flex-row flex-wrap items-center justify-around bg-[#000000] text-white xl:overflow-hidden scrollbar-none mb-5">
-      <div className=" w-3/5 md:w-1/3 2xl:w-1/4">
-        <img src={Logo} className="w-full h-full" alt="eventLabs" />
-      </div>
-      <div className="w-full lg:w-2/3 xl:w-3/5 2xl:w-1/2 h-screen flex flex-col 2xl:overflow-y-auto scrollbar-none">
-        <Input
-          id={"orgname"}
-          name={`Organisation Name`}
-          type={`text`}
-          ref={orgnameRef}
-        />
-        <Input
-          id={"eventname"}
-          name={`Event Name`}
-          type={`text`}
-          ref={eventnameRef}
-        />
-        <Input
-          id={"orgweb"}
-          name={`Organisation website`}
-          type={`text`}
-          ref={orgwebRef}
-        />
-        <Input id={"venue"} name={`Venue`} type={`text`} ref={venueRef} />
-        <div className="flex flex-col md:flex-row justify-around items-center">
-          <Input
-            id={"startdate"}
-            name={`Start Date`}
-            type={`date`}
-            ref={startdateRef}
-          />
-          <Input
-            id={"starttime"}
-            name={`Start Time`}
-            type={`time`}
-            ref={starttimeRef}
-          />
-        </div>
-        <div className="flex flex-col md:flex-row justify-around items-center">
-          <Input
-            id={"enddate"}
-            name={`End Date`}
-            type={`date`}
-            ref={enddateRef}
-          />
-          <Input
-            id={"endtime"}
-            name={`End Time`}
-            type={`time`}
-            ref={endtimeRef}
-          />
-        </div>
-        <Input
-          id={"numberofattendee"}
-          name={`No. of Atttendee (expected)`}
-          type={`text`}
-          ref={numberofattendeeRef}
-        />
-        <Input
-          id={"logo"}
-          name={`Organisation Logo (link)`}
-          type={`text`}
-          ref={logoRef}
-        />
-        <Input
-          id={"signature"}
-          name={`Authorizer Signature (link)`}
-          type={`text`}
-          ref={signatureRef}
-        />
-        <div className="flex flex-col flex-wrap justify-center items-center ">
-          <hr className="bg-white w-full mb-7" />
-          <h2 className="text-4xl">Choose Banner Template</h2>
-          <Radio
-            image={ban1}
-            selectedValue={banvalue}
-            select={setBanValue}
-            alt={"banner1"}
-            id={1}
-          />
-          <Radio
-            image={ban2}
-            selectedValue={banvalue}
-            select={setBanValue}
-            alt={"banner2"}
-            id={2}
-          />
-          <Radio
-            image={ban3}
-            selectedValue={banvalue}
-            select={setBanValue}
-            alt={"banner3"}
-            id={3}
-          />
-        </div>
-        <div className="flex flex-col items-center">
-          <hr className="bg-white w-full mb-7" />
-          <h2 className="text-4xl">Choose Ticket Template</h2>
-          <div className="flex flex-col flex-wrap justify-around items-center w-screen mt-4 h-auto p-12 ">
-            <Radio
-              image={tic1}
-              selectedValue={ticvalue}
-              select={setTicValue}
-              alt={"tic1"}
-              id={1}
-            />
-            <Radio
-              image={tic2}
-              selectedValue={ticvalue}
-              select={setTicValue}
-              alt={"tic2"}
-              id={2}
-            />
-            <Radio
-              image={tic3}
-              selectedValue={ticvalue}
-              select={setTicValue}
-              alt={"tic3"}
-              id={3}
-            />
-          </div>
-        </div>
-        <div className="flex flex-col items-center">
-          <hr className="bg-white w-full mb-7" />
-          <h2 className="text-4xl">Choose Ticket Template</h2>
-          <div className="flex flex-col flex-wrap justify-around items-center w-screen mt-4 h-auto p-12 ">
-            <Radio
-              image={cert1}
-              selectedValue={certvalue}
-              select={setCertValue}
-              alt={"cert1"}
-              id={1}
-            />
-            <Radio
-              image={cert2}
-              selectedValue={certvalue}
-              select={setCertValue}
-              alt={"cert2"}
-              id={2}
-            />
-            <Radio
-              image={cert3}
-              selectedValue={certvalue}
-              select={setCertValue}
-              alt={"cert3"}
-              id={3}
-            />
-          </div>
-        </div>
-        <button
-          onClick={registeHandler}
-          className="text-white rounded-xl bg-[#3361C2] my-7 p-2 2xl:p-5 text-lg 2xl:text-3xl font-medium m-auto"
+      {!send ? (
+        <div
+          style={{ paddingBottom: "10px" }}
+          className="w-screen h-max 2xl:h-screen flex flex-col 2xl:flex-row flex-wrap items-center justify-around bg-[#000000] text-white 2xl:overflow-hidden scrollbar-none pb-5"
         >
-          Submit to Register Event
-        </button>
-      </div>
-    </div>) : (
+          <div className=" w-3/5 md:w-1/3 2xl:w-1/4">
+            <img src={Logo} className="w-full h-full" alt="eventLabs" />
+          </div>
+          <div className="w-full lg:w-2/3 xl:w-3/5 2xl:w-1/2 h-screen flex flex-col 2xl:overflow-y-auto scrollbar-none">
+            <Input
+              id={"orgname"}
+              name={`Organisation Name`}
+              type={`text`}
+              ref={orgnameRef}
+            />
+            <Input
+              id={"eventname"}
+              name={`Event Name`}
+              type={`text`}
+              ref={eventnameRef}
+            />
+            <Input
+              id={"orgweb"}
+              name={`Organisation website`}
+              type={`text`}
+              ref={orgwebRef}
+            />
+            <Input id={"venue"} name={`Venue`} type={`text`} ref={venueRef} />
+            <div className="flex flex-col md:flex-row justify-around items-center">
+              <Input
+                id={"startdate"}
+                name={`Start Date`}
+                type={`date`}
+                ref={startdateRef}
+              />
+              <Input
+                id={"starttime"}
+                name={`Start Time`}
+                type={`time`}
+                ref={starttimeRef}
+              />
+            </div>
+            <div className="flex flex-col md:flex-row justify-around items-center">
+              <Input
+                id={"enddate"}
+                name={`End Date`}
+                type={`date`}
+                ref={enddateRef}
+              />
+              <Input
+                id={"endtime"}
+                name={`End Time`}
+                type={`time`}
+                ref={endtimeRef}
+              />
+            </div>
+            <Input
+              id={"numberofattendee"}
+              name={`No. of Atttendee (expected)`}
+              type={`text`}
+              ref={numberofattendeeRef}
+            />
+            <Input
+              id={"logo"}
+              name={`Organisation Logo (link)`}
+              type={`text`}
+              ref={logoRef}
+            />
+            <Input
+              id={"signature"}
+              name={`Authorizer Signature (link)`}
+              type={`text`}
+              ref={signatureRef}
+            />
+            <div className="flex flex-col flex-wrap justify-center items-center ">
+              <hr className="bg-white w-full mb-7" />
+              <h2 className="text-2xl sm:text-4xl">Choose Banner Template</h2>
+              <Radio
+                image={ban1}
+                selectedValue={banvalue}
+                select={setBanValue}
+                alt={"banner1"}
+                id={1}
+              />
+              <Radio
+                image={ban2}
+                selectedValue={banvalue}
+                select={setBanValue}
+                alt={"banner2"}
+                id={2}
+              />
+              <Radio
+                image={ban3}
+                selectedValue={banvalue}
+                select={setBanValue}
+                alt={"banner3"}
+                id={3}
+              />
+            </div>
+            <div className="flex flex-col items-center">
+              <hr className="bg-white w-full mb-7" />
+              <h2 className="text-2xl sm:text-4xl">Choose Ticket Template</h2>
+              <div className="flex flex-col flex-wrap justify-around items-center w-screen mt-4 h-auto p-12 ">
+                <Radio
+                  image={tic1}
+                  selectedValue={ticvalue}
+                  select={setTicValue}
+                  alt={"tic1"}
+                  id={1}
+                />
+                <Radio
+                  image={tic2}
+                  selectedValue={ticvalue}
+                  select={setTicValue}
+                  alt={"tic2"}
+                  id={2}
+                />
+                <Radio
+                  image={tic3}
+                  selectedValue={ticvalue}
+                  select={setTicValue}
+                  alt={"tic3"}
+                  id={3}
+                />
+              </div>
+            </div>
+            <div className="flex flex-col items-center">
+              <hr className="bg-white w-full mb-7" />
+              <h2 className="text-2xl sm:text-4xl">Choose Ticket Template</h2>
+              <div className="flex flex-col flex-wrap justify-around items-center w-screen mt-4 h-auto p-12 ">
+                <Radio
+                  image={cert1}
+                  selectedValue={certvalue}
+                  select={setCertValue}
+                  alt={"cert1"}
+                  id={1}
+                />
+                <Radio
+                  image={cert2}
+                  selectedValue={certvalue}
+                  select={setCertValue}
+                  alt={"cert2"}
+                  id={2}
+                />
+                <Radio
+                  image={cert3}
+                  selectedValue={certvalue}
+                  select={setCertValue}
+                  alt={"cert3"}
+                  id={3}
+                />
+              </div>
+            </div>
+            <button
+              onClick={registeHandler}
+              className="text-white rounded-xl bg-[#3361C2] my-4 p-2 2xl:p-5 text-lg 2xl:text-3xl font-medium m-auto"
+            >
+              Submit to Register Event
+            </button>
+          </div>
+        </div>
+      ) : (
         <div className="flex flex-col justify-center items-center">
-          <div className="text-4xl my-5 font-semibold">The Event is registered</div>
-          <div className="text-4xl my-5 font-semibold">Thank you for choosing us</div>
+          <div className="text-4xl my-5 font-semibold">
+            The Event is registered
+          </div>
+          <div className="text-4xl my-5 font-semibold">
+            Thank you for choosing us
+          </div>
         </div>
       )}
     </Fragment>
