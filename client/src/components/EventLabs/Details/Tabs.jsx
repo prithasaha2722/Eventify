@@ -7,7 +7,7 @@ import { Navigate } from "react-router-dom";
 const BoxWrapper = (props) => {
   return (
     <div
-      className="w-screen h-screen flex items-center m-auto justify-center relative text-black"
+      className="w-screen h-screen flex flex-col md:flex-row items-center m-auto justify-center relative text-black"
       style={{
         flexDirection: props.direction,
         backgroundColor: props.bgcolor ? props.bgcolor : "white",
@@ -36,12 +36,21 @@ const Tabs = () => {
   } else {
     return (
       <div className="w-screen h-fit relative">
-        <BoxWrapper direction="row">
-          <div className="w-[51%] flex flex-col justify-end">
-            <h2 className="font-bold text-7xl">
+        <BoxWrapper direction={window.innerWidth < 700 ? "col" : "row"}>
+          <div className=" w-full md:w-[51%] px-3 flex flex-col justify-center items-center md:items-start md:justify-end">
+            <h2 className="font-bold text-3xl  2xl:text-7xl">
               Breaking down event management software into essentials
             </h2>
-            <div className="text-3xl mt-10 w-3/4">
+            {window.innerWidth < 700 && (
+              <div className="w-[60%] flex items-center text-center mt-5">
+                <img
+                  src={Registration}
+                  alt="Registration"
+                  className="w-full h-full"
+                />
+              </div>
+            )}
+            <div className=" w-full text-lg 2xl:text-3xl mt-10 2xl:w-3/4">
               Often, ticketing and registration software are mistaken for event
               management software. However, modern EMS tools are holistic
               solutions that can house them along with other event management
@@ -49,25 +58,32 @@ const Tabs = () => {
             </div>
             <button
               onClick={() => setRegister(true)}
-              className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#00A8A8]"
+              className="w-fit text-xl 2xl:text-4xl mt-14 text-white p-4 rounded-md bg-[#00A8A8]"
             >
               Register Your Event
             </button>
           </div>
-          <div className="w-[23%]">
-            <img
-              src={Registration}
-              alt="Registration"
-              className="w-full h-full"
-            />
-          </div>
+          {window.innerWidth >= 700 && (
+            <div className="w-[23%]">
+              <img
+                src={Registration}
+                alt="Registration"
+                className="w-full h-full"
+              />
+            </div>
+          )}
         </BoxWrapper>
-        <BoxWrapper direction="row-reverse">
-          <div className="w-[51%] flex flex-col justify-end">
-            <h2 className="font-bold text-7xl">
+        <BoxWrapper direction={window.innerWidth < 700 ? "col" : "row-reverse"}>
+          <div className=" w-full md:w-[51%] px-3 flex flex-col justify-center items-center md:items-start  md:justify-end">
+            <h2 className="font-bold text-3xl  2xl:text-7xl">
               Breaking down event management software into essentials
             </h2>
-            <div className="text-3xl mt-10 w-3/4">
+            {window.innerWidth < 700 && (
+              <div className="w-[60%] flex items-center text-center mt-5">
+                <img src={tickets} alt="tickets" className="w-full h-full" />
+              </div>
+            )}
+            <div className="w-full text-lg 2xl:text-3xl mt-10 2xl:w-3/4">
               Often, ticketing and registration software are mistaken for event
               management software. However, modern EMS tools are holistic
               solutions that can house them along with other event management
@@ -75,21 +91,26 @@ const Tabs = () => {
             </div>
             <button
               onClick={() => setTickets(true)}
-              className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#ED5580]"
+              className="w-fit text-xl 2xl:text-4xl mt-14 text-white p-4 rounded-md bg-[#ED5580]"
             >
               Send Tickets
             </button>
           </div>
-          <div className="w-[14%] mr-[300px]">
+          {window.innerWidth >=700 && <div className=" mr-[30px] 2xl:mr-[100px]">
             <img src={tickets} alt="tickets" className="w-full h-full" />
-          </div>
+          </div>}
         </BoxWrapper>
-        <BoxWrapper direction="row">
-          <div className="w-[51%] flex flex-col justify-end">
-            <h2 className="font-bold text-7xl">
+        <BoxWrapper direction={window.innerWidth < 700 ? "col" : "row"}>
+          <div className=" w-full md:w-[51%] px-3 flex flex-col justify-center items-center md:items-start md:justify-end">
+            <h2 className="font-bold text-3xl 2xl:text-7xl">
               Breaking down event management software into essentials
             </h2>
-            <div className="text-3xl mt-10 w-3/4">
+            {window.innerWidth < 700 && (
+              <div className="w-[60%] flex items-center text-center mt-5">
+                <img src={checkIn} alt="checkIn" className="w-full h-full" />
+              </div>
+            )}
+            <div className="w-full text-lg 2xl:text-3xl mt-10 2xl:w-3/4">
               Often, ticketing and registration software are mistaken for event
               management software. However, modern EMS tools are holistic
               solutions that can house them along with other event management
@@ -97,21 +118,32 @@ const Tabs = () => {
             </div>
             <button
               onClick={() => setCheckIn(true)}
-              className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#79994C]"
+              className="w-fit text-xl 2xl:text-4xl mt-14 text-white p-4 rounded-md bg-[#79994C]"
             >
               Send Check In Mail
             </button>
           </div>
-          <div className="w-[14%] mr-[100px]">
-            <img src={checkIn} alt="checkIn" className="w-full h-full" />
-          </div>
+          {window.innerWidth >= 700 && (
+            <div className="w-[14%] mr-[100px]">
+              <img src={checkIn} alt="checkIn" className="w-full h-full" />
+            </div>
+          )}
         </BoxWrapper>
         <BoxWrapper direction="row-reverse">
-          <div className="w-[51%] flex flex-col justify-end">
-            <h2 className="font-bold text-7xl">
+          <div className=" w-full md:w-[51%] px-3 flex flex-col justify-center items-center md:items-start md:justify-end">
+            <h2 className="font-bold text-3xl 2xl:text-7xl">
               Breaking down event management software into essentials
             </h2>
-            <div className="text-3xl mt-10 w-3/4">
+            {window.innerWidth < 700 && (
+              <div className="w-[60%] flex items-center text-center mt-5">
+                <img
+                  src={certificate}
+                  alt="certificate"
+                  className="w-full h-full"
+                />
+              </div>
+            )}
+            <div className="w-full text-lg 2xl:text-3xl mt-10 2xl:w-3/4">
               Often, ticketing and registration software are mistaken for event
               management software. However, modern EMS tools are holistic
               solutions that can house them along with other event management
@@ -119,21 +151,23 @@ const Tabs = () => {
             </div>
             <button
               onClick={() => setCerti(true)}
-              className="w-fit text-4xl mt-14 text-white p-4 rounded-md bg-[#F36A8D]"
+              className="w-fit text-xl 2xl:text-4xl mt-14 text-white p-4 rounded-md bg-[#F36A8D]"
             >
               Send Certificates
             </button>
           </div>
-          <div className="w-[14%] mr-[300px]">
-            <img
-              src={certificate}
-              alt="certificate"
-              className="w-full h-full"
-            />
-          </div>
+          {window.innerWidth >= 700 && (
+            <div className=" mr-[30px] 2xl:mr-[100px]">
+              <img
+                src={certificate}
+                alt="certificate"
+                className="w-full h-full"
+              />
+            </div>
+          )}
         </BoxWrapper>
-        <div className="absolute bottom-0 w-full flex items-center bg-black p-4 justify-center text-4xl">
-          <div className="text-white text-4xl">Developed By</div>
+        <div className="relative xl:absolute mt-4 bottom-0 py-3 w-full flex flex-col xl:flex-row items-center justify-center text-xl xl:text-2xl 2xl:text-4xl bg-black">
+          <div className="text-white">Developed By</div>
           <div className="text-[#ff0000] ml-4 font-medium">
             KoffeewithKoders
           </div>
