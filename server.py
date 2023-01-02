@@ -35,6 +35,23 @@ class EventDetails(db.Model):
     certificateTemplate= db.Column(db.String, nullable=False)
     bannerTemplate= db.Column(db.String, nullable=False)
 
+    def __init__(self, eventname, orgname, orgweb, venue, startdate, enddate, starttime, endtime, logo, signature, cost, walletaddress, ticketTemplate, certificateTemplate, bannerTemplate):
+        self.eventname=eventname
+        self.orgname=orgname
+        self.orgweb=orgweb
+        self.venue=venue
+        self.startdate=startdate
+        self.enddate=enddate
+        self.starttime=starttime
+        self.endtime=endtime
+        self.logo=logo
+        self.signature=signature
+        self.cost=cost
+        self.walletaddress=walletaddress
+        self.ticketTemplate=ticketTemplate
+        self.certificateTemplate=certificateTemplate
+        self.bannerTemplate=bannerTemplate
+
 class Participants(db.Model):
     eventid = db.Column(db.Integer, nullable=False)
     eventname = db.Column(db.String, nullable=False)
@@ -103,6 +120,9 @@ def participants():
             db.session.commit()
     return render_template('PartiReg.html')
 
+with app.app_context():
+    user = db.session.execute(db.select(EventDetails).filter_by(id=1)).one()
+    print(user)
 
 ####-------------------------------------------Server Execution Code------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------####
 
