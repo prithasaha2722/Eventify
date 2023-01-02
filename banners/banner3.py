@@ -1,4 +1,7 @@
 from PIL import Image,ImageDraw,ImageFont
+import os
+if not os.path.exists('bannersave'):
+    os.makedirs('certificatesave')
 FONT_COLOR = "#000000"
 temp = Image.open('ban/ban3.png')
 WIDTH, HEIGHT = temp.size
@@ -15,7 +18,7 @@ def make_banners3(org,event,venue,date,time):
     draw.text((3638,2344),venue, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",135))
     time_width, time_height = draw.textsize(time)
     draw.text((539,2020),time, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",80))
-    image_source.show()
+    image_source.save('bannersave/banner.png', format='PNG')
 
 if __name__ == "__main__":
     names = ["Soham Chakraborty", "Kaustav Giri", "Pritha Saha","Ujjaini Ray"]
