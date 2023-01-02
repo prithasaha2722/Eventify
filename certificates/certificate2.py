@@ -1,4 +1,7 @@
 from PIL import Image,ImageDraw,ImageFont
+import os
+if not os.path.exists('certificatesave'):
+    os.makedirs('certificatesave')
 #FONT_FILE = ImageFont.truetype("arial.ttf", 50)
 #FONT_FILE_o = ImageFont.truetype("arial.ttf", 30)
 FONT_COLOR = "#000000"
@@ -69,7 +72,7 @@ def make_certificates2(name,event,date,venue,desig,design,n1,n2,url1,url2,log1,l
         logo2 = logo2.resize((200,100))
         image_source.paste(logo2, (1045,63))
 
-    image_source.show()
+    image_source.save('certificatesave/certificate.png', format='PNG')
 
 if __name__ == "__main__":
     names = ["Soham Chakraborty", "Kaustav Giri", "Pritha Saha","Ujjaini Ray"]

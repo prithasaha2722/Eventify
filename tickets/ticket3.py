@@ -1,4 +1,7 @@
 from PIL import Image,ImageDraw,ImageFont
+import os
+if not os.path.exists('ticketsave'):
+    os.makedirs('ticketsave')
 import pandas as pd
 FONT_COLOR = "#000000"
 temp = Image.open('tickets/tckts/tic3.png')
@@ -21,8 +24,13 @@ def make_tickets3(name,event,date,org,venue,email,phone,time):
     phone_width, phone_height = draw.textsize(phone)
     draw.text((1600,280),phone, fill=FONT_COLOR,font=ImageFont.truetype("arial.ttf",20))
     time_width, time_height = draw.textsize(time)
+<<<<<<< HEAD
+    draw.text((585,522),time, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",20))
+    image_source.save('ticketsave/ticket.png', format='PNG')
+=======
     draw.text((585,522),time, fill=FONT_COLOR,font=ImageFont.truetype("arial.ttf",20))
     image_source.show()
+>>>>>>> origin/main
 
 if __name__ == "__main__":
     names = ["Soham Chakraborty", "Kaustav Giri", "Pritha Saha","Ujjaini Ray"]
