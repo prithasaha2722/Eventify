@@ -15,7 +15,7 @@ import Error from "./Error";
 
 const Navigator = () => {
   return (
-    <main className="overflow-x-hidden">
+    <main className="overflow-x-hidden bg-black">
       <Routes>
         <Route path="/Home" element={<Home />} />
         <Route path='/allevents' element={<AllEvent/>}/>
