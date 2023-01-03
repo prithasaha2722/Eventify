@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import text
 import csv
-
+from tickets import ticket1,ticket2,ticket3
 
 
 ####--------------------------------------Flask Configuration Starts---------------------------------------------------------------------------------------------------------------------------####
@@ -118,12 +117,27 @@ def participants():
         with app.app_context():
             db.session.add(registration)
             db.session.commit()
+        with app.app_context():
+            r = db.engine.execute(f"select ticketTemplate, orgname from event_details where id={eventid}")
+            for i in r:
+                if i[0] == "1":
+                    ticket1.make_tickets1(name, eventname, date, i[1], venue, email, phone, time)
+                elif i[0] == "2":
+                    ticket2.make_tickets2(name, eventname, date, i[1], venue, email, phone, time)
+                elif i[0]=="3":
+                    ticket3.make_tickets3(name, eventname, date, i[1], venue, email, phone, time)
+
     return render_template('PartiReg.html')
 
 with app.app_context():
     user = db.session.execute(db.select(EventDetails).filter_by(id=1)).one()
     print(user)
 
+with app.app_context():
+    eventid=1
+    r=db.engine.execute(f"select ticketTemplate, orgname from event_details where id={eventid}")
+    for i in r:
+        print(i)
 ####-------------------------------------------Server Execution Code------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------####
 
 if __name__ == "__main__":

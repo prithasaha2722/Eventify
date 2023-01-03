@@ -28,7 +28,7 @@ with nft_storage.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nft_storage_api.NFTStorageAPI(api_client)
      # file_type |
-    with open('asset/1207971.jpeg', errors='ignore') as f:
+    with open('asset/1207971.jpeg', 'rb') as f:
         body = f.read()
     # example passing only required values which don't have defaults set
     try:
