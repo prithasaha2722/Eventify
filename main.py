@@ -165,7 +165,7 @@ def ticket_gen():
                     ticket3.make_tickets3(name,eventname,eventdetails[5],eventdetails[2],eventdetails[4],email,"9999888876","17:00")
 
 
-@app.route("/checkin", methods=["GET", "POST"])
+@app.route("/checkout", methods=["GET", "POST"])
 def checkin():
     if request.method == 'POST':
         eventid = eventdetails[0]
@@ -182,7 +182,7 @@ def checkin():
         with app.app_context():
             db.session.add(checkIn)
             db.session.commit()
-    return render_template('CheckIn.html')
+    return render_template('checkout.html')
 
 @app.route("/bannerify", methods=["GET", "POST"])
 def bannerify():
