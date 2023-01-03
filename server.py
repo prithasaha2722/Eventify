@@ -59,9 +59,21 @@ class Participants(db.Model):
     phone = db.Column(db.Integer, unique=True, nullable=False)
     address = db.Column(db.String, nullable=False)
 
+class Certificate(db.Model):
+    eventid = db.Column(db.Integer, nullable=False)
+    eventname = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, unique=True, nullable=False, primary_key=True)
+    name = db.Column(db.String)
+    phone = db.Column(db.Integer, unique=True, nullable=False)
+    address = db.Column(db.String, nullable=False)
+
 with app.app_context():
     db.create_all()
     db.session.commit()
+
+####---------------------------------Database(Model) ends------------------------------------------------------------------------------------------------------------------------------------------------------------#####
+
+####----------------------------------Main Backend Operation File Starts----------------------------------------------------------------------------------------------------------------------------####
 
 @app.route("/eventdetails", methods=["GET", "POST"])
 def event_data():
@@ -133,6 +145,38 @@ def participants():
                     ticket3.make_tickets3(name, eventname, date, i[1], venue, email, phone, time)
 
     return render_template('PartiReg.html')
+
+
+@app.route("/checkout", methods=["GET", "POST"])
+def checkin():
+    if request.method == 'POST':
+        eventid = request.json['eventid']
+        eventname = request.json['eventname']
+        email = request.json['email']
+        name = request.json['name']
+        phone = request.json['phone']
+        pronoun= request.json['pronoun']
+        address = request.json['address']
+        with open('FinalAttendee.csv', 'a', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([eventid, eventname, email, name])
+        certlist = Certificate(eventid=eventid, eventname=eventname, email=email, name=name, phone=phone, address=address)
+        with app.app_context():
+            db.session.add(certlist)
+            db.session.commit()
+        with app.app_context():
+            r = db.engine.execute(f"select certificateTemplate,venue,startdate,logo,signature from event_details where id={eventid}")
+            for i in r:
+                if i[0] == "1":
+                    print("Prothom format er certificate paabe tumi")
+                elif i[0] == "2":
+                    print("Ditiyo format er certificate paabe tumi")
+                elif i[0]=="3":
+                    print("tritiyo format er certificate paabe tumi")
+    return render_template('checkout.html')
+
+
+
 
 with app.app_context():
     user = db.session.execute(db.select(EventDetails).filter_by(id=1)).one()
