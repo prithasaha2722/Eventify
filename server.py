@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import csv
 from tickets import ticket1,ticket2,ticket3
-
+from banners import banner1, banner2, banner3
 
 ####--------------------------------------Flask Configuration Starts---------------------------------------------------------------------------------------------------------------------------####
 
@@ -81,11 +81,16 @@ def event_data():
         ticketTemplate = request.json['ticketTemplate']
         certificateTemplate = request.json['certificateTemplate']
         bannerTemplate = request.json['bannerTemplate']
-
         organizer=EventDetails(eventname=eventname, orgname=orgname, orgweb=orgweb, venue=venue, startdate=startdate, enddate=enddate, starttime=starttime, endtime=endtime, logo=logo, signature=signature, cost=int(cost), walletaddress=walletaddress, ticketTemplate=ticketTemplate, certificateTemplate=certificateTemplate, bannerTemplate=bannerTemplate)
         with app.app_context():
             db.session.add(organizer)
             db.session.commit()
+        if bannerTemplate=="1":
+            banner1.make_banners1(orgname, eventname, venue, startdate, starttime)
+        if bannerTemplate=="2":
+            banner2.make_banners2(orgname, eventname, venue, startdate, starttime)
+        if bannerTemplate=="3":
+            banner3.make_banners3(orgname, eventname, venue, startdate, starttime)
     return render_template('eventdetails.html')
 
 @app.route("/participantdetails", methods=["GET", "POST"])
