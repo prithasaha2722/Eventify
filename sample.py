@@ -20,6 +20,7 @@ body = " -- BODY OF THE EMAIL -- "
 msgText = MIMEText('<b>%s</b>' % (body), 'html')
 msg.attach(msgText)
 
+
 server = smtplib.SMTP('smtp.office365.com', 587)
 server.starttls()
 server.login(EMAIL, PASSWORD)
