@@ -9,15 +9,15 @@ import FCertificate from "../../../images/Eventlabs/FCertificate.png";
 import FManagement from "../../../images/Eventlabs/FManagement.png";
 import FRegistration from "../../../images/Eventlabs/FRegistration.png";
 import FTickets from "../../../images/Eventlabs/FTickets.png";
-import Banner from "../../../images/Bannerify/BannerMainSide.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const BoxWrapper = (props) => {
   return (
-    <div
+    <motion.div initial={{x: '-100%' }} whileInView={{x:0}} transition={{duration:0.5}}
       className="w-screen min-h-screen relative flex flex-wrap items-center m-auto justify-center"
       style={{
         backgroundColor: props.bgcolor,
@@ -26,7 +26,7 @@ const BoxWrapper = (props) => {
       }}
     >
       {props.children}
-    </div>
+    </motion.div>
   );
 };
 
@@ -51,28 +51,6 @@ const Tabs = () => {
         </div>
         <div className="w-full xl:w-[37%]">
           <img src={Features} alt="Features" className="w-full h-full" />
-        </div>
-      </BoxWrapper>
-      <BoxWrapper bgcolor="Black" direction="row-reverse" textColor="White">
-        <div className="w-screen xl:w-1/2 p-9">
-          <h2 className="font-bold text-3xl xl:text-5xl 2xl:text-7xl">
-            Breaking down event management software into essentials
-          </h2>
-          <div className="text-lg xl:text-2xl 2xl:text-3xl mt-10 w-full xl:w-3/4">
-            Often, ticketing and registration software are mistaken for event
-            management software. However, modern EMS tools are holistic
-            solutions that can house them along with other event management
-            necessities in a single console. They often include the following:
-          </div>
-          <button
-            onClick={() => setBanner(true)}
-            className="text-lg xl:text-2xl 2xl:text-3xl mt-7 bg-red-600 w-fit p-2 xl:p-4 rounded-md text-white font-medium"
-          >
-            Create Banner
-          </button>
-        </div>
-        <div className="w-full mb-5 xl:w-1/2 p-9">
-          <img src={Banner} alt="Bannerify" className="w-full h-full" />
         </div>
       </BoxWrapper>
       <BoxWrapper bgcolor="white" direction="row">
@@ -148,7 +126,7 @@ const Tabs = () => {
           </div>
         </div>
       </BoxWrapper>
-      <BoxWrapper bgcolor="Black" direction="row-reverse" textColor="White">
+      <BoxWrapper bgcolor="Black" direction="row" textColor="White">
         <div className="flex flex-wrap items-center flex-row-reverse justify-around w-[90%]">
           <div className="w-full my-4 md:w-1/5 xl:w-[30%] relative p-5 backdrop-blur-md bg-[#3B3E44] rounded-xl">
             <img
