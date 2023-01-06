@@ -4,6 +4,7 @@ import csv
 import js2py
 from tickets import ticket1,ticket2,ticket3
 from banners import banner1, banner2, banner3
+from certificates import certificate1, certificate2, certificate3
 
 ####--------------------------------------Flask Configuration Starts---------------------------------------------------------------------------------------------------------------------------####
 
@@ -170,7 +171,7 @@ def checkin():
             r = db.engine.execute(f"select certificateTemplate,venue,startdate,logo,signature from event_details where id={eventid}")
             for i in r:
                 if i[0] == "1":
-                    print("Prothom format er certificate paabe tumi")
+                    certificate1.make_certificates1(name, pronoun, )
                 elif i[0] == "2":
                     print("Ditiyo format er certificate paabe tumi")
                 elif i[0]=="3":
