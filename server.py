@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 import csv
 import js2py
 from tickets import ticket1,ticket2,ticket3
 from banners import banner1, banner2, banner3
+from certificates import certificate1, certificate2, certificate3
 
 ####--------------------------------------Flask Configuration Starts---------------------------------------------------------------------------------------------------------------------------####
 
@@ -167,17 +168,38 @@ def checkin():
             db.session.add(certlist)
             db.session.commit()
         with app.app_context():
-            r = db.engine.execute(f"select certificateTemplate,venue,startdate,logo,signature from event_details where id={eventid}")
+            r = db.engine.execute(f"select certificateTemplate,orgname,venue,startdate,logo,signature from event_details where id={eventid}")
             for i in r:
                 if i[0] == "1":
-                    print("Prothom format er certificate paabe tumi")
+                    certificate1.make_certificates1(name, pronoun, eventname, "Organizer", i[1], i[5], i[4])
                 elif i[0] == "2":
-                    print("Ditiyo format er certificate paabe tumi")
+                    certificate2.make_certificates2(name, eventname, i[3], i[2], "Organizer", i[1], i[5], i[4])
                 elif i[0]=="3":
-                    print("tritiyo format er certificate paabe tumi")
+                    certificate3.make_certificates3(name, eventname, i[3], i[1], "Organizer", i[1],  i[5], i[4])
     return render_template('checkout.html')
 
+@app.route('/')
+def home():
+    return redirect(url_for('api/dataofsqlalchemy'))
 
+@app.route('/api/dataofsqlalchemy')
+def apiGenerator():
+    with app.app_context():
+        eventid=[]
+        date=[]
+        eventname=[]
+        venue=[]
+        bannerurl=[]
+        cost=[]
+        r = db.engine.execute("select id, eventname, startdate, venue, cost from event_details")
+        for i in r:
+            eventid = i[0]
+            eventname = i[1]
+            date = i[2]
+            venue = i[3]
+            cost = i[4]
+            bannerurl = "https://gdg.community.dev/gdg-kolkata/"
+    return jsonify({'event': eventid, 'eventname': eventname, 'date': date, 'venue':venue, 'cost': cost, 'bannerurl': bannerurl})
 
 
 with app.app_context():
@@ -186,13 +208,15 @@ with app.app_context():
 
 with app.app_context():
     eventid=1
-    r=db.engine.execute(f"select ticketTemplate, orgname from event_details where id={eventid}")
+    r=db.engine.execute(f"select ticketTemplate, orgname from event_details")
     for i in r:
         print(i)
 ####-------------------------------------------Server Execution Code------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------####
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
 
 
 ### eventId, Date (month, date) , event name, venue, small description, banner url, free or paid,  (can be veiwed by anyone unauthorized.)

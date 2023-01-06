@@ -8,25 +8,25 @@ FONT_COLOR = "#000000"
 t1 = Image.open('certificates/cert/cert1.png')
 WIDTH, HEIGHT = t1.size
 #def make_certificates(name,event,date,venue):
-def make_certificates1(name,gender,field,desig,n1,url1,log1):
+def make_certificates1(name,gender,event,desig,n1,url1,log1):
     image_source = Image.open('certificates/cert/cert1.png')
     draw = ImageDraw.Draw(image_source)
     name_width, name_height = draw.textsize(name)
-    draw.text((762,570), name,fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",90))
+    draw.text((762,570), name,fill=FONT_COLOR,font=ImageFont.truetype("arial.ttf",90))
     gender_width, gender_height = draw.textsize(gender)
-    draw.text((1218,849), gender, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",25))
+    draw.text((1218,849), gender, fill=FONT_COLOR,font=ImageFont.truetype("arial.ttf",25))
     gender_width, gender_height = draw.textsize(gender)
-    draw.text((974,785), gender, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",35))
-    field_width, field_height = draw.textsize(field)
-    draw.text((579,837), field, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",45))
+    draw.text((974,785), gender, fill=FONT_COLOR,font=ImageFont.truetype("arial.ttf",35))
+    event_width, event_height = draw.textsize(event)
+    draw.text((579,837), event, fill=FONT_COLOR,font=ImageFont.truetype("arial.ttf",45))
     desig_width, desig_height = draw.textsize(desig)
-    draw.text((520,1170), desig, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",40))
+    draw.text((520,1170), desig, fill=FONT_COLOR,font=ImageFont.truetype("arial.ttf",40))
     #design_width, design_height = draw.textsize(design)
-    #draw.text((1302,1170), design, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",40))
+    #draw.text((1302,1170), design, fill=FONT_COLOR,font=ImageFont.truetype("arial.ttf",40))
     n1_width, n1_height = draw.textsize(n1)
-    draw.text((488,1099), n1, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",40))
+    draw.text((488,1099), n1, fill=FONT_COLOR,font=ImageFont.truetype("arial.ttf",40))
     #n2_width, n2_height = draw.textsize(n2)
-    #draw.text((1301,1099), n2, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",40))
+    #draw.text((1301,1099), n2, fill=FONT_COLOR,font=ImageFont.truetype("arial.ttf",40))
     #event_width, event_height = draw.textsize(event)
     #draw.text((568,938), event, fill=FONT_COLOR)
     #date_width, date_height = draw.textsize(date)
@@ -85,10 +85,9 @@ def make_certificates1(name,gender,field,desig,n1,url1,log1):
 
 if __name__ == "__main__":
     names = ["Soham Chakraborty", "Kaustav Giri", "Pritha Saha","Ujjaini Ray"]
-    #event = "Devfest Kolkata 2023"
+    event = "Devfest Kolkata 2023"
     #date = "28.12.2022"
     #venue = "Taal Kutir Convention"
-    field = "Robotics"
     gender = "his/her"
     desig = "Principal"
     #design = "Student Head"
@@ -100,5 +99,5 @@ if __name__ == "__main__":
     #log2 = "logos/logo2.png"
     for name in names:
         #make_certificates(name,event,date,venue)
-        make_certificates1(name,gender,field,desig,n1,url1,log1)
+        make_certificates1(name,gender,event,desig,n1,url1,log1)
     print(len(names), "certificates done.")
