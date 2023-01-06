@@ -88,12 +88,13 @@ const EventForm = () => {
   const starttimeRef = useRef();
   const enddateRef = useRef();
   const endtimeRef = useRef();
-  const numberofattendeeRef = useRef();
+  const costRef = useRef();
   const logoRef = useRef();
   const signatureRef = useRef();
+  const walltetRef = useRef();
 
   const registerEvent = async () => {
-    const Response = await fetch("/organizer", {
+    const Response = await fetch("/eventdetails", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -107,8 +108,9 @@ const EventForm = () => {
         starttime: starttimeRef.current.value,
         enddate: enddateRef.current.value,
         endtime: endtimeRef.current.value,
-        numberofattendee: numberofattendeeRef.current.value,
+        cost: costRef.current.value,
         logo: logoRef.current.value,
+        walletaddress: walltetRef.current.value,
         signature: signatureRef.current.value,
         banner: banvalue,
         ticket: ticvalue,
@@ -189,10 +191,10 @@ const EventForm = () => {
               />
             </div>
             <Input
-              id={"numberofattendee"}
-              name={`No. of Atttendee (expected)`}
-              type={`text`}
-              ref={numberofattendeeRef}
+              id={"cost"}
+              name={`Cost`}
+              type={`number`}
+              ref={costRef}
             />
             <Input
               id={"logo"}
@@ -205,6 +207,12 @@ const EventForm = () => {
               name={`Authorizer Signature (link)`}
               type={`text`}
               ref={signatureRef}
+            />
+            <Input
+              id={"walletaddress"}
+              name={`Wallet Address`}
+              type={`text`}
+              ref={walltetRef}
             />
             <div className="flex flex-col flex-wrap justify-center items-center ">
               <hr className="bg-white w-full mb-7" />
