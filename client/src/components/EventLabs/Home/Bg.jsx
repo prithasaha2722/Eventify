@@ -10,7 +10,7 @@ const Bg = () => {
     setNavigate(true)
   }
   if (navigate){
-    return <Navigate to='/details' />
+    return <Navigate to='/new-Event/details' />
   }
   return (
     <div className='min-h-screen w-screen px-[30px] xl:px-[100px] bg-black flex flex-col xl:flex-row items-center justify-between m-auto relative pb-4'>
