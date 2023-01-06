@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import csv
+import js2py
 from tickets import ticket1,ticket2,ticket3
 from banners import banner1, banner2, banner3
 
@@ -13,6 +14,7 @@ db.init_app(app)
 
 ####-------------------------------------Flask Configuration Ends-------------------------------------------------------------------------------------------------------------------------####
 
+eval_res, tempfile = js2py.run_file("NFTStorage.mjs")
 
 ####------------------------------Database(Model) starts----------------------------------------------------------------------------------------------------------------------###
 
@@ -143,7 +145,7 @@ def participants():
                     ticket2.make_tickets2(name, eventname, date, i[1], venue, email, phone, time)
                 elif i[0]=="3":
                     ticket3.make_tickets3(name, eventname, date, i[1], venue, email, phone, time)
-
+            tempfile.ticketNFTStorage()
     return render_template('PartiReg.html')
 
 
