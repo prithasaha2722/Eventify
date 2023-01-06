@@ -200,7 +200,7 @@ def apiforevents():
             venue = i[3]
             cost = i[4]
             bannerurl = "https://gdg.community.dev/gdg-kolkata/"
-    return jsonify({'event': eventid, 'eventname': eventname, 'date': date, 'venue':venue, 'cost': cost, 'bannerurl': bannerurl})
+    return jsonify({'Eventify': {'event': eventid, 'eventname': eventname, 'date': date, 'venue':venue, 'cost': cost, 'bannerurl': bannerurl}})
 
 
 # with app.app_context():

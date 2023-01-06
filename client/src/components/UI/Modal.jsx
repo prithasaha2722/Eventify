@@ -9,7 +9,7 @@ export default function BasicModal(props) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>{props.children}</Button>
+      <button className="inline-block" onClick={handleOpen}>{props.children}</button>
       <Modal
         open={open}
         onClose={handleClose}
