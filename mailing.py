@@ -14,12 +14,17 @@ PASSWORD= os.getenv('password')
 
 ####----------------------------Registration Mail Send----------------------------------------------------------------------------------------------------####
 
-def registration_mail(anymail):
+def registration_mail():
   with open('participantList.csv', 'r') as csvfile:
+    rows = []
+    csvreader = csv.reader(csvfile)
+    for row in csvreader:
+      rows.append(row)
+    for rowlist in rows:
       msg = MIMEMultipart()
-      msg['Subject'] = 'Thanks for Registering in our event  '
+      msg['Subject'] = 'New Event Live '
       msg['From'] = EMAIL
-      msg['To'] = anymail
+      msg['To'] = rowlist[2]
       body = " -- BODY OF THE EMAIL -- "
 
       msgText = MIMEText('<b>%s</b>' % (body), 'html')

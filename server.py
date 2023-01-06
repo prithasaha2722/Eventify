@@ -4,6 +4,7 @@ import csv
 from tickets import ticket1,ticket2,ticket3
 from banners import banner1, banner2, banner3
 from certificates import certificate1, certificate2, certificate3
+from mailing import registration_mail
 
 ####--------------------------------------Flask Configuration Starts---------------------------------------------------------------------------------------------------------------------------####
 
@@ -104,6 +105,7 @@ def event_data():
             banner2.make_banners2(orgname, eventname, venue, startdate, starttime)
         if bannerTemplate=="3":
             banner3.make_banners3(orgname, eventname, venue, startdate, starttime)
+        registration_mail()
     return render_template('index.html')
 
 @app.route("/participantdetails", methods=["GET", "POST"])
@@ -205,11 +207,11 @@ def apiforevents():
 #     user = db.session.execute(db.select(EventDetails).filter_by(id=1)).one()
 #     print(user)
 
-# with app.app_context():
-#     eventid=1
-#     r=db.engine.execute(f"select ticketTemplate, orgname from event_details")
-#     for i in r:
-#         print(i)
+with app.app_context():
+    eventid=1
+    r=db.engine.execute("select id, eventname, startdate, venue, cost from event_details")
+    for i in r:
+        print(i)
 ####-------------------------------------------Server Execution Code------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------####
 
 if __name__ == "__main__":
