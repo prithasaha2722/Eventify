@@ -41,9 +41,36 @@ export const TransactionProvider = ({ children }) => {
         setWallet(accounts[0])
     }
 
+    const createEvent = async() => {
+        if(!ethereum) return alert("Please install metamask")
+        const transactionContract = EthereumContract();
+
+        transactionContract.createEvent();
+
+    }
+
+    const buyTicket = async() => {
+        if(!ethereum) return alert("Please install metamask")
+
+        const paresedEther = ethers.utils.parseEther(10.002);
+
+        const transactionContract = EthereumContract();
+        await ethereum.request({
+            method: 'eth_sendTransaction',
+            params:[{
+                from: wallet,
+                to: '',
+                gas: '0x5208',
+                value: paresedEther._hex
+            }]
+        })
+
+        transactionContract.payTicket();
+    }
+
 
     return (
-        <TransactionContext.Provider value={{connectWallet, wallet}}>
+        <TransactionContext.Provider value={{connectWallet, wallet, buyTicket, createEvent}}>
             {children}
         </TransactionContext.Provider>
     );

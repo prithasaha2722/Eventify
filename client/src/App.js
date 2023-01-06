@@ -1,9 +1,11 @@
-import Navigator from "./pages/Navigator"
+import Navigation from "./pages/Navigation"
+// import Navigator from "./pages/Navigator"
 
 export default function App() {
   return (
     <div className="">
-      <Navigator/>
+      {/* <Navigator/> */}
+      <Navigation />
     </div>
   )
 }

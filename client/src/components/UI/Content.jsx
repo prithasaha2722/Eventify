@@ -7,13 +7,19 @@ const Content = () => {
       <div className="font-medium text-xl 2xl:text-3xl w-full text-center mt-5">Venue</div>
       <div className="text-lg 2xl:text-2xl w-full text-center mt-5">Description</div>
       <div className="flex flex-col 2xl:flex-row items-center justify-around w-full mt-5">
-        <div className="flex flex-col  w-fit rounded-t-xl rounded-b-lg overflow-hidden shadow-2xl relative 2xl:h-[130px]">
+        <div className="flex flex-col mx-3  w-fit rounded-t-xl rounded-b-lg overflow-hidden shadow-2xl relative 2xl:h-[130px]">
           <span className=" bg-[#f336368f] text-[#ffffff] px-4 py-3 text-lg 2xl:text-2xl font-semibold">
             Ticket Price
           </span>
           <span className="w-full p-2 text-center text-lg 2xl:text-3xl flex items-center justify-center font-bold">20</span>
         </div>
-        <div className="flex flex-col w-fit rounded-t-xl rounded-b-lg overflow-hidden shadow-2xl relative h-[130px] mt-3 2xl:mt-0">
+        <div className="flex flex-col mx-3  w-fit rounded-t-xl rounded-b-lg overflow-hidden shadow-2xl relative 2xl:h-[130px]">
+          <span className=" bg-[#5019d18f] text-[#ffffff] px-4 py-3 text-lg 2xl:text-2xl font-semibold">
+            Ticket Sold
+          </span>
+          <span className="w-full p-2 text-center text-lg 2xl:text-3xl flex items-center justify-center font-bold">20</span>
+        </div>
+        <div className="flex flex-col mx-3 w-fit rounded-t-xl rounded-b-lg overflow-hidden shadow-2xl relative h-[130px] mt-3 2xl:mt-0">
           <span className=" bg-[#1F61E4] text-[#ececec] px-4 py-3 text-lg 2xl:text-2xl font-semibold">
             Event Date
           </span>
