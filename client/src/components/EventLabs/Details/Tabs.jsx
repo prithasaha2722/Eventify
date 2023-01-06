@@ -4,9 +4,13 @@ import tickets from "../../../images/Eventlabs/tickets.png";
 import checkIn from "../../../images/Eventlabs/checkIn.png";
 import certificate from "../../../images/Eventlabs/certificate.png";
 import { Navigate } from "react-router-dom";
+import {motion} from 'framer-motion'
 const BoxWrapper = (props) => {
   return (
-    <div
+    <motion.div
+    initial={{x: props.direction === 'row' ? '100vh' : '-100vh',opacity:0}}
+    whileInView={{x:0, opacity:1 }}
+    transition = {{duration: 0.6}}
       className="w-screen h-screen flex flex-col md:flex-row items-center m-auto justify-center relative text-black"
       style={{
         flexDirection: props.direction,
@@ -16,7 +20,7 @@ const BoxWrapper = (props) => {
       }}
     >
       {props.children}
-    </div>
+    </motion.div>
   );
 };
 
