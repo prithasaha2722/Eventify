@@ -1,7 +1,7 @@
 from PIL import Image,ImageDraw,ImageFont
 import os
-if not os.path.exists('bannersave'):
-    os.makedirs('bannersave')
+if not os.path.exists('banners/bannersave'):
+    os.makedirs('banners/bannersave')
 FONT_COLOR = "#000000"
 temp = Image.open('banners/ban/ban2.png')
 WIDTH, HEIGHT = temp.size
