@@ -11,6 +11,7 @@ const Event = (props) => {
       <BasicModal Content={<Content />}>
       <motion.div
         className="2xl:h-[500px] w-[90%] bg-white shadow-xl rounded-b-2xl mx-4 my-8"
+        initial={{x:'-100%'}} whileInView={{x:0}} transition={{duration: 0.7, delay: 0.2}}
       >
         <div className="2xl:h-[60%] w-[95%] m-auto flex items-center justify-center 2xl:w-full relative">
           <img className="h-full w-full" src={test} alt={"test"} />
@@ -48,3 +49,5 @@ const Event = (props) => {
 
 export default Event;
 // onMouseOver={()=>setRect( window.innerWidth - divRef.current.getBoundingClientRect().right < 510)}
+
+
