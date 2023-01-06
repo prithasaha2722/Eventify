@@ -10,10 +10,10 @@ const Event = (props) => {
   return (
       <BasicModal Content={<Content />}>
       <motion.div
-        className="2xl:h-[500px] w-[90%] bg-white shadow-xl rounded-b-2xl mx-4 my-8"
+        className="2xl:h-[500px] lg:h-[300px] lg:w-[300px] bg-white shadow-xl rounded-b-2xl mx-4 my-8"
         initial={{x:'-100%'}} whileInView={{x:0}} transition={{duration: 0.7, delay: 0.2}}
       >
-        <div className="2xl:h-[60%] w-[95%] m-auto flex items-center justify-center 2xl:w-full relative">
+        <div className="w-[95%] m-auto flex items-center justify-center 2xl:w-full relative">
           <img className="h-full w-full" src={test} alt={"test"} />
           <span className="bg-[#ffffff] opacity-80 absolute top-0 2xl:top-3 px-2 py-1 2xl:rounded-xl left-0 2xl:left-2 z-2 flex items-center justify-around">
             <span className="font-medium text-sm mr-2">FREE</span>
