@@ -1,7 +1,7 @@
 from PIL import Image,ImageDraw,ImageFont
 import os
-if not os.path.exists('ticketsave'):
-    os.makedirs('ticketsave')
+if not os.path.exists('tickets/ticketsave'):
+    os.makedirs('tickets/ticketsave')
 FONT_COLOR = "#000000"
 temp = Image.open('tickets/tckts/tic1.png')
 WIDTH, HEIGHT = temp.size
@@ -23,13 +23,9 @@ def make_tickets1(name,event,date,org,venue,email,phone,time):
     phone_width, phone_height = draw.textsize(phone)
     draw.text((74,427),phone, fill=FONT_COLOR,font=ImageFont.truetype("arial.ttf",20))
     time_width, time_height = draw.textsize(time)
-<<<<<<< HEAD
-    draw.text((1173,494),time, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",20))
-    image_source.save('tickets/ticketsave/ticket.png', format='PNG')
-=======
     draw.text((1173,494),time, fill=FONT_COLOR,font=ImageFont.truetype("arial.ttf",20))
-    image_source.save('ticketsave/ticket.png', format='PNG')
->>>>>>> 6f6d7eb7777e3e0bdf3738caf18db27f5ef6d394
+    image_source.save('tickets/ticketsave/ticket.png', format='PNG')
+
 
 if __name__ == "__main__":
     names = ["Soham Chakraborty", "Kaustav Giri", "Pritha Saha","Ujjaini Ray"]
