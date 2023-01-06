@@ -1,7 +1,7 @@
 from PIL import Image,ImageDraw,ImageFont
 import os
-if not os.path.exists('certificatesave'):
-    os.makedirs('certificatesave')
+if not os.path.exists('certificates/certificatesave'):
+    os.makedirs('certificates/certificatesave')
 #FONT_FILE = ImageFont.truetype("arial.ttf", 50)
 #FONT_FILE_o = ImageFont.truetype("arial.ttf", 30)
 FONT_COLOR = "#000000"
