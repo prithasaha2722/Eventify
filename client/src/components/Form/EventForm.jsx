@@ -112,9 +112,9 @@ const EventForm = () => {
         logo: logoRef.current.value,
         walletaddress: walltetRef.current.value,
         signature: signatureRef.current.value,
-        banner: banvalue,
-        ticket: ticvalue,
-        certificate: certvalue,
+        bannerTemplate: banvalue,
+        ticketTemplate: ticvalue,
+        certificateTemplate: certvalue,
       }),
     });
 

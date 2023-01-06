@@ -112,10 +112,10 @@ def event_data():
 def participants():
     if request.method == 'POST':
         eventid = request.json['eventid']
-        eventname =request.json['eventname']
-        venue= request.json['venue']
-        time= request.json['time']
-        date=request.json['time']
+        eventname = request.json['eventname']
+        venue = request.json['venue']
+        time = request.json['time']
+        date = request.json['time']
         email = request.json['email']
         name = request.json['name']
         phone = request.json['phone']
@@ -192,15 +192,18 @@ def apiforevents():
         venue=[]
         bannerurl=[]
         cost=[]
+        final=[]
         r = db.engine.execute("select id, eventname, startdate, venue, cost from event_details")
         for i in r:
-            eventid = i[0]
-            eventname = i[1]
-            date = i[2]
-            venue = i[3]
-            cost = i[4]
-            bannerurl = "https://gdg.community.dev/gdg-kolkata/"
-    return jsonify({'Eventify': {'event': eventid, 'eventname': eventname, 'date': date, 'venue':venue, 'cost': cost, 'bannerurl': bannerurl}})
+            eventid1 = i[0]
+            eventname1 = i[1]
+            date1 = i[2]
+            venue1 = i[3]
+            cost1 = i[4]
+            bannerurl1 = "https://gdg.community.dev/gdg-kolkata/"
+            jsons=({'event': eventid1, 'eventname': eventname1, 'date': date1, 'venue':venue1, 'cost': cost1, 'bannerurl': bannerurl1})
+            final.append(jsons)
+    return jsonify({'Events': final})
 
 
 # with app.app_context():
