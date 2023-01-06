@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import csv
 import js2py
@@ -177,7 +177,23 @@ def checkin():
                     print("tritiyo format er certificate paabe tumi")
     return render_template('checkout.html')
 
-
+@app.route('/api/dataofsqlalchemy')
+def apiGenerator():
+    with app.app_context():
+        eventid=[]
+        date=[]
+        eventname=[]
+        venue=[]
+        bannerurl=[]
+        cost=[]
+        r = db.engine.execute("select id, eventname, startdate, venue, cost from event_details")
+        for i in r:
+            eventid = i[0]
+            eventname = i[1]
+            date = i[2]
+            venue = i[3]
+            cost = i[4]
+    return jsonify({'event': eventid, 'eventname': eventname, 'date': date, 'venue':venue, 'cost': cost})
 
 
 with app.app_context():
@@ -186,13 +202,15 @@ with app.app_context():
 
 with app.app_context():
     eventid=1
-    r=db.engine.execute(f"select ticketTemplate, orgname from event_details where id={eventid}")
+    r=db.engine.execute(f"select ticketTemplate, orgname from event_details")
     for i in r:
         print(i)
 ####-------------------------------------------Server Execution Code------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------####
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
 
 
 ### eventId, Date (month, date) , event name, venue, small description, banner url, free or paid,  (can be veiwed by anyone unauthorized.)

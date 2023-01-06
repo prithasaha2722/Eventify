@@ -24,7 +24,7 @@ def make_tickets2(name,event,date,org,venue,email,phone,time):
     draw.text((1412,367),phone, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",25))
     time_width, time_height = draw.textsize(time)
     draw.text((472,531),time, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",25))
-    image_source.save('ticketsave/ticket.png', format='PNG')
+    image_source.save('tickets/ticketsave/ticket.png', format='PNG')
 
 if __name__ == "__main__":
     names = ["Soham Chakraborty", "Kaustav Giri", "Pritha Saha","Ujjaini Ray"]

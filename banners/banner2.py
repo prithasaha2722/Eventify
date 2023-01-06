@@ -3,10 +3,10 @@ import os
 if not os.path.exists('bannersave'):
     os.makedirs('bannersave')
 FONT_COLOR = "#000000"
-temp = Image.open('ban/ban2.png')
+temp = Image.open('banners/ban/ban2.png')
 WIDTH, HEIGHT = temp.size
 def make_banners2(org,event,venue,date,time):
-    image_source = Image.open('ban/ban2.png')
+    image_source = Image.open('banners/ban/ban2.png')
     draw = ImageDraw.Draw(image_source)
     org_width, org_height = draw.textsize(org)
     draw.text((1809,845), org, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",200))
@@ -18,7 +18,7 @@ def make_banners2(org,event,venue,date,time):
     draw.text((2608,2244),venue, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",115))
     time_width, time_height = draw.textsize(time)
     draw.text((2968,2574),time, fill=FONT_COLOR,font=ImageFont.truetype("Arial.ttf",80))
-    image_source.save('bannersave/banner.png', format='PNG')
+    image_source.save('banners/bannersave/banner.png', format='PNG')
 
 if __name__ == "__main__":
     names = ["Soham Chakraborty", "Kaustav Giri", "Pritha Saha","Ujjaini Ray"]
