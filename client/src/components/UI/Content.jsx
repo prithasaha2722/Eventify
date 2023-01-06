@@ -3,10 +3,11 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
 const Content = () => {
-  const [navigate, setNavigate] = useState(0);
-  const formHandler = () => {
-    setNavigate((prev)=>prev+1);
-    console.log(navigate)
+  const [navigate, setNavigate] = useState(false);
+  const formHandler = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setNavigate(true);
   };
   if (navigate) {
     return <Navigate to="/events/ABCD/participationForm" />;
