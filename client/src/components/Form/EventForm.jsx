@@ -19,19 +19,19 @@ import cert3 from "../../images/cert/cert3.png";
 
 const Input = forwardRef((props, ref) => {
   return (
-    <div className="flex flex-col p-10 my-3 2xl:my-6 bg-transparent rounded-3xl">
+    <div className="flex flex-col p-10 my-3 2xl:my-4 bg-transparent rounded-3xl">
       <label
         htmlFor={props.id}
         className="px-2 flex justify-between items-center mb-4"
       >
-        <span className=" text-xl 2xl:text-4xl mr-3">{props.name}</span>
+        <span className=" text-xl 2xl:text-3xl mr-3">{props.name}</span>
         <span className="text-lg 2xl:text-xl text-[#ff0000]">
           <FontAwesomeIcon icon={faAsterisk} />
         </span>
       </label>
       {props.type === "textArea" ? (
         <textarea
-          className="border-[#000030] outline-none border-b text-xl 2xl:text-3xl p-4 h-fit rounded-xl focus:border-[#00000030] focus:border-b"
+          className="border-[#000030] outline-none border-b text-xl 2xl:text-2xl p-4 h-fit rounded-xl focus:border-[#00000030] focus:border-b"
           required
           placeholder={props.name}
           ref={ref}
@@ -39,7 +39,7 @@ const Input = forwardRef((props, ref) => {
       ) : (
         <input
           type={props.type}
-          className="border-[#000000] outline-none border-b text-xl 2xl:text-3xl text-black p-4 h-fit rounded-xl focus:border-[#00000030] focus:border-b"
+          className="border-[#000000] outline-none border-b text-xl 2xl:text-2xl text-black p-4 h-fit rounded-xl focus:border-[#00000030] focus:border-b"
           name=""
           required
           placeholder={props.name}
@@ -135,12 +135,12 @@ const EventForm = () => {
       {!send ? (
         <div
           style={{ paddingBottom: "10px" }}
-          className="w-screen h-max 2xl:h-screen flex flex-col 2xl:flex-row flex-wrap items-center justify-around bg-[#000000] text-white 2xl:overflow-hidden scrollbar-none pb-5"
+          className="w-screen h-max 2xl:h-screen flex flex-col 2xl:flex-row flex-wrap items-center justify-around overflow-x-hidden bg-[#000000] text-white 2xl:overflow-hidden scrollbar-none pb-5"
         >
           <div className=" w-3/5 md:w-1/3 2xl:w-1/4">
             <img src={Logo} className="w-full h-full" alt="eventLabs" />
           </div>
-          <div className="w-full lg:w-2/3 xl:w-3/5 2xl:w-1/2 h-screen flex flex-col 2xl:overflow-y-auto scrollbar-none">
+          <div className="w-full lg:w-2/3 xl:w-3/5 2xl:w-1/2 h-screen flex flex-col 2xl:overflow-y-auto overflow-x-hidden scrollbar-none">
             <Input
               id={"orgname"}
               name={`Organisation Name`}

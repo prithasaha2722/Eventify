@@ -30,14 +30,10 @@ const Tabs = () => {
   const [checkin, setCheckIn] = useState(false);
   const [certi, setCerti] = useState(false);
   if (register) {
-    return <Navigate to="/registerEvent" />;
-  } else if (tick) {
-    return <Navigate to="/ticketsTemplate" />;
+    return <Navigate to="/new-Event/registerEvent" />;
   } else if (checkin) {
-    return <Navigate to="/registerEvent" />;
-  } else if (certi) {
-    return <Navigate to="/certificateTemplate" />;
-  } else {
+    return <Navigate to="/participants/:eventId/checkOut" />
+  }else {
     return (
       <div className="w-screen h-fit relative">
         <BoxWrapper direction={window.innerWidth < 700 ? "col" : "row"}>
@@ -78,33 +74,6 @@ const Tabs = () => {
           )}
         </BoxWrapper>
         <BoxWrapper direction={window.innerWidth < 700 ? "col" : "row-reverse"}>
-          <div className=" w-full md:w-[51%] px-3 flex flex-col justify-center items-center md:items-start  md:justify-end">
-            <h2 className="font-bold text-3xl  2xl:text-7xl">
-              Breaking down event management software into essentials
-            </h2>
-            {window.innerWidth < 700 && (
-              <div className="w-[60%] flex items-center text-center mt-5">
-                <img src={tickets} alt="tickets" className="w-full h-full" />
-              </div>
-            )}
-            <div className="w-full text-lg 2xl:text-3xl mt-10 2xl:w-3/4">
-              Often, ticketing and registration software are mistaken for event
-              management software. However, modern EMS tools are holistic
-              solutions that can house them along with other event management
-              necessities in a single console. They often include the following:
-            </div>
-            <button
-              onClick={() => setTickets(true)}
-              className="w-fit text-xl 2xl:text-4xl mt-14 text-white p-4 rounded-md bg-[#ED5580]"
-            >
-              Send Tickets
-            </button>
-          </div>
-          {window.innerWidth >=700 && <div className=" mr-[30px] 2xl:mr-[100px]">
-            <img src={tickets} alt="tickets" className="w-full h-full" />
-          </div>}
-        </BoxWrapper>
-        <BoxWrapper direction={window.innerWidth < 700 ? "col" : "row"}>
           <div className=" w-full md:w-[51%] px-3 flex flex-col justify-center items-center md:items-start md:justify-end">
             <h2 className="font-bold text-3xl 2xl:text-7xl">
               Breaking down event management software into essentials
@@ -124,49 +93,12 @@ const Tabs = () => {
               onClick={() => setCheckIn(true)}
               className="w-fit text-xl 2xl:text-4xl mt-14 text-white p-4 rounded-md bg-[#79994C]"
             >
-              Send Check In Mail
+              Send Check Out Mail
             </button>
           </div>
           {window.innerWidth >= 700 && (
             <div className="w-[14%] mr-[100px]">
               <img src={checkIn} alt="checkIn" className="w-full h-full" />
-            </div>
-          )}
-        </BoxWrapper>
-        <BoxWrapper direction="row-reverse">
-          <div className=" w-full md:w-[51%] px-3 flex flex-col justify-center items-center md:items-start md:justify-end">
-            <h2 className="font-bold text-3xl 2xl:text-7xl">
-              Breaking down event management software into essentials
-            </h2>
-            {window.innerWidth < 700 && (
-              <div className="w-[60%] flex items-center text-center mt-5">
-                <img
-                  src={certificate}
-                  alt="certificate"
-                  className="w-full h-full"
-                />
-              </div>
-            )}
-            <div className="w-full text-lg 2xl:text-3xl mt-10 2xl:w-3/4">
-              Often, ticketing and registration software are mistaken for event
-              management software. However, modern EMS tools are holistic
-              solutions that can house them along with other event management
-              necessities in a single console. They often include the following:
-            </div>
-            <button
-              onClick={() => setCerti(true)}
-              className="w-fit text-xl 2xl:text-4xl mt-14 text-white p-4 rounded-md bg-[#F36A8D]"
-            >
-              Send Certificates
-            </button>
-          </div>
-          {window.innerWidth >= 700 && (
-            <div className=" mr-[30px] 2xl:mr-[100px]">
-              <img
-                src={certificate}
-                alt="certificate"
-                className="w-full h-full"
-              />
             </div>
           )}
         </BoxWrapper>

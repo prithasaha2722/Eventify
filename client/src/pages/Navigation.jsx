@@ -25,7 +25,7 @@ const Navigation = () => {
           path="/events/:eventId/participationForm"
           element={<ParticipantForm />}
         />
-        <Route path="participants/:eventId/checkin" element={<CheckInForm />} />
+        <Route path="participants/:eventId/checkOut" element={<CheckInForm />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </main>
