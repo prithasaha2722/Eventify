@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 import csv
 import js2py
@@ -168,15 +168,19 @@ def checkin():
             db.session.add(certlist)
             db.session.commit()
         with app.app_context():
-            r = db.engine.execute(f"select certificateTemplate,venue,startdate,logo,signature from event_details where id={eventid}")
+            r = db.engine.execute(f"select certificateTemplate,orgname,venue,startdate,logo,signature from event_details where id={eventid}")
             for i in r:
                 if i[0] == "1":
-                    certificate1.make_certificates1(name, pronoun, )
+                    certificate1.make_certificates1(name, pronoun, eventname, "Organizer", i[1], i[5], i[4])
                 elif i[0] == "2":
-                    print("Ditiyo format er certificate paabe tumi")
+                    certificate2.make_certificates2(name, eventname, i[3], i[2], "Organizer", i[1], i[5], i[4])
                 elif i[0]=="3":
-                    print("tritiyo format er certificate paabe tumi")
+                    certificate3.make_certificates3(name, eventname, i[3], i[1], "Organizer", i[1],  i[5], i[4])
     return render_template('checkout.html')
+
+@app.route('/')
+def home():
+    return redirect(url_for('api/dataofsqlalchemy'))
 
 @app.route('/api/dataofsqlalchemy')
 def apiGenerator():
@@ -194,7 +198,8 @@ def apiGenerator():
             date = i[2]
             venue = i[3]
             cost = i[4]
-    return jsonify({'event': eventid, 'eventname': eventname, 'date': date, 'venue':venue, 'cost': cost})
+            bannerurl = "https://gdg.community.dev/gdg-kolkata/"
+    return jsonify({'event': eventid, 'eventname': eventname, 'date': date, 'venue':venue, 'cost': cost, 'bannerurl': bannerurl})
 
 
 with app.app_context():
