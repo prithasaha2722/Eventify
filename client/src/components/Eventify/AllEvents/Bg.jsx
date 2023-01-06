@@ -36,9 +36,9 @@ const Bg = () => {
         <img className="h-full w-full" src={Logo} alt="Eventify" />
       </div>
       <motion.span
-        initial={{ rotate: 180, x: "-100%", opacity: 0 }}
-        whileInView={{ rotate: 0, x: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        initial={{ x: "-100%", opacity: 0 }}
+        whileInView={{  x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, type: 'spring', damping: 9 }}
         className=" xl:w-[51%] flex  flex-col justify-end mt-[5rem]"
       >
         <h2 className="font-bold w-full text-white text-4xl xl:text-6xl 2xl:text-8xl">
@@ -61,9 +61,9 @@ const Bg = () => {
       </motion.span>
       <motion.span
         className="w-full mb-5 md:w-2/3 xl:w-[37%]"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        transition={{ duration: 0.4, type: "tween" }}
+        initial={{ x: "100%", opacity: 0 }}
+        whileInView={{  x: 0, opacity: 1, direction: 'rtl' }}
+        transition={{ duration: 0.5, type: 'spring', damping: 9 }}
       >
         <img className="w-full h-full" src={image} alt="EventLabs" />
       </motion.span>
