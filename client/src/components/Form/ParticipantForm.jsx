@@ -1,10 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAsterisk } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../../images/Eventlabs/FormLogo.png";
 import { forwardRef } from "react";
 import { useState } from "react";
+import{useDispatch, useSelector}  from 'react-redux'
 
 const Question = (props) => {
   const [id, setId] = useState(null);
@@ -70,28 +70,32 @@ const ParticipantForm = () => {
     sendDatails();
   };
 
+  const eventid =useSelector((state) => state.event.eventid);
+  const eventName = useSelector((state) => state.event.eventName)
+
   const sendDatails = async () => {
-    const Response = await fetch("/participant", {
+    const Response = await fetch("/participantdetails", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify({
+        eventid: eventid,
+        eventName: eventName,
         name: value.Q1,
         email: value.Q2,
         phone: value.Q3,
-        walletaddress: value.Q4,
-        address: value.Q5,
-        Q1: value.Q6,
-        Q2: value.Q7,
-        Q3: value.Q8,
-        Q4: value.Q9,
-        Q5: value.Q10,
-        Q6: value.Q11,
-        Q7: value.Q12,
-        Q8: value.Q13,
-        Q9: value.Q14,
-        Q10: value.Q15,
+        address: value.Q4,
+        Q1: value.Q5,
+        Q2: value.Q6,
+        Q3: value.Q7,
+        Q4: value.Q8,
+        Q5: value.Q9,
+        Q6: value.Q10,
+        Q7: value.Q11,
+        Q8: value.Q12,
+        Q9: value.Q13,
+        Q10: value.Q14,
       }),
     });
   };

@@ -14,14 +14,13 @@ const AllEvent = () => {
   useEffect(() => {
     connectWallet();
     dispatch(authActions.setWalletAddress(wallet))
-    fetchEvents();
     
   }, []);
 
   const fetchEvents = async() => {
-    const Response = await fetch('/apiforevents')
-
-    const data = await Response.json(); 
+    const Response = await fetch('/apiforevents');
+    const data = await Response.json();
+    console.log(data)
   }
   
   return (
