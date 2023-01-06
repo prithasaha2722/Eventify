@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cb00cd7a.css",
+    "main.js": "/static/js/main.bbd116bb.js",
+    "media/ban3.png": "/static/media/ban3.19d08431d4fc67d9ea03.png",
+    "media/cert2.png": "/static/media/cert2.3901ea3f17753b688c05.png",
+    "media/Kaustav.png": "/static/media/Kaustav.87f56e8c7b688cc9388f.png",
+    "media/test.png": "/static/media/test.0fa69d10c299b39c59b5.png",
+    "media/cert1.png": "/static/media/cert1.f9fa3a84799fb0fc04ce.png",
+    "media/Details.png": "/static/media/Details.a18b4dc757ac3746e708.png",
+    "media/Eventlabs.png": "/static/media/Eventlabs.efe709a676bae523c7f5.png",
+    "media/ban1.png": "/static/media/ban1.b158047c1209bcd567eb.png",
+    "media/Soham.png": "/static/media/Soham.55fbe3d14adb85aecebd.png",
+    "media/cert3.png": "/static/media/cert3.bde4b36493cdf87a4d35.png",
+    "media/ban2.png": "/static/media/ban2.41c99908e769eddb9655.png",
+    "media/Pritha.png": "/static/media/Pritha.d9875ae17c65d27c32d5.png",
+    "media/Registration1.png": "/static/media/Registration1.6ae183d6896cbffe8a90.png",
+    "media/Features.png": "/static/media/Features.2738fc90ed49b2170380.png",
+    "media/FAttendee.png": "/static/media/FAttendee.24a742179441cf73f2ac.png",
+    "media/FManagement.png": "/static/media/FManagement.08c37d319c54f3f4dc4d.png",
+    "media/FTickets.png": "/static/media/FTickets.19db1fd0239f0aabd646.png",
+    "media/FRegistration.png": "/static/media/FRegistration.604bf8468a0e5b76f7bf.png",
+    "media/FCertificate.png": "/static/media/FCertificate.8ee55c056602b03ac660.png",
+    "media/tic3.png": "/static/media/tic3.4cf9bc40435126f3af15.png",
+    "media/tic2.png": "/static/media/tic2.5f478931153d32c2baf1.png",
+    "media/tic1.png": "/static/media/tic1.f0fd9d08f3ab7040d966.png",
+    "media/eventLabsLogo.png": "/static/media/eventLabsLogo.71e2826e6125523d675c.png",
+    "media/FormLogo.png": "/static/media/FormLogo.0d91192940b2158f1d31.png",
+    "media/tickets.png": "/static/media/tickets.db17453d5b4921452683.png",
+    "../templates/index.html": "/static/../templates/index.html",
+    "main.cb00cd7a.css.map": "/static/css/main.cb00cd7a.css.map",
+    "main.bbd116bb.js.map": "/static/js/main.bbd116bb.js.map"
+  },
+  "entrypoints": [
+    "css/main.cb00cd7a.css",
+    "js/main.bbd116bb.js"
+  ]
+}
