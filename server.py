@@ -104,7 +104,7 @@ def event_data():
             banner2.make_banners2(orgname, eventname, venue, startdate, starttime)
         if bannerTemplate=="3":
             banner3.make_banners3(orgname, eventname, venue, startdate, starttime)
-    return render_template('eventdetails.html')
+    return render_template('index.html')
 
 @app.route("/participantdetails", methods=["GET", "POST"])
 def participants():
@@ -145,7 +145,7 @@ def participants():
                 elif i[0]=="3":
                     ticket3.make_tickets3(name, eventname, date, i[1], venue, email, phone, time)
         return jsonify({'trigger': True})
-    return render_template('PartiReg.html')
+    return render_template('index.html')
 
 
 @app.route("/checkout", methods=["GET", "POST"])
@@ -174,14 +174,15 @@ def checkin():
                     certificate2.make_certificates2(name, eventname, i[3], i[2], "Organizer", i[1], i[5], i[4])
                 elif i[0]=="3":
                     certificate3.make_certificates3(name, eventname, i[3], i[1], "Organizer", i[1],  i[5], i[4])
-    return render_template('checkout.html')
+    return render_template('index.html')
+
 
 @app.route('/')
 def home():
-    return redirect(url_for('api/dataofsqlalchemy'))
+    return render_template('index.html')
 
-@app.route('/api/dataofsqlalchemy')
-def apiGenerator():
+@app.route('/apiforevents')
+def apiforevents():
     with app.app_context():
         eventid=[]
         date=[]
