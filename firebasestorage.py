@@ -1,5 +1,18 @@
-import firebase_admin
-from firebase_admin import credentials, storage
+import pyrebase
 
-cred = credentials.Certificate("path/to/your/credentials.json")
-firebase_admin.initialize_app(cred,{'storageBucket': 'your_bucket_link_without_gs://'}) # connecting to firebase
+config={
+    "apiKey": "AIzaSyAcGCVkhH3hThg2T671zIMoIaljareB6kY",
+    "authDomain": "eventify-cee22.firebaseapp.com",
+    "projectId": "eventify-cee22",
+    "storageBucket": "eventify-cee22.appspot.com",
+    "serviceAccount": "serviceAccountKey.json"
+}
+
+firebase_storage = pyrebase.initialize_app(config)
+storage= firebase_storage.storage()
+
+counter=1
+storage.child('banners/bannersave/banner.png').put(f"banner{counter}")
+
+counter= counter+1
+
