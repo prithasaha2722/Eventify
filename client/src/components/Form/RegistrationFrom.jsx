@@ -160,7 +160,7 @@ const RegistrationFrom = () => {
     sendQuestionList();
   };
   const sendQuestionList = async () => {
-    const Response = await fetch("/questionStore", {
+    const Response = await fetch("/participantdetails", {
       method: "POST",
       headers: {
         "content-type": "application/json",

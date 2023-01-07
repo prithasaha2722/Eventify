@@ -17,7 +17,10 @@ import { motion } from "framer-motion";
 
 const BoxWrapper = (props) => {
   return (
-    <motion.div initial={{x: '-100%' }} whileInView={{x:0}} transition={{duration:0.5}}
+    <motion.div
+      initial={{ x: "-100%" }}
+      whileInView={{ x: 0 }}
+      transition={{ duration: 0.5 }}
       className="w-screen min-h-screen relative flex flex-wrap items-center m-auto justify-center"
       style={{
         backgroundColor: props.bgcolor,
@@ -42,11 +45,17 @@ const Tabs = () => {
           <h2 className="font-bold text-2xl xl:text-5xl 2xl:text-7xl">
             Breaking down event management software into essentials
           </h2>
-          <div className="text-lg w-full xl:text-2xl 2xl:text-3xl mt-10 xl:w-3/4">
-            Often, ticketing and registration software are mistaken for event
-            management software. However, modern EMS tools are holistic
-            solutions that can house them along with other event management
-            necessities in a single console. They often include the following:
+          <div className="text-md w-full xl:text-xl 2xl:text-2xl mt-10 xl:w-3/4">
+            We offer organisers spaces to enter information about their events.
+            For their events, we give them a variety of Templates that we use
+            throughout our entire event management system, including banners,
+            tickets, and certificates. We are supplying information to
+            Participants about various categories of Technical events. We
+            provide them NFT tickets as they register for an event with just a
+            few clicks. Additionally, we offer them NFT certifications that are
+            always available and unforgeable. They can believe us because we
+            only use a piece of code and there is no involvement from a third
+            party.
           </div>
         </div>
         <div className="w-full xl:w-[37%]">
@@ -63,10 +72,7 @@ const Tabs = () => {
               <img src={FBanner} alt="" className="h-full w-full" />
             </span>
             <span className="text-md xl:text-lg 2xl:text-2xl w-screen xl:w-[70%] font-medium mx-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repudiandae neque obcaecati fugiat provident. Sed excepturi
-              facilis itaque ipsa voluptatem similique aliquam neque esse!
-              Obcaecati molestiae accusantium ipsam. Beatae, maxime enim.
+              Shareable banners for events send to organizers to share publicly.
             </span>
           </div>
           <div className="my-6 w-screen xl:w-[49%] px-6 justify-center items-center mt-4 flex flex-row flex-wrap">
@@ -74,10 +80,7 @@ const Tabs = () => {
               <img src={FRegistration} alt="" className="h-full w-full" />
             </span>
             <span className="text-md xl:text-lg 2xl:text-2xl w-screen xl:w-[70%] font-medium mx-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repudiandae neque obcaecati fugiat provident. Sed excepturi
-              facilis itaque ipsa voluptatem similique aliquam neque esse!
-              Obcaecati molestiae accusantium ipsam. Beatae, maxime enim.
+              Attendees can register for the events that intrigue them.
             </span>
           </div>
           <div className="my-6 w-screen xl:w-[49%] px-6 justify-center items-center mt-4 flex flex-row flex-wrap">
@@ -85,10 +88,7 @@ const Tabs = () => {
               <img src={FManagement} alt="" className="h-full w-full" />
             </span>
             <span className="text-md xl:text-lg 2xl:text-2xl w-screen xl:w-[70%] font-medium mx-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repudiandae neque obcaecati fugiat provident. Sed excepturi
-              facilis itaque ipsa voluptatem similique aliquam neque esse!
-              Obcaecati molestiae accusantium ipsam. Beatae, maxime enim.
+              It is made sure that the attendees have hassle-free event experience.
             </span>
           </div>
           <div className="my-6 w-screen xl:w-[49%] px-6 justify-center items-center mt-4 flex flex-row flex-wrap">
@@ -96,10 +96,8 @@ const Tabs = () => {
               <img src={FTickets} alt="" className="h-full w-full" />
             </span>
             <span className="text-md xl:text-lg 2xl:text-2xl w-screen xl:w-[70%] font-medium mx-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repudiandae neque obcaecati fugiat provident. Sed excepturi
-              facilis itaque ipsa voluptatem similique aliquam neque esse!
-              Obcaecati molestiae accusantium ipsam. Beatae, maxime enim.
+              NFT Tickets provided to the attendee within a few clicks of
+              registration.
             </span>
           </div>
           <div className="my-6 w-screen xl:w-[49%] px-6 justify-center items-center mt-4 flex flex-row flex-wrap">
@@ -107,10 +105,8 @@ const Tabs = () => {
               <img src={FAttendee} alt="" className="h-full w-full" />
             </span>
             <span className="text-md xl:text-lg 2xl:text-2xl w-screen xl:w-[70%] font-medium mx-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repudiandae neque obcaecati fugiat provident. Sed excepturi
-              facilis itaque ipsa voluptatem similique aliquam neque esse!
-              Obcaecati molestiae accusantium ipsam. Beatae, maxime enim.
+              Verification of the attendee is done as they check-in to the event
+              portal.
             </span>
           </div>
           <div className="my-6 w-screen xl:w-[49%] px-6 justify-center items-center mt-4 flex flex-row flex-wrap">
@@ -118,10 +114,8 @@ const Tabs = () => {
               <img src={FCertificate} alt="" className="h-full w-full" />
             </span>
             <span className="text-md xl:text-lg 2xl:text-2xl w-screen xl:w-[70%] font-medium mx-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repudiandae neque obcaecati fugiat provident. Sed excepturi
-              facilis itaque ipsa voluptatem similique aliquam neque esse!
-              Obcaecati molestiae accusantium ipsam. Beatae, maxime enim.
+              NFT certificates are mailed to the attendees only after they fill
+              up the checkout form after completion of the entire event.
             </span>
           </div>
         </div>

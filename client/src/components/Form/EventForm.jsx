@@ -129,7 +129,7 @@ const EventForm = () => {
   };
 
   if (navigate) {
-    return <Navigate to={`/${eventId}/registrationForm`} />;
+    return <Navigate to={`/new-Event/${eventId}/registrationForm`} />;
   }
 
   return (

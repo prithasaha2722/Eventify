@@ -13,7 +13,7 @@ const Content = () => {
     return <Navigate to="/events/ABCD/participationForm" />;
   }
   return (
-    <div className="flex flex-col items-center p-2 shadow-xl w-[200px] py-4 bg-[#f7f7f7] rounded-xl">
+    <div className="flex flex-col items-center p-2 shadow-xl w-1/3 py-4 bg-[#f7f7f7] rounded-xl">
       <div className="font-bold text-2xl 2xl:text-4xl w-full text-center ">
         Event Name
       </div>
