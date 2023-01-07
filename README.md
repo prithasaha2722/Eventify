@@ -13,10 +13,22 @@ A complete Decentralized Event Management Portal
 </tr>
 </table>
 
-There are 2 main sections in the app as follows -
+We work for two genres of users - Organisers and Attendees
 
-1. <b>Organizer Part</b> - This is the section where the organizers can organize their event and also have full control over attendee management
-2. <b>Attendee</b> - This is the section where the attendee can see all live events as well as book tickets and RSVP for the event.
+1. <b>For Organizers</b> 
+- We provide them with slots to fill up their event details, we send mails to the pre-registered users informing them about the events.
+- We provide them with various Templates for banners, tickets and certificates for their events and we use that for our entire Event Management System.
+- We keep a record of their attendees.
+
+
+
+2. <b>For Attendees</b> 
+- We are providing them with information about different types of Technical events.
+- We provide them NFT tickets as they register for an event with a few clicks.
+- We also provide them with NFT certificates that can't be faked and are accessible any time.
+- They can trust us as we rely on a piece of code and no third party is involved.
+
+---------
 
 ## Tech Stack Used -
 <p align="left">
@@ -26,16 +38,17 @@ There are 2 main sections in the app as follows -
 ## Structure Of The Project
 
 The home page of the application contains -
-  1. <b>Landing Page</b> - Here users can get started with using our application by creating new events as well as buying tickets for listed events.
-  2. Buying tickets through their ethers present in their metamask account 
-  3. Creating New events and automatic banner , ticket and certificate generation.
-  4. The Organzers gets all ethers transferes to thier acoount by P2P payment method done by using smart contracts.
+  1. <b>Landing Page</b> - Here the Oragnisers can get started with using our application by creating new events as well as buying tickets for desired events. Here we also We keep you updated with all our next upcoming events be it Hackathons, IEEE events, workshops, Tech meetups and Innovative Techno-Managements Fests.
+  2. Buying tickets through their ethers present in their metamask accounts. 
+  3. Creating New events and automatic banners, tickets and certificates generation.
+  4. The Organzers gets all ethers transferred to their acoount by P2P payment method done by using Smart Contracts. 
+  
 
 ## Future Prospects
 
 - We will open a portal for Sponsorships.
 - Organisations/Universities/Schools can reach out to their desired Sponsors and communicate about collaboration.
--  We will open a Video Conferencing Integration in our system and hold all our Virtual events on our platform.
+- We will open a Video Conferencing Integration in our system and hold all our Virtual events on our platform.
 
 ## UI Of The Web Application
 
