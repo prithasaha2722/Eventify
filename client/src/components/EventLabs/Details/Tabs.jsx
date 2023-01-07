@@ -4,13 +4,16 @@ import tickets from "../../../images/Eventlabs/tickets.png";
 import checkIn from "../../../images/Eventlabs/checkIn.png";
 import certificate from "../../../images/Eventlabs/certificate.png";
 import { Navigate } from "react-router-dom";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 const BoxWrapper = (props) => {
   return (
     <motion.div
-    initial={{x: props.direction === 'row' ? '100vh' : '-100vh',opacity:0}}
-    whileInView={{x:0, opacity:1 }}
-    transition = {{duration: 0.6}}
+      initial={{
+        x: props.direction === "row" ? "100vh" : "-100vh",
+        opacity: 0,
+      }}
+      whileInView={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.6 }}
       className="w-screen h-screen flex flex-col md:flex-row items-center m-auto justify-center relative text-black"
       style={{
         flexDirection: props.direction,
@@ -32,14 +35,14 @@ const Tabs = () => {
   if (register) {
     return <Navigate to="/new-Event/registerEvent" />;
   } else if (checkin) {
-    return <Navigate to="/participants/:eventId/checkOut" />
-  }else {
+    return <Navigate to="/participants/:eventId/checkOut" />;
+  } else {
     return (
       <div className="w-screen h-fit relative">
         <BoxWrapper direction={window.innerWidth < 700 ? "col" : "row"}>
           <div className=" w-full md:w-[51%] px-3 flex flex-col justify-center items-center md:items-start md:justify-end">
             <h2 className="font-bold text-3xl  2xl:text-7xl">
-              Breaking down event management software into essentials
+              Organizer Event Registration
             </h2>
             {window.innerWidth < 700 && (
               <div className="w-[60%] flex items-center text-center mt-5">
@@ -51,10 +54,9 @@ const Tabs = () => {
               </div>
             )}
             <div className=" w-full text-lg 2xl:text-3xl mt-10 2xl:w-3/4">
-              Often, ticketing and registration software are mistaken for event
-              management software. However, modern EMS tools are holistic
-              solutions that can house them along with other event management
-              necessities in a single console. They often include the following:
+              Provide us with all your event details. Choose the templates for
+              Banners, Tickets and Certificates. Now, let us make your event
+              happening.
             </div>
             <button
               onClick={() => setRegister(true)}
@@ -76,7 +78,7 @@ const Tabs = () => {
         <BoxWrapper direction={window.innerWidth < 700 ? "col" : "row-reverse"}>
           <div className=" w-full md:w-[51%] px-3 flex flex-col justify-center items-center md:items-start md:justify-end">
             <h2 className="font-bold text-3xl 2xl:text-7xl">
-              Breaking down event management software into essentials
+              Attendance Gateway
             </h2>
             {window.innerWidth < 700 && (
               <div className="w-[60%] flex items-center text-center mt-5">
@@ -84,10 +86,9 @@ const Tabs = () => {
               </div>
             )}
             <div className="w-full text-lg 2xl:text-3xl mt-10 2xl:w-3/4">
-              Often, ticketing and registration software are mistaken for event
-              management software. However, modern EMS tools are holistic
-              solutions that can house them along with other event management
-              necessities in a single console. They often include the following:
+              This marks the completion of the event and that the attendee was
+              present throughout. Failing to fill up the check out mail
+              attendees won't be mailed their NFT Certificates.
             </div>
             <button
               onClick={() => setCheckIn(true)}
