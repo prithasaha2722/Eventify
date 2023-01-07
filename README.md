@@ -37,16 +37,10 @@ The home page of the application contains -
 - Organisations/Universities/Schools can reach out to their desired Sponsors and communicate about collaboration.
 -  We will open a Video Conferencing Integration in our system and hold all our Virtual events on our platform.
 
-## UI Of The Web Application
-
-
-<pre>
-<img src="https://drive.google.com/file/d/1ekRpSBuhPNpQmsS4fc1slgE5j_je6rEG/view?usp=sharing" width="1000"> <img src="https://drive.google.com/file/d/1AHC_11hwe8uIOmYl0GiL48UEvkdtUpdy/view?usp=sharing" width="1000"> <img src="https://drive.google.com/file/d/11fm5kAoupWF659wfjw7SD3XdpxtEIY9y/view?usp=sharing" width="1000"> <img src="https://drive.google.com/file/d/1CksWLNFm2R200ed8QWkQuGVbqFKluiEq/view?usp=sharing" width="1000"> <img src="https://drive.google.com/file/d/1ZfBw4rTGEW6-b05roH8vsUoEu68mcwqy/view?usp=sharing" width="1000">  
-</pre>
 
 ## Run Locally
 
-1.1 `git clone <repo link>`
+1.1 `git clone <https://github.com/Soham-Chakraborty-8455/Eventify>`
 
 1.2 `cd ManageIt`
 
@@ -54,7 +48,7 @@ The home page of the application contains -
 
 ## Link To GitHub Readme
 
-See the code [here](https://github.com/BhaswatiRoy/FlipAnalyse)
+See the code [here](https://github.com/Soham-Chakraborty-8455/Eventify)
 
 ## Link To Deployed App
 
