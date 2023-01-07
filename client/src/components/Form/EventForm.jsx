@@ -119,6 +119,7 @@ const EventForm = () => {
     });
 
     const data = await Response.json();
+    console.log(data)
     setEventId(data);
     setNavigate(true);
     setSend(true);
@@ -190,12 +191,7 @@ const EventForm = () => {
                 ref={endtimeRef}
               />
             </div>
-            <Input
-              id={"cost"}
-              name={`Cost`}
-              type={`number`}
-              ref={costRef}
-            />
+            <Input id={"cost"} name={`Cost`} type={`number`} ref={costRef} />
             <Input
               id={"logo"}
               name={`Organisation Logo (link)`}

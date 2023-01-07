@@ -37,15 +37,23 @@ const Bg = () => {
       </div>
       <motion.span
         initial={{ x: "-100%", opacity: 0 }}
-        whileInView={{  x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, type: 'spring', damping: 9 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, type: "spring", damping: 9 }}
         className=" xl:w-[51%] flex  flex-col justify-end mt-[5rem]"
       >
         <h2 className="font-bold w-full text-white text-4xl xl:text-6xl 2xl:text-8xl">
-          Meet Eventify
+          Meet Eventify.
         </h2>
         <div className="text-white text-md xl:text-2xl 2xl:text-3xl mt-12">
-        We keep you updated with all our next upcoming events be it Hackathons, workshops, Tech meetups and Innovative Techno-Managements Fests.
+          Eventify helps organize all technical events and generates OnChain
+          Certificates and Tickets and store them on IPFS-NFTStorage and later
+          airdrop or lazy mint to their recipients. It makes the process of
+          distributing certificates a lot easier and more secured, which helps
+          to verify the authencity of the certificate and ticket OnChain. 
+          <br/>
+          We keep you updated with all our next upcoming events be it Hackathons,
+          IEEE events, workshops, Tech meetups and Innovative
+          Techno-Managements Fests.
         </div>
         <button
           onClick={navigateHandler}
@@ -57,8 +65,8 @@ const Bg = () => {
       <motion.span
         className="w-full mb-5 md:w-2/3 xl:w-[37%]"
         initial={{ x: "100%", opacity: 0 }}
-        whileInView={{  x: 0, opacity: 1, direction: 'rtl' }}
-        transition={{ duration: 0.5, type: 'spring', damping: 9 }}
+        whileInView={{ x: 0, opacity: 1, direction: "rtl" }}
+        transition={{ duration: 0.5, type: "spring", damping: 9 }}
       >
         <img className="w-full h-full" src={image} alt="EventLabs" />
       </motion.span>
