@@ -113,9 +113,6 @@ def participants():
     if request.method == 'POST':
         eventid = request.json['eventid']
         eventname = request.json['eventname']
-        venue = request.json['venue']
-        time = request.json['time']
-        date = request.json['time']
         email = request.json['email']
         name = request.json['name']
         phone = request.json['phone']
@@ -138,14 +135,14 @@ def participants():
             db.session.add(registration)
             db.session.commit()
         with app.app_context():
-            r = db.engine.execute(f"select ticketTemplate, orgname from event_details where id={eventid}")
+            r = db.engine.execute(f"select ticketTemplate, startdate, starttime, venue, orgname from event_details where id={eventid}")
             for i in r:
                 if i[0] == "1":
-                    ticket1.make_tickets1(name, eventname, date, i[1], venue, email, phone, time)
+                    ticket1.make_tickets1(name, eventname, i[1], i[4], i[3], email, phone, i[2])
                 elif i[0] == "2":
-                    ticket2.make_tickets2(name, eventname, date, i[1], venue, email, phone, time)
+                    ticket2.make_tickets2(name, eventname, i[1], i[4], i[3], email, phone, i[2])
                 elif i[0]=="3":
-                    ticket3.make_tickets3(name, eventname, date, i[1], venue, email, phone, time)
+                    ticket3.make_tickets3(name, eventname, i[1], i[4], i[3], email, phone, i[2])
         return jsonify({'trigger': True})
     return render_template('index.html')
 

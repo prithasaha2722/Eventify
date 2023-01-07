@@ -1,16 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAsterisk } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../../images/Eventlabs/FormLogo.png";
 import { forwardRef } from "react";
 import { useState } from "react";
+import{useDispatch, useSelector}  from 'react-redux'
 
 const Question = (props) => {
-  const [id, setId] = useState(null);
-  const changeHandler = (e) => {
-    props.setvalue({ ...props.value, id: e.target.value });
-  };
+  const changeHandler = (e,id) => {
+    props.setvalue((prevData) => ({...prevData, [id]: e.target.value}))
+  }
   return (
     <div
       className="flex flex-col p-10 my-6 bg-transparent rounded-3xl"
@@ -27,20 +26,21 @@ const Question = (props) => {
       </label>
       {props.type === "textArea" ? (
         <textarea
-          className="border-[#000030] border-b text-3xl p-4 h-fit rounded-xl focus:border-[#00000030] focus:border-b"
+          className="border-[#000030] border-b text-black text-3xl p-4 h-fit rounded-xl focus:border-[#00000030] focus:border-b"
           id={props.id}
           required={props.required === "true"}
           placeholder={props.placeholder}
+          onChange={changeHandler(props.id)}
         />
       ) : (
         <input
           type="text"
-          className="border-[#000000] border-b text-3xl p-4 h-fit rounded-xl focus:border-[#00000030] focus:border-b"
+          className="border-[#000000] border-b text-black text-3xl p-4 h-fit rounded-xl focus:border-[#00000030] focus:border-b"
           name=""
           id={props.id}
           required={props.required === "true"}
           placeholder={props.placeholder}
-          onChange={changeHandler}
+          onChange={changeHandler(props.id)}
         />
       )}
     </div>
@@ -49,51 +49,71 @@ const Question = (props) => {
 
 const ParticipantForm = () => {
   const QuestionList = useSelector((state) => state.question.questions);
-  const [value, setValue] = useState({
-    Q1: "",
-    Q2: "",
-    Q3: "",
-    Q4: "",
-    Q5: "",
-    Q6: "",
-    Q7: "",
-    Q8: "",
-    Q9: "",
-    Q10: "",
-    Q11: "",
-    Q12: "",
-    Q13: "",
-    Q14: "",
-    Q15: "",
-  });
   const sendParticipateDetails = () => {
     sendDatails();
   };
+  const [value,setValue] = useState({
+    Q1: '',
+    Q2: '',
+    Q3: '',
+    Q4: '',
+    Q5: '',
+    Q6: '',
+    Q7: '',
+    Q8: '',
+    Q9: '',
+    Q10: '',
+    Q11: '',
+    Q12: '',
+    Q13: '',
+    Q14: '',
+  })
+  const eventid =useSelector((state) => state.event.eventid);
+  const eventName = useSelector((state) => state.event.eventName)
 
   const sendDatails = async () => {
-    const Response = await fetch("/participant", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name: value.Q1,
-        email: value.Q2,
-        phone: value.Q3,
-        walletaddress: value.Q4,
-        address: value.Q5,
-        Q1: value.Q6,
-        Q2: value.Q7,
-        Q3: value.Q8,
-        Q4: value.Q9,
-        Q5: value.Q10,
-        Q6: value.Q11,
-        Q7: value.Q12,
-        Q8: value.Q13,
-        Q9: value.Q14,
-        Q10: value.Q15,
-      }),
-    });
+    // const Response = await fetch("/participantdetails", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     eventid: eventid,
+    //     eventname: eventName,
+    //     name: value.Q1,
+    //     email: value.Q2,
+    //     phone: value.Q3,
+    //     address: value.Q4,
+    //     Q1: value.Q5,
+    //     Q2: value.Q6,
+    //     Q3: value.Q7,
+    //     Q4: value.Q8,
+    //     Q5: value.Q9,
+    //     Q6: value.Q10,
+    //     Q7: value.Q11,
+    //     Q8: value.Q12,
+    //     Q9: value.Q13,
+    //     Q10: value.Q14,
+    //   }),
+    // });
+    console.log({
+      eventid: eventid,
+      eventname: eventName,
+      name: value.Q1,
+      email: value.Q2,
+      phone: value.Q3,
+      address: value.Q4,
+      Q1: value.Q5,
+      Q2: value.Q6,
+      Q3: value.Q7,
+      Q4: value.Q8,
+      Q5: value.Q9,
+      Q6: value.Q10,
+      Q7: value.Q11,
+      Q8: value.Q12,
+      Q9: value.Q13,
+      Q10: value.Q14,
+    })
   };
 
   return (

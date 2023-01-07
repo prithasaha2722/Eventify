@@ -42,15 +42,10 @@ const Bg = () => {
         className=" xl:w-[51%] flex  flex-col justify-end mt-[5rem]"
       >
         <h2 className="font-bold w-full text-white text-4xl xl:text-6xl 2xl:text-8xl">
-          What is event management software?
+          Meet Eventify
         </h2>
         <div className="text-white text-md xl:text-2xl 2xl:text-3xl mt-12">
-          Event management software (EMS) can be called an event organizer's
-          personal assistant—something that helps you manage all aspects of your
-          event, from start to finish. From building an event website, selling
-          tickets to the event and promoting the event to managing sessions and
-          following up with attendees, your event management platform is a
-          one-stop-shop that allows you to do everything.
+        We keep you updated with all our next upcoming events be it Hackathons, workshops, Tech meetups and Innovative Techno-Managements Fests.
         </div>
         <button
           onClick={navigateHandler}
