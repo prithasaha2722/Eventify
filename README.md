@@ -2,6 +2,7 @@
             Eventify
 </h1>
 
+<p align="center"> <img src="https://cdn.dribbble.com/users/12702776/screenshots/20344348/media/7767bebd92260ac9b6faa235a1b06e80.png"  width="40%" height="40%" /> </p>
 
 ## Overview of the App
 
@@ -43,6 +44,9 @@ The home page of the application contains -
   3. Creating New events and automatic banners, tickets and certificates generation.
   4. The Organzers gets all ethers transferred to their acoount by P2P payment method done by using Smart Contracts. 
   
+## UI of the Project
+<img src="https://www.canva.com/design/DAFXRxtLOj0/sv_vA6967b5Mzj-nspVWMQ/edit?utm_content=DAFXRxtLOj0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" height="200" width="400">
+
 
 ## Future Prospects
 
