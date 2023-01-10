@@ -55,9 +55,9 @@ The home page of the application contains -
 
 1.1 `git clone <https://github.com/Soham-Chakraborty-8455/Eventify>`
 
-1.2 `cd ManageIt`
+1.2 go to terminal
 
-1.3 `flask run`
+1.3 `python server.py`
 
 ## Link To GitHub Readme
 
@@ -65,4 +65,4 @@ See the code [here](https://github.com/Soham-Chakraborty-8455/Eventify)
 
 ## Link To Deployed App
 
-See the deployed app [here](https://mighty-dusk-36159.herokuapp.com/)
+See the deployed app [here]()
