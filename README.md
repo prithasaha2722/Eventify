@@ -45,7 +45,7 @@ The home page of the application contains -
   4. The Organzers gets all ethers transferred to their acoount by P2P payment method done by using Smart Contracts. 
   
 ## UI of the Project
-<img src="https://www.canva.com/design/DAFXRxtLOj0/sv_vA6967b5Mzj-nspVWMQ/edit?utm_content=DAFXRxtLOj0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" height="200" width="400">
+<img src="https://image.canva.com/yM8DAwgTN83pvUiAz9OwFg%3D%3D/jHNPPbvBJZ0f5O09CjPwOQ%3D%3D.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH25PN7VSL%2F20230110%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230110T085854Z&X-Amz-Expires=28997&X-Amz-Signature=130ecb747e14c966e2879b16d6e104676f5f21ec75bb71dc52600e14d3180057&X-Amz-SignedHeaders=host&response-expires=Tue%2C%2010%20Jan%202023%2017%3A02%3A11%20GMT" >
 
 
 ## Future Prospects
