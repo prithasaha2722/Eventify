@@ -38,7 +38,7 @@ We work for two genres of users - Organisers and Attendees
 ## Structure Of The Project
 
 The home page of the application contains -
-  1. <b>Landing Page</b> - Here the Oragnisers can get started with using our application by creating new events as well as buying tickets for desired events. Here we also We keep you updated with all our next upcoming events be it Hackathons, IEEE events, workshops, Tech meetups and Innovative Techno-Managements Fests.
+  1. <b>Landing Page</b> - Here the Oragnisers can get started with using our application by creating new events as well as buying tickets for desired events. Here we also We keep you updated with all our next upcoming events be it Hackathons, workshops, Tech meetups and Innovative Techno-Managements Fests.
   2. Buying tickets through their ethers present in their metamask accounts. 
   3. Creating New events and automatic banners, tickets and certificates generation.
   4. The Organzers gets all ethers transferred to their acoount by P2P payment method done by using Smart Contracts. 
