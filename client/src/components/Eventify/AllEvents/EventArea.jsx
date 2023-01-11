@@ -14,6 +14,7 @@ const EventArea = (props) => {
         {data.map((i) => (
           <Event
             key={i.event}
+            eventId={i.event}
             eventName={i.eventname}
             date={i.date}
             venue={i.venue}
