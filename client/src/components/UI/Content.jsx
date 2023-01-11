@@ -22,7 +22,7 @@ const Content = (props) => {
       </div>
       <div className="text-lg 2xl:text-2xl w-full text-center mt-5">
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-around w-full mt-5">
+      <div className="flex flex-wrap md:flex-row items-center justify-around w-full mt-5">
         <div className="flex flex-col mx-3  w-fit rounded-t-xl rounded-b-lg overflow-hidden shadow-2xl relative 2xl:h-[130px]">
           <span className=" bg-[#f336368f] text-[#ffffff] px-4 py-3 text-lg 2xl:text-2xl font-semibold">
             Ticket Price
