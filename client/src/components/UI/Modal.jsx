@@ -8,7 +8,7 @@ export default function BasicModal(props) {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <div className="w-full 2xl:w-[450px] sm:w-2/5  rounded-b-2xl mx-4 my-8">
       <button className="inline-block" onClick={handleOpen}>{props.children}</button>
       <Modal
         open={open}
@@ -17,7 +17,7 @@ export default function BasicModal(props) {
         aria-describedby="modal-modal-description"
       >
         <div onClick={handleClose} className="flex items-center justify-center h-full w-full">
-        <div className=" w-4/5 2xl:w-fit h-fit rounded-md">{props.Content}</div>
+        <div className=" w-4/5 lg:w-fit h-fit rounded-md">{props.Content}</div>
         </div>
       </Modal>
     </div>

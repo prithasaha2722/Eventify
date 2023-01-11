@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
-const Content = () => {
+const Content = (props) => {
   const [navigate, setNavigate] = useState(false);
   const formHandler = (e) => {
     e.preventDefault();
@@ -10,20 +10,19 @@ const Content = () => {
     setNavigate(true);
   };
   if (navigate) {
-    return <Navigate to="/events/ABCD/participationForm" />;
+    return <Navigate to={`/events/e${props.eventId}/participationForm`} />;
   }
   return (
-    <div className="flex flex-col items-center p-2 shadow-xl w-[200px] py-4 bg-[#f7f7f7] rounded-xl">
+    <div className="flex flex-col items-center p-2 shadow-xl w-full py-4 bg-[#f7f7f7] rounded-xl">
       <div className="font-bold text-2xl 2xl:text-4xl w-full text-center ">
-        Event Name
+        {props.eventName}
       </div>
       <div className="font-medium text-xl 2xl:text-3xl w-full text-center mt-5">
-        Venue
+        {props.venue}
       </div>
       <div className="text-lg 2xl:text-2xl w-full text-center mt-5">
-        Description
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-around w-full mt-5">
+      <div className="flex flex-wrap md:flex-row items-center justify-around w-full mt-5">
         <div className="flex flex-col mx-3  w-fit rounded-t-xl rounded-b-lg overflow-hidden shadow-2xl relative 2xl:h-[130px]">
           <span className=" bg-[#f336368f] text-[#ffffff] px-4 py-3 text-lg 2xl:text-2xl font-semibold">
             Ticket Price
@@ -45,8 +44,9 @@ const Content = () => {
             Event Date
           </span>
           <span className="w-full p-2 text-center text-xl flex flex-row items-center justify-center py-2 ">
-            <div className="font-bold text-lg 2xl:text-2xl mr-2">Nov</div>
-            <div className="text-lg 2xl:text-xl">20</div>
+            {/* <div className="font-bold text-lg 2xl:text-2xl mr-2">Nov</div>
+            <div className="text-lg 2xl:text-xl">20</div> */}
+            {props.date}
           </span>
         </div>
       </div>

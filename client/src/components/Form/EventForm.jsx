@@ -119,9 +119,11 @@ const EventForm = () => {
     });
 
     const data = await Response.json();
+    console.log(data)
     setEventId(data);
     setNavigate(true);
     setSend(true);
+
   };
 
   const registeHandler = () => {
@@ -129,7 +131,7 @@ const EventForm = () => {
   };
 
   if (navigate) {
-    return <Navigate to={`/${eventId}/registrationForm`} />;
+    return <Navigate to={`/new-Event/${eventId}/registrationForm`} />;
   }
 
   return (
@@ -190,12 +192,7 @@ const EventForm = () => {
                 ref={endtimeRef}
               />
             </div>
-            <Input
-              id={"cost"}
-              name={`Cost`}
-              type={`number`}
-              ref={costRef}
-            />
+            <Input id={"cost"} name={`Cost`} type={`number`} ref={costRef} />
             <Input
               id={"logo"}
               name={`Organisation Logo (link)`}
