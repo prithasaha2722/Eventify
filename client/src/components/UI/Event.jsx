@@ -6,17 +6,30 @@ import Content from "./Content";
 import BasicModal from "./Modal";
 
 const Event = (props) => {
-
   return (
-      <BasicModal Content={<Content />}>
+    <BasicModal
+      Content={
+        <Content
+          key={props.event}
+          eventName={props.eventName}
+          eventId={props.eventId}
+          date={props.date}
+          venue={props.venue}
+          cost={props.cost}
+          bannerurl={props.bannerurl}
+        />
+      }
+    >
       <motion.div
         className="2xl:w-[500px] lg:w-[300px] bg-white shadow-xl rounded-b-2xl mx-4 my-8"
-        initial={{x:'-100%'}} whileInView={{x:0}} transition={{duration: 0.7, delay: 0.2}}
+        initial={{ x: "-100%" }}
+        whileInView={{ x: 0 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
       >
         <div className="w-[95%] m-auto flex items-center justify-center 2xl:w-full relative">
           <img className="h-full w-full" src={test} alt={"test"} />
           <span className="bg-[#ffffff] opacity-80 absolute top-0 2xl:top-3 px-2 py-1 2xl:rounded-xl left-0 2xl:left-2 z-2 flex items-center justify-around">
-            <span className="font-medium text-sm mr-2">FREE</span>
+            <span className="font-medium text-sm mr-2">{props.cost}</span>
             <span className=" -rotate-6 w-5 2xl:w-10">
               <img className="h-full w-full" src={polygonlogo} alt="polygon" />
             </span>
@@ -35,11 +48,13 @@ const Event = (props) => {
             <div className="h-[70%] w-1 bg-[#00000040] rounded-xl absolute right-0"></div>
           </div>
           <div className="flex flex-col p-4 2xl:pl-10 items-start h-full mt-8">
-            <span className="font-bold text-xl 2xl:text-4xl">Event Name</span>
-            <span className="text-lg 2xl:text-2xl mt-2 font-extrabold text-[#1F61E4]">
-              Venue
+            <span className="font-bold text-xl 2xl:text-4xl">
+              {props.eventName}
             </span>
-            <span className="hidden 2xl:inline-block text-xl mt-2">Small Description</span>
+            <span className="text-lg 2xl:text-2xl mt-2 font-extrabold text-[#1F61E4]">
+              {props.venue}
+            </span>
+            <span className="hidden 2xl:inline-block text-xl mt-2"></span>
           </div>
         </div>
       </motion.div>
@@ -49,5 +64,3 @@ const Event = (props) => {
 
 export default Event;
 // onMouseOver={()=>setRect( window.innerWidth - divRef.current.getBoundingClientRect().right < 510)}
-
-

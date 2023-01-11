@@ -106,6 +106,7 @@ def event_data():
         if bannerTemplate=="3":
             banner3.make_banners3(orgname, eventname, venue, startdate, starttime)
         registration_mail()
+        return jsonify({'eventid': id})
     return render_template('index.html')
 
 @app.route("/participantdetails", methods=["GET", "POST"])
