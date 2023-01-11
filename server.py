@@ -210,11 +210,11 @@ def apiforevents():
 #     user = db.session.execute(db.select(EventDetails).filter_by(id=1)).one()
 #     print(user)
 
-with app.app_context():
-    eventid=1
-    r=db.engine.execute("select id, eventname, startdate, venue, cost from event_details")
-    for i in r:
-        print(i)
+# with app.app_context():
+#     eventid=1
+#     r=db.engine.execute("select id, eventname, startdate, venue, cost from event_details")
+#     for i in r:
+#         print(i)
 ####-------------------------------------------Server Execution Code------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------####
 
 if __name__ == "__main__":
