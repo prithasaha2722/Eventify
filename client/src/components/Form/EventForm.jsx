@@ -123,6 +123,7 @@ const EventForm = () => {
     setEventId(data);
     setNavigate(true);
     setSend(true);
+
   };
 
   const registeHandler = () => {
